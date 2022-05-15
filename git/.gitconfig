@@ -1,0 +1,12 @@
+[credential]
+	helper = cache
+[user]
+	name = jcardarelli
+	email = jcardarelli@users.noreply.github.com
+[core]
+	pager = cat
+	excludesfile = ~/.personal-gitignore
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
