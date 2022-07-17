@@ -20,8 +20,8 @@ shell_integration no-cursor
 ###########################################################
 # Fonts
 ###########################################################
-font_family FiraCode
-font_size 11.0
+font_family Fira Code
+font_size 12.0
 
 ###########################################################
 # Symbols Nerd Font complete symbol_map
