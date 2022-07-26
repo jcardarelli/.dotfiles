@@ -39,6 +39,12 @@ return require('packer').startup(function(use)
   use 'SirVer/ultisnips'
   use 'quangnguyen30192/cmp-nvim-ultisnips'
 
+  -- Java
+  use {
+      "mfussenegger/nvim-jdtls",
+       ft = { "java" }
+  }
+
   -- Golang
   -- use 'fatih/vim-go'
   use 'ray-x/go.nvim'

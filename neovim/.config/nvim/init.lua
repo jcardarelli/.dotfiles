@@ -23,6 +23,7 @@ lspconfig.gopls.setup{
 }
 lspconfig.dockerls.setup{}
 lspconfig.bashls.setup{}
+lspconfig.jdtls.setup{}
 -- lspconfig.efm.setup {
 --     init_options = {documentFormatting = true},
 --     settings = {
