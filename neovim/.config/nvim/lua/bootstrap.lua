@@ -28,7 +28,7 @@ local function init(success)
     --
     -- This would be somewhere on your `:h runtimepath`, and would likely contain
     -- a call to `startup` provided by `packer`
-    -- require('pack.list')
+    require('plugins')
 end
 
 local function bootstrap()
