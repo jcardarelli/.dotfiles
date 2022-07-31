@@ -103,4 +103,17 @@ return require('packer').startup(function(use)
   -- or                            , branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+        require("null-ls").setup()
+    end,
+    requires = { "nvim-lua/plenary.nvim" },
+  })
+
+  use {
+    'nmac427/guess-indent.nvim',
+    config = function() require('guess-indent').setup {} end,
+  }
 end)

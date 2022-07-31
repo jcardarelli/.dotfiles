@@ -25,6 +25,8 @@ lspconfig.gopls.setup{
 lspconfig.dockerls.setup{}
 lspconfig.bashls.setup{}
 lspconfig.jdtls.setup{}
+lspconfig.pyright.setup{}
+lspconfig.pylsp.setup{}
 -- lspconfig.efm.setup {
 --     init_options = {documentFormatting = true},
 --     settings = {
@@ -136,6 +138,17 @@ require("nvim-tree").setup({
   },
 })
 
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.formatting.stylua,
+        require("null-ls").builtins.formatting.black,
+        require("null-ls").builtins.formatting.isort,
+        require("null-ls").builtins.diagnostics.eslint,
+        require("null-ls").builtins.diagnostics.flake8,
+        require("null-ls").builtins.completion.spell,
+    },
+})
+
 --------------------------------------------------------------------------------
 -- Golang plugin
 --------------------------------------------------------------------------------
@@ -148,6 +161,10 @@ vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').
 --------------------------------------------------------------------------------
 -- Options
 --------------------------------------------------------------------------------
+-- always keep the diagnostics 'sign column' open
+vim.cmd 'set signcolumn=yes'
+
+-- use relative numbering for jumping around and show current line number
 vim.cmd 'set number'
 vim.cmd 'set relativenumber'
 
