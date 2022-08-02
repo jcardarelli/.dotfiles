@@ -90,17 +90,26 @@ cmp.setup({
 --------------------------------------------------------------------------------
 require('lualine').setup {
 	options = {
-		theme = "catppuccin"
+		theme = "ayu_light"
 	}
 }
 
+--------------------------------------------------------------------------------
+-- theme -- colorscheme -- style
+--------------------------------------------------------------------------------
 -- set colorscheme
 -- vim.cmd 'colorscheme duckbones'
 -- vim.g.background = "dark"
 -- vim.g.material_style = "oceanic"
 -- vim.cmd 'colorscheme duskfox'
-vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
-vim.cmd[[colorscheme catppuccin]]
+-- vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
+-- vim.cmd[[colorscheme catppuccin]]
+
+vim.cmd 'set termguicolors'
+vim.cmd 'set background=light' -- or dark
+
+vim.cmd 'colorscheme seoulbones'
+
 
 --------------------------------------------------------------------------------
 -- Treesitter setup

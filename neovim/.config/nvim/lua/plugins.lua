@@ -116,4 +116,20 @@ return require('packer').startup(function(use)
     'nmac427/guess-indent.nvim',
     config = function() require('guess-indent').setup {} end,
   }
+
+  use { 'anuvyklack/fold-preview.nvim',
+    requires = 'anuvyklack/keymap-amend.nvim',
+    config = function()
+       require('fold-preview').setup()
+    end
+  }
+
+  use {
+      "mcchrish/zenbones.nvim",
+      -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+      -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+      -- In Vim, compat mode is turned on as Lush only works in Neovim.
+      requires = "rktjmp/lush.nvim"
+  }
+
 end)
