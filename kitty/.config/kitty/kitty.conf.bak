@@ -1,4 +1,14 @@
 ###########################################################
+# Hide title bar
+###########################################################
+hide_window_decorations no 
+
+###########################################################
+# Disable the bell
+##########################################################
+enable_audio_bell no
+
+###########################################################
 # Window style
 ###########################################################
 window_padding_width 2
@@ -20,8 +30,8 @@ shell_integration no-cursor
 ###########################################################
 # Fonts
 ###########################################################
-font_family Fira Code
-font_size 12.0
+font_family FiraCode
+font_size 13.0
 
 ###########################################################
 # Symbols Nerd Font complete symbol_map
@@ -71,6 +81,6 @@ include dracula.conf
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Frappe
+# seoulbones_light
 include current-theme.conf
 # END_KITTY_THEME
