@@ -6,6 +6,10 @@ require('plugins')
 --------------------------------------------------------------------------------
 require("nvim-lsp-installer").setup()
 local lspconfig = require("lspconfig")
+lspconfig.bashls.setup{}
+lspconfig.dockerls.setup{}
+lspconfig.eslint.setup{}
+lspconfig.jdtls.setup{}
 lspconfig.gopls.setup{
 	cmd = {'gopls'},
 	-- for postfix snippets and analyzers
@@ -22,11 +26,9 @@ lspconfig.gopls.setup{
 	},
 	on_attach = on_attach,
 }
-lspconfig.dockerls.setup{}
-lspconfig.bashls.setup{}
-lspconfig.jdtls.setup{}
 lspconfig.pyright.setup{}
 lspconfig.pylsp.setup{}
+lspconfig.rust_analyzer.setup{}
 -- lspconfig.efm.setup {
 --     init_options = {documentFormatting = true},
 --     settings = {
@@ -40,7 +42,7 @@ lspconfig.pylsp.setup{}
 -- }
 
 -- Lua LSP config that alows vim as a global variable
-lspconfig.sumneko_lua.setup{
+lspconfig.lua_ls.setup{
     settings = {
         Lua = {
             diagnostics = {
@@ -106,7 +108,7 @@ require('lualine').setup {
 -- vim.cmd[[colorscheme catppuccin]]
 
 vim.cmd 'set termguicolors'
-vim.cmd 'set background=light' -- or dark
+vim.cmd 'set background=dark' -- or light
 
 vim.cmd 'colorscheme seoulbones'
 
