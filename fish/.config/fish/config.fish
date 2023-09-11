@@ -16,8 +16,11 @@ abbr -a -g kns "kubens"
 
 # lsd and the search for god
 abbr -a -g ll "lsd -l --sort extension"
+abbr -a -g lla "lsd -l --sort extension --all"
 abbr -a -g llt "lsd -l --sort extension --tree"
+abbr -a -g llta "lsd -l --sort extension --tree --all"
 abbr -a -g llt2 "lsd -l --sort extension --tree --depth 2"
+abbr -a -g llt3 "lsd -l --sort extension --tree --depth 3"
 
 abbr gti "git"
 abbr g1 "git log --oneline --decorate --color -1"
