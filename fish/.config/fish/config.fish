@@ -14,6 +14,11 @@ abbr -a -g k "kubectl"
 abbr -a -g kctx "kubectx"
 abbr -a -g kns "kubens"
 
+# lsd and the search for god
+abbr -a -g ll "lsd -l --sort extension"
+abbr -a -g llt "lsd -l --sort extension --tree"
+abbr -a -g llt2 "lsd -l --sort extension --tree --depth 2"
+
 abbr gti "git"
 abbr g1 "git log --oneline --decorate --color -1"
 abbr g2 "git log --oneline --decorate --color -2"
@@ -37,9 +42,8 @@ function gitf
 
   if [ -z $commit_hash ]
     echo "Enter the commit hash as the first argument."
-    echo "One way to do this is with \`gitl 10\`."
-  else
-    git diff-tree --no-commit-id --name-only -r $commit_hash
+    # no longer true!
+    # echo "One way to do this is with \`gitl 10\`."
   end
 end
 
@@ -60,7 +64,7 @@ end
 # end
 
 # Dumb aliases
-abbr grev="grep -v"
+# abbr grev="grep -v"
 
 # kubectl-aliases
 if [ -f ~/.kubectl_aliases ]
@@ -169,6 +173,10 @@ end
 fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/bin"
 fish_add_path "$HOME/.emacs.d/bin"
+fish_add_path "/opt/homebrew/bin"
+fish_add_path "$HOME/.cargo/bin"
+fish_add_path /opt/homebrew/opt/openjdk@17/bin
+set -gx CPPFLAGS "-I/opt/homebrew/opt/openjdk@17/include"
 
 # function compare_sha256
 #   if [ $# -ne 2 ]
