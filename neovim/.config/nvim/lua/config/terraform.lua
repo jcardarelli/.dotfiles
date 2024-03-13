@@ -1,0 +1,12 @@
+--------------------------------------------------------------------------------
+-- terraform LSP settings
+-- https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md#neovim-v050
+--------------------------------------------------------------------------------
+-- these commands are no longer necessary with null-ls replacement
+-- vim.cmd("autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()")
+-- vim.cmd("autocmd BufWritePre *.tf lua vim.lsp.buf.format()")
+-- this is broken?
+-- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+-- 	pattern = { "*.tf", "*.tfvars" },
+-- 	callback = vim.lsp.buf.format(),
+-- })
