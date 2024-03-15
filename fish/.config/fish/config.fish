@@ -12,6 +12,8 @@ set -x dt (date +'%Y-%m-%d-%H-%M')
 alias kcontext="kubectl config view --minify --output 'jsonpath={..context}'"
 abbr -a -g k "kubectl"
 abbr -a -g kctx "kubectx"
+abbr -a -g kgp "kubectl get pods"
+abbr -a -g klf "kubectl logs -f"
 abbr -a -g kns "kubens"
 
 # lsd and the search for god
