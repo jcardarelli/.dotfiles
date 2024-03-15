@@ -4,7 +4,8 @@ local has_words_before = function()
 end
 
 --------------------------------------------------------------------------------
--- Luasnip setup
+-- Luasnip
+-- Use existing VS Code-style snippets from rafamadriz/friendly-snippets plugin
 --------------------------------------------------------------------------------
 local luasnip = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
