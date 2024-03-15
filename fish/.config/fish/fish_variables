@@ -1,6 +1,10 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3400
+SETUVAR _fisher_drphil_2F_kubectl_2D_fish_2D_abbr_files:\x7e/\x2econfig/fish/conf\x2ed/kubectl\x2dfish\x2dabbr\x2efish
+SETUVAR _fisher_evanlucas_2F_fish_2D_kubectl_2D_completions_files:\x7e/\x2econfig/fish/completions/kubectl\x2efish
+SETUVAR _fisher_plugins:evanlucas/fish\x2dkubectl\x2dcompletions\x1edrphil/kubectl\x2dfish\x2dabbr
+SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:blue
@@ -29,4 +33,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/opt/homebrew/opt/openjdk\x4017/bin\x1e/Users/jcard/\x2ecargo/bin\x1e/opt/homebrew/bin
+SETUVAR fish_user_paths:/opt/homebrew/Cellar/mysql\x2dclient/8\x2e2\x2e0/bin\x1e/opt/homebrew/opt/openjdk\x4017/bin\x1e/Users/jcard/\x2ecargo/bin\x1e/opt/homebrew/bin
