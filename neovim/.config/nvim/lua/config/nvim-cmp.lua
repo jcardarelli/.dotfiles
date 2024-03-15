@@ -1,21 +1,18 @@
---------------------------------------------------------------------------------
--- Setup nvim-cmp
---------------------------------------------------------------------------------
-local cmp = require("cmp")
-
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
--- luasnip setup
+--------------------------------------------------------------------------------
+-- Luasnip setup
+--------------------------------------------------------------------------------
 local luasnip = require("luasnip")
-
--- It looks like this might the LSP being able to find fmt.Println()?
--- https://github.com/hrsh7th/cmp-nvim-lsp/issues/25#issuecomment-1114242635
--- https://github.com/L3MON4D3/LuaSnip#add-snippets
 require("luasnip.loaders.from_vscode").lazy_load()
 
+--------------------------------------------------------------------------------
+-- Setup nvim-cmp
+--------------------------------------------------------------------------------
+local cmp = require("cmp")
 local lspkind = require("lspkind")
 cmp.setup({
 	enabled = function()
