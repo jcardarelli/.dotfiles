@@ -212,7 +212,11 @@ export PRE_COMMIT_COLOR=always
 abbr -a -g weather "curl wttr.in"
 
 # bat config
-alias bat="bat -pp"
+export BAT_THEME="tokyonight_storm"
 
 # doom emacs client alias
 alias emacs="emacsclient --create-frame --alternate-editor=emacs"
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
