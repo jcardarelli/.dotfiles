@@ -137,7 +137,7 @@ lspconfig.jedi_language_server.setup({
 lspconfig.pyright.setup({
 	-- Use jedi and pyright for python together
 	-- https://www.reddit.com/r/neovim/comments/vpg72u/comment/ielb3h8/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-	on_attach = function(client, bufnr)
+	on_attach = function(client)
 		client.server_capabilities.completionProvider = false
 		client.server_capabilities.hoverProvider = false
 		client.server_capabilities.definitionProvider = false
