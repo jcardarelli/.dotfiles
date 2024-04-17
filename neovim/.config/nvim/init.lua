@@ -8,6 +8,7 @@ require("config.theme")
 require("config.nvim-tree")
 require("config.todo-comments")
 require("config.icons")
+require("config.illuminate")
 
 -- Window focus and terminal
 require("config.focus")
