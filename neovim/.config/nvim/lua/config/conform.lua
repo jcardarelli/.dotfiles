@@ -4,11 +4,12 @@
 require("conform").setup({
 	formatters_by_ft = {
 		go = { "gofumpt", "goimports", "golines" },
+		html = { "htmlbeautifier" },
 		javascript = { { "prettierd", "prettier" } }, -- Use a sub-list to run only the first available formatter
 		lua = { "stylua" },
 		python = { "isort", "black", "pydocstyle" },
 		terraform = { "terraform_fmt" },
-		sh = { "shfmt" }
+		sh = { "shfmt" },
 	},
 
 	format_on_save = {
