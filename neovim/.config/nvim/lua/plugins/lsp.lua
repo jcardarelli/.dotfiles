@@ -9,5 +9,9 @@ return {
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
 	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {},
+	},
 	lazy = false,
 }
