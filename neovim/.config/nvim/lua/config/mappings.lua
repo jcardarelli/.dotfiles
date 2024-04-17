@@ -42,8 +42,7 @@ vim.keymap.set("n", "<Leader>fb", builtin.buffers, { silent = true })
 vim.keymap.set("n", "<Leader>fh", builtin.help_tags, { silent = true })
 
 -- Vimgrep
-vim.cmd("nnoremap <Leader>vg :vimgrep <Space> %")
--- vim.keymap.set("n", "<Leader>fh", builtin.help_tags, { silent = true })
+vim.keymap.set("n", "<Leader>vg", ":vimgrep <Space> %", { silent = true })
 
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
