@@ -15,12 +15,12 @@ vim.keymap.set("n", "<Leader>et", ":vsp $HOME/.config/tmux/tmux.conf<CR>", { sil
 
 -- TODO, etc.
 vim.keymap.set("n", "<Leader>todo", "iTODO:<Esc>gcc", { silent = true }) --broken
-vim.cmd('ab Todo // TODO:')
-vim.cmd('ab Warn // WARN:')
-vim.cmd('ab Hack // HACK:')
-vim.cmd('ab Perf // PERF:')
-vim.cmd('ab Note // NOTE:')
-vim.cmd('ab Test // Test:')
+vim.cmd("ab Todo TODO:")
+vim.cmd("ab Warn WARN:")
+vim.cmd("ab Hack HACK:")
+vim.cmd("ab Perf PERF:")
+vim.cmd("ab Note NOTE:")
+vim.cmd("ab Test Test:")
 
 -- Treesitter
 vim.cmd("nnoremap <silent> <Leader>tsp :TSPlayground<CR>") -- edit plugins
