@@ -27,7 +27,6 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
-
 --------------------------------------------------------------------------------
 -- treesitter splitjoin plugin for splitting and joining long lines
 --------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
-vim.diagnostic.config {
+vim.diagnostic.config({
 	float = { border = "rounded" },
-}
+})
 -- Change border of documentation hover window: https://github.com/neovim/neovim/pull/13998
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	border = "rounded",
@@ -52,19 +52,18 @@ local on_attach = function(client, bufnr)
 	-- vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", bufopts)
 	-- vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+	vim.keymap.set("n", "gr", "<Cmd>Lspsaga finder<cr>", opts)
+	-- vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 
 	-- Lspsaga overrides for the default LSP
-	vim.keymap.set('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<cr>', opts)
-	vim.keymap.set('n', '<C-p>', '<Cmd>Lspsaga diagnostic_jump_prev<cr>', opts)
-	vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<cr>', opts)
+	vim.keymap.set("n", "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+	vim.keymap.set("n", "<C-p>", "<Cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+	vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<cr>", opts)
 	-- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-	-- vim.keymap.set('n', 'gd', '<Cmd>Lspsaga goto_definition<cr>', opts)
-	vim.keymap.set('i', '<C-k>', '<Cmd>Lspsaga signature_help<cr>', opts)
-	vim.keymap.set('n', 'gp', '<Cmd>Lspsaga peek_definition<cr>', opts)
-	-- vim.keymap.set('n', 'gr', '<Cmd>Lspsaga finder<cr>', opts)
-	vim.keymap.set('n', '<Leader>ol', '<Cmd>Lspsaga outline<cr>', opts)
-	vim.keymap.set('n', '<Leader>ca', '<Cmd>Lspsaga code_action<cr>', opts)
+	vim.keymap.set("i", "<C-k>", "<Cmd>Lspsaga signature_help<cr>", opts)
+	vim.keymap.set("n", "gp", "<Cmd>Lspsaga peek_definition<cr>", opts)
+	vim.keymap.set("n", "<Leader>ol", "<Cmd>Lspsaga outline<cr>", opts)
+	vim.keymap.set("n", "<Leader>ca", "<Cmd>Lspsaga code_action<cr>", opts)
 
 	-- Server capabilities spec:
 	-- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#serverCapabilities
@@ -77,10 +76,10 @@ local on_attach = function(client, bufnr)
 				local callbackOpts = {
 					focusable = false,
 					close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-					border = 'rounded',
-					source = 'always',
-					prefix = ' ',
-					scope = 'cursor',
+					border = "rounded",
+					source = "always",
+					prefix = " ",
+					scope = "cursor",
 				}
 				vim.diagnostic.open_float(nil, callbackOpts)
 			end,
@@ -195,7 +194,8 @@ lspconfig.groovyls.setup({
 		"java",
 		"-jar",
 		vim.fn.expand(
-			"$HOME/.local/share/nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar"),
+			"$HOME/.local/share/nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar"
+		),
 	},
 	filetypes = {
 		"groovy",
@@ -203,8 +203,7 @@ lspconfig.groovyls.setup({
 	settings = {
 		groovy = {
 			classpath = {
-				vim.fn.expand(
-					"$HOME/code/groovy-tools/vars/"),
+				vim.fn.expand("$HOME/code/groovy-tools/vars/"),
 			},
 		},
 	},

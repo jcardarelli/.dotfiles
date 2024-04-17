@@ -5,8 +5,8 @@ require("toggleterm").setup({
 	-- https://github.com/akinsho/toggleterm.nvim/issues/119#issuecomment-1507797135
 	highlights = {
 		Normal = {
-			guibg = colors.bg_dark
-		}
+			guibg = colors.bg_dark,
+		},
 	},
 	shade_terminals = false,
 
