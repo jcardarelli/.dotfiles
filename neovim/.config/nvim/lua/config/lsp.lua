@@ -119,7 +119,33 @@ local lspconfig = require("lspconfig")
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 -- vim.lsp.set_log_level("info")
 lspconfig.bashls.setup({})
-lspconfig.pylyzer.setup({})
+lspconfig.jedi_language_server.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+lspconfig.pyright.setup({
+	-- Use jedi and pyright for python together
+	-- https://www.reddit.com/r/neovim/comments/vpg72u/comment/ielb3h8/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+	on_attach = function(client, bufnr)
+		client.server_capabilities.completionProvider = false
+		client.server_capabilities.hoverProvider = false
+		client.server_capabilities.definitionProvider = false
+		client.server_capabilities.rename = false
+		client.server_capabilities.signature_help = false
+	end,
+	capabilities = capabilities,
+	settings = {
+		pyright = { autoImportCompletion = true },
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				diagnosticMode = "openFilesOnly",
+				useLibraryCodeForTypes = true,
+				typeCheckingMode = "off",
+			},
+		},
+	},
+})
 lspconfig.rust_analyzer.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.html.setup({})

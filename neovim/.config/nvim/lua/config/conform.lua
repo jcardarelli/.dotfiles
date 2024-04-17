@@ -6,7 +6,7 @@ require("conform").setup({
 		go = { "gofumpt", "goimports", "golines" },
 		javascript = { { "prettierd", "prettier" } }, -- Use a sub-list to run only the first available formatter
 		lua = { "stylua" },
-		python = { "isort", "black" },
+		python = { "isort", "black", "pydocstyle" },
 		terraform = { "terraform_fmt" },
 		sh = { "shfmt" }
 	},
