@@ -2,9 +2,9 @@
 -- Current theme settings
 --------------------------------------------------------------------------------
 require("tokyonight").setup({
-	style = "storm",     -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+	style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
 	light_style = "day", -- The theme is used when the background is set to light
-	transparent = true,  -- Enable this to disable setting the background color
+	transparent = true, -- Enable this to disable setting the background color
 	terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
 	styles = {
 		-- Style to be applied to different syntax groups
@@ -14,89 +14,19 @@ require("tokyonight").setup({
 		functions = {},
 		variables = {},
 		-- Background styles. Can be "dark", "transparent" or "normal"
-		sidebars = "dark",                -- style for sidebars, see below
-		floats = "dark",                  -- style for floating windows
+		sidebars = "dark", -- style for sidebars, see below
+		floats = "dark", -- style for floating windows
 	},
 	sidebars = { "qf", "help", "NvimTree" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-	day_brightness = 0.3,                 -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-	hide_inactive_statusline = true,      -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-	dim_inactive = false,                 -- dims inactive windows
-	lualine_bold = false,                 -- When `true`, section headers in the lualine theme will be bold
-	--- You can override specific color groups to use other groups or a hex color
-	--- function will be called with a ColorScheme table
-	-- on_colors = function(colors)
-	-- 	colors.bg_search = colors.fg_float
-	-- end,
-
-	--- You can override specific highlights to use other groups or a hex color
-	--- function will be called with a Highlights and ColorScheme table
-	on_highlights = function(hl, c)
-		hl.IndentBlanklineContextChar = {
-			fg = c.dark5,
-		}
-		-- Borderless telescope from readme
-		-- https://github.com/nvim-telescope/telescope.nvim/wiki/Gallery#borderless
-		local prompt = "#2d3149"
-		hl.TelescopeNormal = {
-			bg = c.bg_dark,
-			fg = c.fg_dark,
-		}
-		hl.TelescopeBorder = {
-			bg = c.bg_dark,
-			fg = c.bg_dark,
-		}
-		hl.TelescopePromptNormal = {
-			bg = prompt,
-		}
-		hl.TelescopePromptBorder = {
-			bg = prompt,
-			fg = prompt,
-		}
-		hl.TelescopePromptTitle = {
-			bg = prompt,
-			fg = prompt,
-		}
-		hl.TelescopePreviewTitle = {
-			bg = c.bg_dark,
-			fg = c.bg_dark,
-		}
-		hl.TelescopeResultsTitle = {
-			bg = c.bg_dark,
-			fg = c.bg_dark,
-		}
-	end,
-
+	day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+	hide_inactive_statusline = true, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+	dim_inactive = false, -- dims inactive windows
+	lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 })
-
-local TelescopePrompt = {
-	TelescopePromptNormal = {
-		bg = '#2d3149',
-	},
-	TelescopePromptBorder = {
-		bg = '#2d3149',
-	},
-	TelescopePromptTitle = {
-		fg = '#2d3149',
-		bg = '#2d3149',
-	},
-	TelescopePreviewTitle = {
-		fg = '#1F2335',
-		bg = '#1F2335',
-	},
-	TelescopeResultsTitle = {
-		fg = '#1F2335',
-		bg = '#1F2335',
-	},
-}
-
-for hl, col in pairs(TelescopePrompt) do
-	vim.api.nvim_set_hl(0, hl, col)
-end
 
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.cmd([[colorscheme tokyonight]])
-
 
 --------------------------------------------------------------------------------
 -- lualine setup
@@ -125,10 +55,9 @@ require("lualine").setup({
 			"dapui_scopes",
 			"dapui_stacks",
 			"dapui_watches",
-		}
+		},
 	},
 })
-
 
 --------------------------------------------------------------------------------
 -- Buffer tab bars
@@ -149,15 +78,13 @@ require("bufferline").setup({
 		numbers = "buffer_id",
 		-- indicator icons
 		show_tab_indicators = true,
-		buffer_close_icon = '󰅖',
-		modified_icon = '●',
-		close_icon = '',
-		left_trunc_marker = '',
-		right_trunc_marker = '',
-
+		buffer_close_icon = "󰅖",
+		modified_icon = "●",
+		close_icon = "",
+		left_trunc_marker = "",
+		right_trunc_marker = "",
 	},
 })
-
 
 --------------------------------------------------------------------------------
 -- gitsigns setup
@@ -176,8 +103,8 @@ require("gitsigns").setup({
 	--   untracked    = { hl = 'GitSignsAdd'   , text = '┆', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'    },
 	-- },
 	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-	numhl = true,   -- Toggle with `:Gitsigns toggle_numhl`
-	linehl = true,  -- Toggle with `:Gitsigns toggle_linehl`
+	numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
+	linehl = true, -- Toggle with `:Gitsigns toggle_linehl`
 	word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
 	watch_gitdir = {
 		interval = 1000,
@@ -261,22 +188,20 @@ require("gitsigns").setup({
 -- gitsigns integration for scrollbar.nvim
 require("scrollbar.handlers.gitsigns").setup()
 
-
 --------------------------------------------------------------------------------
 -- Highlight RGB and hex colors
 --------------------------------------------------------------------------------
 -- https://github.com/norcalli/nvim-colorizer.lua#installation-and-usage
 -- Attach to certain Filetypes, add special configuration for `html`
 -- Use `background` for everything else.
-require 'colorizer'.setup {
-	'css',
-	'javascript',
-	'lua',
+require("colorizer").setup({
+	"css",
+	"javascript",
+	"lua",
 	html = {
-		mode = 'foreground',
-	}
-}
-
+		mode = "foreground",
+	},
+})
 
 --------------------------------------------------------------------------------
 -- setup scrollbar with tokyonight color support
