@@ -20,7 +20,7 @@ vim.opt.foldlevel = 99
 
 -- always keep the diagnostics 'sign column' open so there's no jarring
 -- opening and closing with > 0 warnings/errors/etc
-vim.cmd.set("signcolumn=yes")
+vim.opt.signcolumn = "yes"
 -- vim.cmd.set('cmdheight=0')
 
 -- use regular line numbers for normal windows, disable line numbers for terminal
