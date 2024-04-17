@@ -23,6 +23,9 @@ vim.opt.foldlevel = 99
 vim.opt.signcolumn = "yes"
 -- vim.cmd.set('cmdheight=0')
 
+-- Incremental search and substitution
+vim.opt.inccommand = "split"
+
 -- use regular line numbers for normal windows, disable line numbers for terminal
 -- windows, and use cmdheight=0 to hide the empty cmd bar at the bottom (disabled
 -- for filetype terminal in the lualine settings)
