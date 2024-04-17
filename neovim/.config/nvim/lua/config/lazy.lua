@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
--- ensure that the leader key is set right before or everything breaks?
+-- leader key must be set for lazy
 vim.g.mapleader = " "
 
 -- load lazy
