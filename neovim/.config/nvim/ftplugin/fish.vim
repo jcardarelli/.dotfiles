@@ -12,6 +12,7 @@ setlocal textwidth=79
 " Enable folding of block structures in fish.
 setlocal foldmethod=expr
 
-if &shell =~# 'fish$'
-    set shell=sh
-endif
+" Do I need this? 2024/04/04
+" if &shell =~# 'fish$'
+"     set shell=sh
+" endif

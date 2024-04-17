@@ -114,6 +114,18 @@ require("neodev").setup({})
 -- nvim-lspconfig setup
 --------------------------------------------------------------------------------
 local lspconfig = require("lspconfig")
+local configs = require("lspconfig.configs")
+
+if not configs.fishls then
+	configs.fishls = {
+		default_config = {
+			cmd = { "fish-lsp", "start" },
+			root_dir = lspconfig.util.root_pattern(".git"),
+			filetypes = { "fish" },
+		},
+	}
+end
+lspconfig.fishls.setup({})
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 -- vim.lsp.set_log_level("info")
