@@ -1,8 +1,7 @@
 --------------------------------------------------------------------------------
--- Mappings
 --------------------------------------------------------------------------------
 -- Insert mode mappings
-vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true })
+vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = true })
 
 -- General mappings
 vim.keymap.set("n", "<Leader>ev", ":vsp $MYVIMRC<CR>", { silent = true })
