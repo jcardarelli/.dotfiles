@@ -1,5 +1,8 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
+-- Add/delete/change surrounding pairs
+require("nvim-surround").setup()
+
 -- Insert mode mappings
 vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = true })
 
