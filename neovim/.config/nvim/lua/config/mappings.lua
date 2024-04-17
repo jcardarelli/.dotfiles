@@ -35,8 +35,12 @@ vim.keymap.set("n", "\\\\", "<cmd>noh<CR>", { silent = true })
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
 vim.keymap.set("n", "<Leader>fc", ":Easypick changed_files<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-	{ silent = true })
+vim.keymap.set(
+	"n",
+	"<Leader>fg",
+	":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+	{ silent = true }
+)
 vim.keymap.set("n", "<Leader>fb", builtin.buffers, { silent = true })
 vim.keymap.set("n", "<Leader>fh", builtin.help_tags, { silent = true })
 
