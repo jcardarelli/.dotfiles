@@ -61,7 +61,8 @@ vim.cmd("nnoremap <Leader>t :NvimTreeToggle<CR>")
 vim.cmd("nnoremap <Leader>T :TroubleToggle<CR>")
 
 -- Buffer mappings
-vim.cmd("nnoremap <silent> <Leader>bf :bfirst<CR>")
+vim.keymap.set("n", "<Leader>bf", ":bfirst<CR>", { silent = true })
+-- vim.cmd("nnoremap <silent> <Leader>bf :bfirst<CR>")
 vim.cmd("nnoremap <silent> <Leader>bl :blast<CR>")
 vim.cmd("nnoremap <silent> <Leader>bn :bnext<CR>")
 vim.cmd("nnoremap <silent> <Leader>bd :bd<CR>:bnext<CR>")
