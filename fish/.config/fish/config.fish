@@ -62,6 +62,7 @@ end
 ################################################################################
 # Tmux
 ################################################################################
+abbr ta "tmux attach -t"
 abbr tls "tmux ls"
 # rename tmux pane (not the window!)
 # function rename_tmux_pane
