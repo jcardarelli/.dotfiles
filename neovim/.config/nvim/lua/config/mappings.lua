@@ -65,15 +65,14 @@ vim.cmd("nnoremap <Leader>T :TroubleToggle<CR>")
 
 -- Buffer mappings
 vim.keymap.set("n", "<Leader>bf", ":bfirst<CR>", { silent = true })
--- vim.cmd("nnoremap <silent> <Leader>bf :bfirst<CR>")
-vim.cmd("nnoremap <silent> <Leader>bl :blast<CR>")
-vim.cmd("nnoremap <silent> <Leader>bn :bnext<CR>")
-vim.cmd("nnoremap <silent> <Leader>bd :bd<CR>:bnext<CR>")
-vim.cmd("nnoremap <silent> <Leader>bp :bprevious<CR>")
-vim.cmd("nnoremap <silent> <Leader>tn :tabn<CR>")
-vim.cmd("nnoremap <silent> <Leader>tp :tabp<CR>")
-vim.cmd("nnoremap <silent> <Leader>o :only<CR>")
-vim.cmd("nnoremap <silent> <Leader>h :hide<CR>")
+vim.keymap.set("n", "<Leader>bl", ":blast<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>bn", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>bd", ":bd<CR>:bnext<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>bp", ":bprevious<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tn", ":tabn<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tp", ":tabp<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>o", ":only<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>h", ":hide<CR>", { silent = true })
 
 -- toggleterm mappings
 -- Go plugin close floating terminal
