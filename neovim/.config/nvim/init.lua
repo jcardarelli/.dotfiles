@@ -11,7 +11,6 @@ require("config.icons")
 require("config.illuminate")
 
 -- Window focus and terminal
-require("config.focus")
 require("config.toggleterm")
 
 -- File and text search
