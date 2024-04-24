@@ -1,6 +1,6 @@
 return {
 	{
-		"folke/todo-comments.nvim"
+		"folke/todo-comments.nvim",
 	},
 	{
 		"folke/noice.nvim",
@@ -39,8 +39,5 @@ return {
 	{
 		"folke/neodev.nvim",
 		opts = {},
-		-- HACK: ?
-		-- https://www.reddit.com/r/neovim/comments/15kv7dv/duplicate_definitionshover_with_neodev/jv88nct/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-		-- opts = { library = { types = false } },
 	},
 }
