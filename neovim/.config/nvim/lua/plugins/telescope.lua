@@ -10,12 +10,6 @@ return {
 		end,
 	},
 	{
-		"andrew-george/telescope-themes",
-		config = function()
-			require("telescope").load_extension("themes")
-		end,
-	},
-	{
 		"axkirillov/easypick.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
 	},
