@@ -216,7 +216,7 @@ abbr -a -g weather "curl wttr.in"
 export BAT_THEME="tokyonight_storm"
 
 # doom emacs client alias
-alias emacs="emacsclient --create-frame --alternate-editor=emacs"
+# alias emacs="emacsclient --create-frame --alternate-editor=emacs"
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
