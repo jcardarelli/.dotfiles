@@ -1,5 +1,16 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
+;; ! Detected Fish as your $SHELL
+;;   Fish (and possibly other non-POSIX shells) is known to inject garbage
+;;   output into some of the child processes that Emacs spawns. Many Emacs
+;;   packages/utilities will choke on this output, causing unpredictable
+;;   issues. To get around this, either:
+;;
+;;     - Add the following to $DOOMDIR/config.el:
+
+(setq shell-file-name (executable-find "bash"))
+
+
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
