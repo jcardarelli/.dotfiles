@@ -3,11 +3,11 @@
 ## Contents
 
 ### Shell
-- **Fish Shell**: Enhancements for usability include path adjustments, aliases for common commands, and custom functions to streamline navigation and system operations, optimizing command execution.
+- **Fish Shell**: Update $PATH, aliases for common commands, and custom functions.
 - **Oh My Fish**: Custom themes and packages for fish shell.
 
 ### Terminal
-- **Kitty**: Config for the GPU based terminal emulator.
+- **Kitty**: Set window style, terminal settings, color scheme, cursor, fonts, and terminal symbols for kitty terminal emulator.
 - **FZF**: Fuzzy finder.
 - **Git**: Global configuration and templates.
 - **Tmux**: Enhancements for tmux, a terminal multiplexer.
