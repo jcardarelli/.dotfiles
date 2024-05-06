@@ -26,7 +26,7 @@ vim.cmd("ab Note NOTE:")
 vim.cmd("ab Test Test:")
 
 -- Treesitter
-vim.cmd("nnoremap <silent> <Leader>tsp :TSPlayground<CR>") -- edit plugins
+vim.keymap.set("n", "<Leader>tsp", ":TSPlayground<CR>", { silent = true })
 
 -- Lazy file operations
 vim.keymap.set("n", "<Leader>w", ":write<CR>", { silent = true })
