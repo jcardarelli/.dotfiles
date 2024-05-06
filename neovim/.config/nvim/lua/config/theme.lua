@@ -26,7 +26,11 @@ require("tokyonight").setup({
 
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
-vim.cmd([[colorscheme tokyonight]])
+-- https://github.com/neovim/neovim/issues/18201#issuecomment-1382075049
+vim.api.nvim_cmd({
+	cmd = "colorscheme",
+	args = { "tokyonight" },
+}, {})
 
 --------------------------------------------------------------------------------
 -- lualine setup
