@@ -37,6 +37,8 @@ vim.keymap.set("n", "\\\\", "<cmd>noh<CR>", { silent = true })
 -- Telescope
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<Leader>fr", builtin.registers, {})
+vim.keymap.set("n", "<Leader>fk", builtin.keymaps, {})
 vim.keymap.set("n", "<Leader>fc", ":Easypick changed_files<CR>", { silent = true })
 vim.keymap.set(
 	"n",
