@@ -60,10 +60,10 @@ vim.keymap.set("n", "<Leader>vg", ":vimgrep <Space> %", { silent = true })
 -- vim.keymap.set("n", "<Leader>L", ":Lazy<CR>", { silent = true })
 
 -- NvimTree
-vim.cmd("nnoremap <Leader>t :NvimTreeToggle<CR>")
+vim.keymap.set("n", "<Leader>t", ":NvimTreeToggle<CR><C-w>l", { silent = true })
 
 -- Trouble
-vim.cmd("nnoremap <Leader>T :TroubleToggle<CR>")
+vim.keymap.set("n", "<Leader>T", ":TroubleToggle<CR>", { silent = true })
 
 -- Buffer mappings
 vim.keymap.set("n", "<Leader>bf", ":bfirst<CR>", { silent = true })
