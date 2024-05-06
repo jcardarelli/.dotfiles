@@ -120,11 +120,10 @@ vim.cmd('nnoremap <silent> <Leader>gd :TermExec cmd="PAGER= git diff"<CR>')
 -- local lsp_filename = vim.api.nvim_buf_get_name(0)
 vim.cmd('nnoremap <silent> <Leader>gdc :TermExec cmd="PAGER= git diff --cached"<CR>')
 -- TODO: Also run git status in the terminal after adding the file
--- vim.cmd("nnoremap <Leader>ga :Git add %<CR>")
 vim.keymap.set("n", "<Leader>ga", ":TermExec cmd='git add .; git status; echo; g10'<CR>", { silent = true })
-vim.cmd("nnoremap <silent> <Leader>gc :Git commit -m '")
+vim.keymap.set("n", "<Leader>gc", ":Git commit -m '", { silent = true })
 -- Run git add and git commit --amend --no-edit. <Bar> or \| allow for running multiple commands as part of one mapping
--- vim.cmd("nnoremap <Leader>gmd :Git add %<CR> <bar> :Git commit --amend --no-edit<CR>")
+-- vim.keymap.set("n", "<Leader>gmd", ":Git add %<CR> <bar> :Git commit --amend --no-edit<CR>", { silent = true })
 vim.keymap.set(
 	"n",
 	"<Leader>gmd",
