@@ -80,11 +80,21 @@ vim.keymap.set("n", "<Leader>h", ":hide<CR>", { silent = true })
 -- Go plugin close floating terminal
 -- ungodly hack here to make the first execution of the terminal command auto-scroll
 -- to the bottom since I can't get toggleterm's `auto_scroll` setting working.
-vim.cmd('nnoremap <silent> <Leader>gr :TermExec cmd="go run %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h')
-vim.cmd('nnoremap <silent> <Leader>gt :TermExec cmd="go test %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h')
-vim.cmd('nnoremap <silent> <Leader>tc :TermExec cmd="exit"<CR>')
-vim.cmd("nnoremap <silent> <C-\\> :ToggleTerm direction=vertical size=84<CR>")
-vim.cmd("nnoremap <silent> <S-\\><C-\\> :ToggleTerm direction=horizontal size=90<CR>")
+vim.keymap.set(
+	"n",
+	"<Leader>gr",
+	':TermExec cmd="go run %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h',
+	{ silent = true }
+)
+vim.keymap.set(
+	"n",
+	"<Leader>gt",
+	':TermExec cmd="go test %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h',
+	{ silent = true }
+)
+vim.keymap.set("n", "<Leader>tc", ':TermExec cmd="exit"<CR>', { silent = true })
+vim.keymap.set("n", "<C-\\>", ":ToggleTerm direction=vertical size=84<CR>", { silent = true })
+vim.keymap.set("n", "<S-\\><C-\\>", ":ToggleTerm direction=horizontal size=90<CR>", { silent = true })
 
 -- https://github.com/akinsho/toggleterm.nvim#terminal-window-mappings
 function _G.set_terminal_keymaps()
