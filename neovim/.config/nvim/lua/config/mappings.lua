@@ -155,7 +155,7 @@ vim.keymap.set("n", "<Leader>fn", ":put =expand('%')<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>[", "zt", { silent = true })
 
 -- run the markdown previewer in a local browser window
-vim.cmd("nnoremap <Leader>mdp :MarkdownPreview<CR>")
+vim.keymap.set("n", "<Leader>mdp", ":MarkdownPreview<CR>", { silent = true })
 
 -- emacs keybindings for command mode
 -- go to start of line
