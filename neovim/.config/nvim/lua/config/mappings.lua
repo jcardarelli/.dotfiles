@@ -152,7 +152,7 @@ vim.keymap.set("n", "<Leader>fn", ":put =expand('%')<CR>", { silent = true })
 -- vim.keymap.set({ "n" }, "<Leader>k", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
 
 -- bring function to the top when browsing with [[ or ]]
-vim.cmd("nnoremap <Leader>[ zt")
+vim.keymap.set("n", "<Leader>[", "zt", { silent = true })
 
 -- run the markdown previewer in a local browser window
 vim.cmd("nnoremap <Leader>mdp :MarkdownPreview<CR>")
