@@ -145,7 +145,7 @@ vim.keymap.set("n", "<Leader>gR", ":GoRun<CR><C-w>h", { silent = true })
 vim.keymap.set("n", "<Leader>tC", ":GoTermClose<CR>", { silent = true })
 
 -- mapping for inserting the current filename into the buffer
-vim.cmd("nnoremap <silent> <Leader>fn :put =expand('%')<CR>")
+vim.keymap.set("n", "<Leader>fn", ":put =expand('%')<CR>", { silent = true })
 
 -- currently disabled
 -- ts-node-action mappings for compacting & expanding code with treesitter
