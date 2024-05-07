@@ -139,10 +139,10 @@ vim.cmd('nnoremap <silent> <Leader>ee :TermExec cmd="exa --long"<CR>')
 
 -- regular terminal stuff
 vim.cmd('nnoremap <silent> <Leader>l :TermExec cmd="clear"<CR>')
-vim.cmd("nnoremap <silent> <Leader>rl :w <bar> :TermExec cmd='!!' <CR>")
--- vim.cmd("nnoremap <Leader>gr :vsplit <Bar> terminal go run %<CR><C-w>h")
-vim.cmd("nnoremap <silent> <Leader>gR :GoRun<CR><C-w>h")
-vim.cmd("nnoremap <silent> <Leader>tC :GoTermClose<CR>")
+vim.keymap.set("n", "<Leader>rl", ":w <bar> :TermExec cmd='!!' <CR>", { silent = true })
+-- vim.keymap.set("n", <Leader>gr :vsplit <Bar> terminal go run %<CR><C-w>h", { silent = true })
+vim.keymap.set("n", "<Leader>gR", ":GoRun<CR><C-w>h", { silent = true })
+vim.keymap.set("n", "<Leader>tC", ":GoTermClose<CR>", { silent = true })
 
 -- mapping for inserting the current filename into the buffer
 vim.cmd("nnoremap <silent> <Leader>fn :put =expand('%')<CR>")
