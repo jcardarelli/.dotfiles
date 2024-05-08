@@ -26,7 +26,7 @@ vim.cmd("ab Note NOTE:")
 vim.cmd("ab Test Test:")
 
 -- Treesitter
-vim.cmd("nnoremap <silent> <Leader>tsp :TSPlayground<CR>") -- edit plugins
+vim.keymap.set("n", "<Leader>tsp", ":TSPlayground<CR>", { silent = true })
 
 -- Lazy file operations
 vim.keymap.set("n", "<Leader>w", ":write<CR>", { silent = true })
@@ -37,6 +37,8 @@ vim.keymap.set("n", "\\\\", "<cmd>noh<CR>", { silent = true })
 -- Telescope
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<Leader>fr", builtin.registers, {})
+vim.keymap.set("n", "<Leader>fk", builtin.keymaps, {})
 vim.keymap.set("n", "<Leader>fc", ":Easypick changed_files<CR>", { silent = true })
 vim.keymap.set(
 	"n",
@@ -58,10 +60,10 @@ vim.keymap.set("n", "<Leader>vg", ":vimgrep <Space> %", { silent = true })
 -- vim.keymap.set("n", "<Leader>L", ":Lazy<CR>", { silent = true })
 
 -- NvimTree
-vim.cmd("nnoremap <Leader>t :NvimTreeToggle<CR>")
+vim.keymap.set("n", "<Leader>t", ":NvimTreeToggle<CR><C-w>l", { silent = true })
 
 -- Trouble
-vim.cmd("nnoremap <Leader>T :TroubleToggle<CR>")
+vim.keymap.set("n", "<Leader>T", ":TroubleToggle<CR>", { silent = true })
 
 -- Buffer mappings
 vim.keymap.set("n", "<Leader>bf", ":bfirst<CR>", { silent = true })
@@ -78,11 +80,21 @@ vim.keymap.set("n", "<Leader>h", ":hide<CR>", { silent = true })
 -- Go plugin close floating terminal
 -- ungodly hack here to make the first execution of the terminal command auto-scroll
 -- to the bottom since I can't get toggleterm's `auto_scroll` setting working.
-vim.cmd('nnoremap <silent> <Leader>gr :TermExec cmd="go run %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h')
-vim.cmd('nnoremap <silent> <Leader>gt :TermExec cmd="go test %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h')
-vim.cmd('nnoremap <silent> <Leader>tc :TermExec cmd="exit"<CR>')
-vim.cmd("nnoremap <silent> <C-\\> :ToggleTerm direction=vertical size=84<CR>")
-vim.cmd("nnoremap <silent> <S-\\><C-\\> :ToggleTerm direction=horizontal size=90<CR>")
+vim.keymap.set(
+	"n",
+	"<Leader>gr",
+	':TermExec cmd="go run %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h',
+	{ silent = true }
+)
+vim.keymap.set(
+	"n",
+	"<Leader>gt",
+	':TermExec cmd="go test %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h',
+	{ silent = true }
+)
+vim.keymap.set("n", "<Leader>tc", ':TermExec cmd="exit"<CR>', { silent = true })
+vim.keymap.set("n", "<C-\\>", ":ToggleTerm direction=vertical size=84<CR>", { silent = true })
+vim.keymap.set("n", "<S-\\><C-\\>", ":ToggleTerm direction=horizontal size=90<CR>", { silent = true })
 
 -- https://github.com/akinsho/toggleterm.nvim#terminal-window-mappings
 function _G.set_terminal_keymaps()
@@ -108,11 +120,10 @@ vim.cmd('nnoremap <silent> <Leader>gd :TermExec cmd="PAGER= git diff"<CR>')
 -- local lsp_filename = vim.api.nvim_buf_get_name(0)
 vim.cmd('nnoremap <silent> <Leader>gdc :TermExec cmd="PAGER= git diff --cached"<CR>')
 -- TODO: Also run git status in the terminal after adding the file
--- vim.cmd("nnoremap <Leader>ga :Git add %<CR>")
 vim.keymap.set("n", "<Leader>ga", ":TermExec cmd='git add .; git status; echo; g10'<CR>", { silent = true })
-vim.cmd("nnoremap <silent> <Leader>gc :Git commit -m '")
+vim.keymap.set("n", "<Leader>gc", ":Git commit -m '", { silent = true })
 -- Run git add and git commit --amend --no-edit. <Bar> or \| allow for running multiple commands as part of one mapping
--- vim.cmd("nnoremap <Leader>gmd :Git add %<CR> <bar> :Git commit --amend --no-edit<CR>")
+-- vim.keymap.set("n", "<Leader>gmd", ":Git add %<CR> <bar> :Git commit --amend --no-edit<CR>", { silent = true })
 vim.keymap.set(
 	"n",
 	"<Leader>gmd",
@@ -128,23 +139,23 @@ vim.cmd('nnoremap <silent> <Leader>ee :TermExec cmd="exa --long"<CR>')
 
 -- regular terminal stuff
 vim.cmd('nnoremap <silent> <Leader>l :TermExec cmd="clear"<CR>')
-vim.cmd("nnoremap <silent> <Leader>rl :w <bar> :TermExec cmd='!!' <CR>")
--- vim.cmd("nnoremap <Leader>gr :vsplit <Bar> terminal go run %<CR><C-w>h")
-vim.cmd("nnoremap <silent> <Leader>gR :GoRun<CR><C-w>h")
-vim.cmd("nnoremap <silent> <Leader>tC :GoTermClose<CR>")
+vim.keymap.set("n", "<Leader>rl", ":w <bar> :TermExec cmd='!!' <CR>", { silent = true })
+-- vim.keymap.set("n", <Leader>gr :vsplit <Bar> terminal go run %<CR><C-w>h", { silent = true })
+vim.keymap.set("n", "<Leader>gR", ":GoRun<CR><C-w>h", { silent = true })
+vim.keymap.set("n", "<Leader>tC", ":GoTermClose<CR>", { silent = true })
 
 -- mapping for inserting the current filename into the buffer
-vim.cmd("nnoremap <silent> <Leader>fn :put =expand('%')<CR>")
+vim.keymap.set("n", "<Leader>fn", ":put =expand('%')<CR>", { silent = true })
 
 -- currently disabled
 -- ts-node-action mappings for compacting & expanding code with treesitter
 -- vim.keymap.set({ "n" }, "<Leader>k", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
 
 -- bring function to the top when browsing with [[ or ]]
-vim.cmd("nnoremap <Leader>[ zt")
+vim.keymap.set("n", "<Leader>[", "zt", { silent = true })
 
 -- run the markdown previewer in a local browser window
-vim.cmd("nnoremap <Leader>mdp :MarkdownPreview<CR>")
+vim.keymap.set("n", "<Leader>mdp", ":MarkdownPreview<CR>", { silent = true })
 
 -- emacs keybindings for command mode
 -- go to start of line
