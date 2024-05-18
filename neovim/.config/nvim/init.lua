@@ -3,7 +3,7 @@ require("config.globals")
 require("config.lazy")
 require("config.mappings")
 
--- Display and colors
+-- Display
 require("config.theme")
 require("config.nvim-tree")
 require("config.todo-comments")
