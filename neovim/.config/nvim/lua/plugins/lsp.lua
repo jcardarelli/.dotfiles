@@ -11,7 +11,14 @@ return {
 	},
 	{
 		"j-hui/fidget.nvim",
-		opts = {},
+		opts = {
+			integration = {
+				["nvim-tree"] = {
+					enable = true,
+				},
+			},
+		},
+		lazy = false,
 	},
 	lazy = false,
 }
