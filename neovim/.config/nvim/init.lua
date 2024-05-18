@@ -28,4 +28,3 @@ require("config.conform")
 -- Language support
 require("config.treesitter")
 require("config.python")
-require("config.terraform")
