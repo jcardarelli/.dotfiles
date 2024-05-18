@@ -1,4 +1,4 @@
 return {
 	"pearofducks/ansible-vim",
-	lazy = false,
+	ft = "yaml.ansible",
 }
