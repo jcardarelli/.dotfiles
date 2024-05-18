@@ -1,7 +1,11 @@
 --------------------------------------------------------------------------------
 -- Mason for LSP server installation
 --------------------------------------------------------------------------------
-require("mason").setup()
+require("mason").setup({
+	ui = {
+		border = "rounded",
+	},
+})
 require("mason-lspconfig").setup()
 require("mason-lspconfig").setup_handlers({
 	-- The first entry (without a key) will be the default handler
