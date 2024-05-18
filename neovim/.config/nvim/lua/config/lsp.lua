@@ -196,6 +196,7 @@ lspconfig.gopls.setup({
 	},
 })
 
+lspconfig.ansiblels.setup({})
 lspconfig.yamlls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
