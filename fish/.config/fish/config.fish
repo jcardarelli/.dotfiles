@@ -182,6 +182,7 @@ fish_add_path "$HOME/bin"
 fish_add_path "$HOME/.config/emacs/bin"
 fish_add_path "/opt/homebrew/bin"
 fish_add_path "$HOME/.cargo/bin"
+fish_add_path "$HOME/.krew/bin"
 fish_add_path /opt/homebrew/opt/openjdk@17/bin
 fish_add_path /opt/homebrew/Cellar/mysql-client/8.2.0/bin
 set -gx CPPFLAGS "-I/opt/homebrew/opt/openjdk@17/include"
