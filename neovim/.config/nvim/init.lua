@@ -27,6 +27,5 @@ require("config.conform")
 
 -- Language support
 require("config.treesitter")
-require("config.go")
 require("config.python")
 require("config.terraform")
