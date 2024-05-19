@@ -46,12 +46,10 @@ require("lualine").setup({
 			"toggleterm",
 		},
 
-		-- If current filetype is in this list it'll
-		-- always be drawn as inactive statusline
-		-- and the last window will be drawn as active statusline.
-		-- for example if you don't want statusline of
-		-- your file tree / sidebar window to have active
-		-- statusline you can add their filetypes here.
+		-- If current filetype is in this list it'll always be drawn as inactive
+		-- statusline and the last window will be drawn as active statusline. For
+		-- example if you don't want statusline of your file tree / sidebar window
+		-- to have active statusline you can add their filetypes here.
 		ignore_focus = {
 			"dap-repl",
 			"dapui_breakpoints",
