@@ -89,6 +89,10 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "nvim_lua" },
+		{ name = "buffer" },
+		{ name = "cmdline" },
+		{ name = "nvim-lsp-signature-help" },
+		{ name = "path" },
 		-- disabling this removes the duplicate signature when in insert mode
 		-- on something.append([here])
 		-- { name = "nvim_lsp_signature_help" },
