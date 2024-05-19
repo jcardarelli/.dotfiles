@@ -4,13 +4,6 @@ local has_words_before = function()
 end
 
 --------------------------------------------------------------------------------
--- Luasnip
--- Use existing VS Code-style snippets from rafamadriz/friendly-snippets plugin
---------------------------------------------------------------------------------
-local luasnip = require("luasnip")
-require("luasnip.loaders.from_vscode").lazy_load()
-
---------------------------------------------------------------------------------
 -- Setup nvim-cmp
 --------------------------------------------------------------------------------
 local cmp = require("cmp")
@@ -39,7 +32,7 @@ cmp.setup({
 	},
 	snippet = {
 		expand = function(args)
-			luasnip.lsp_expand(args.body)
+			require("luasnip").lsp_expand(args.body)
 		end,
 	},
 	-- commented out on 2024-04-13
