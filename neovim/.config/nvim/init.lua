@@ -19,7 +19,6 @@ require("config.ack")
 require("config.lsp")
 require("config.nvim-cmp")
 require("config.mason")
-require("config.dap")
 
 -- Formatting
 require("config.conform")
