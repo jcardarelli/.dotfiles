@@ -100,12 +100,6 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 --------------------------------------------------------------------------------
--- neodev plugin config
---------------------------------------------------------------------------------
--- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-require("neodev").setup({})
-
---------------------------------------------------------------------------------
 -- nvim-lspconfig setup
 --------------------------------------------------------------------------------
 local lspconfig = require("lspconfig")
