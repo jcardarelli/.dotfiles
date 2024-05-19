@@ -1,6 +1,8 @@
 -- Custom Parameters (with defaults)
 return {
 	"David-Kunz/gen.nvim",
+	-- Only load this plugin when command is called
+	cmd = "Gen",
 	opts = {
 		model = "mistral", -- The default model to use.
 		host = "localhost", -- The host running the Ollama service.
@@ -30,5 +32,4 @@ return {
 		no_auto_close = false, -- Never closes the window automatically.
 		debug = true, -- Prints errors and the command which is run.
 	},
-	lazy = false,
 }
