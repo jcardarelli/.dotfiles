@@ -3,9 +3,6 @@
 -- Add/delete/change surrounding pairs
 require("nvim-surround").setup()
 
--- Insert mode mappings
-vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = true })
-
 -- General mappings
 vim.keymap.set("n", "<Leader>ev", ":vsp $MYVIMRC<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>sv", ":source $MYVIMRC<CR>", { silent = true })
