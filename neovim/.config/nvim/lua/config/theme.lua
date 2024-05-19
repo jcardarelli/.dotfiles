@@ -193,21 +193,6 @@ require("gitsigns").setup({
 require("scrollbar.handlers.gitsigns").setup()
 
 --------------------------------------------------------------------------------
--- Highlight RGB and hex colors
---------------------------------------------------------------------------------
--- https://github.com/norcalli/nvim-colorizer.lua#installation-and-usage
--- Attach to certain Filetypes, add special configuration for `html`
--- Use `background` for everything else.
-require("colorizer").setup({
-	"css",
-	"javascript",
-	"lua",
-	html = {
-		mode = "foreground",
-	},
-})
-
---------------------------------------------------------------------------------
 -- setup scrollbar with tokyonight color support
 --------------------------------------------------------------------------------
 local colors = require("tokyonight.colors").setup()
