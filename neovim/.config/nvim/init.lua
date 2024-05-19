@@ -11,9 +11,6 @@ require("config.icons")
 -- Window focus and terminal
 require("config.toggleterm")
 
--- File and text search
-require("config.telescope")
-
 -- LSP and LSP-adjacent
 require("config.lsp")
 require("config.nvim-cmp")
