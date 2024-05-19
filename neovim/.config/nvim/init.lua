@@ -13,7 +13,6 @@ require("config.toggleterm")
 
 -- File and text search
 require("config.telescope")
-require("config.ack")
 
 -- LSP and LSP-adjacent
 require("config.lsp")
