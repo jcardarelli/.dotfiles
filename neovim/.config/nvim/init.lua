@@ -18,6 +18,3 @@ require("config.mason")
 
 -- Formatting
 require("config.conform")
-
--- Language support
-require("config.treesitter")
