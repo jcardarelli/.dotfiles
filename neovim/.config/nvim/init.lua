@@ -12,6 +12,3 @@ require("config.icons")
 require("config.lsp")
 require("config.nvim-cmp")
 require("config.mason")
-
--- Formatting
-require("config.conform")
