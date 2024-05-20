@@ -8,9 +8,6 @@ require("config.theme")
 require("config.todo-comments")
 require("config.icons")
 
--- Window focus and terminal
-require("config.toggleterm")
-
 -- LSP and LSP-adjacent
 require("config.lsp")
 require("config.nvim-cmp")
