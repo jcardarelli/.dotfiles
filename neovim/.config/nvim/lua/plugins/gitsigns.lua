@@ -1,5 +1,6 @@
 return {
 	"lewis6991/gitsigns.nvim",
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		-- for tokyonight
 		vim.cmd([[:highlight GitSignsAdd guifg=#9ece6a]])
