@@ -9,7 +9,6 @@ vim.keymap.set("n", "<Leader>ef", ":vsp $HOME/.config/fish/config.fish<CR>", { s
 vim.keymap.set("n", "<Leader>et", ":vsp $HOME/.config/tmux/tmux.conf<CR>", { silent = true })
 
 -- TODO, etc.
-vim.keymap.set("n", "<Leader>todo", "iTODO:<Esc>gcc", { silent = true }) --broken
 vim.cmd("ab Todo TODO:")
 vim.cmd("ab Warn WARN:")
 vim.cmd("ab Hack HACK:")
