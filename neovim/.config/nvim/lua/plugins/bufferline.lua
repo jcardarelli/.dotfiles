@@ -8,7 +8,7 @@ return {
 	"Theyashsawarkar/bufferline.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	version = "*",
-	config = function()
+	init = function()
 		require("bufferline").setup({
 			options = {
 				offsets = {
@@ -21,7 +21,6 @@ return {
 					},
 				},
 				always_show_bufferline = true,
-				mode = "tabs",
 				separator_style = "thin",
 				numbers = "buffer_id",
 				-- indicator icons
