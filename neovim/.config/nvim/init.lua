@@ -11,4 +11,3 @@ require("config.icons")
 -- LSP and LSP-adjacent
 require("config.lsp")
 require("config.nvim-cmp")
-require("config.mason")

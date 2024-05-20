@@ -7,6 +7,16 @@ return {
 	"williamboman/nvim-lsp-installer",
 	{
 		"williamboman/mason.nvim",
+		cmd = "Mason",
+		init = function()
+			require("mason").setup({
+				ui = {
+					border = "rounded",
+				},
+			})
+			require("mason-lspconfig").setup()
+			require("mason-lspconfig").setup_handlers({})
+		end,
 		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
 	},
 	{
