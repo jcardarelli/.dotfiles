@@ -1,5 +1,6 @@
 -- Custom highlighting
 -- TODO: Comments here
+-- BUG: This is a bug
 -- HACK: Comments here
 -- WARN: Comments here
 -- PERF: Comments here
@@ -19,8 +20,8 @@ require("todo-comments").setup({
 		TODO = { icon = " ", color = "info" },
 		HACK = { icon = " ", color = "warning" },
 		WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-		PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-		NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+		PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+		NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
 		TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
 	},
 	gui_style = {
