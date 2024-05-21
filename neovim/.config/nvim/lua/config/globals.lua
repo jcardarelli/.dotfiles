@@ -6,6 +6,12 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Check which client we're using: terminal or neovide
+if vim.g.neovide then
+	vim.o.guifont = "JetBrains Mono NL"
+	vim.g.neovide_cursor_trail_size = 0
+end
+
 -- Use toggleterm with fish shell
 vim.o.shell = "fish"
 
