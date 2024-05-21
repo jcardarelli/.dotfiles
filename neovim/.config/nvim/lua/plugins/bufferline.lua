@@ -9,7 +9,7 @@ return {
 					{
 						filetype = "NvimTree",
 						highlight = "Directory",
-						separator = true,
+						separator = false,
 						text = "",
 						text_align = "left",
 					},
