@@ -3,7 +3,6 @@ return {
 	"neovim/nvim-lspconfig",
 	"onsails/lspkind.nvim",
 	"williamboman/mason-lspconfig.nvim",
-	"williamboman/nvim-lsp-installer",
 	{
 		"williamboman/mason.nvim",
 		cmd = "Mason",
