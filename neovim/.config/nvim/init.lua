@@ -5,7 +5,6 @@ require("config.mappings")
 
 -- Display
 require("config.theme")
-require("config.todo-comments")
 require("config.icons")
 
 -- LSP and LSP-adjacent
