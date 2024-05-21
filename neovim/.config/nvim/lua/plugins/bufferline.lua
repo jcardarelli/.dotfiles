@@ -5,7 +5,8 @@
 -- Watch the get_component_size function for updates:
 -- https://github.com/akinsho/bufferline.nvim/blob/main/lua/bufferline/ui.lua#L119
 return {
-	"Theyashsawarkar/bufferline.nvim",
+	"akinsho/bufferline.nvim",
+	-- "Theyashsawarkar/bufferline.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	version = "*",
 	init = function()
