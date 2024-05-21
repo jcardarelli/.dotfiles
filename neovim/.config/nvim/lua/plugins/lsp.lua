@@ -1,5 +1,4 @@
 return {
-	-- Neovim LSP setup
 	"neovim/nvim-lspconfig",
 	"onsails/lspkind.nvim",
 	"williamboman/mason-lspconfig.nvim",
@@ -15,7 +14,7 @@ return {
 			require("mason-lspconfig").setup()
 			require("mason-lspconfig").setup_handlers({})
 		end,
-		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+		build = ":MasonUpdate",
 	},
 	{
 		"j-hui/fidget.nvim",
