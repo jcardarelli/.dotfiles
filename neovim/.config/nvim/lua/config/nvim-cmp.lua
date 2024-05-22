@@ -8,6 +8,7 @@ end
 --------------------------------------------------------------------------------
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+local luasnip = require("luasnip")
 cmp.setup({
 	enabled = function()
 		-- Disable nvim-cmp in Telescope's buffer
