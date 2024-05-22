@@ -15,7 +15,7 @@ return {
 						text_align = "left",
 					},
 				},
-				always_show_bufferline = true,
+				always_show_bufferline = false,
 				separator_style = "thin",
 				numbers = "buffer_id",
 				-- indicator icons
