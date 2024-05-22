@@ -113,12 +113,6 @@ return {
 	{
 		"folke/neodev.nvim",
 		opts = {},
-
-		config = function()
-			-- make sure to setup neodev BEFORE lspconfig
-			-- does this do that?
-			require("neodev").setup({})
-		end,
 		ft = "lua",
 	},
 }

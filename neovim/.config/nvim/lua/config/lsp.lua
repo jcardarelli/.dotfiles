@@ -102,6 +102,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 --------------------------------------------------------------------------------
 -- nvim-lspconfig setup
 --------------------------------------------------------------------------------
+require("neodev").setup({})
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
 
