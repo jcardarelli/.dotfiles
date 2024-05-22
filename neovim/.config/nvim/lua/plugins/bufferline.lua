@@ -2,7 +2,8 @@ return {
 	"akinsho/bufferline.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	version = "*",
-	init = function()
+	event = "LspAttach",
+	config = function()
 		require("bufferline").setup({
 			options = {
 				offsets = {
