@@ -20,7 +20,7 @@ return {
 				numbers = "buffer_id",
 				-- indicator icons
 				show_tab_indicators = true,
-				buffer_close_icon = "󰅖",
+				buffer_close_icon = "",
 				modified_icon = "●",
 				close_icon = "",
 				left_trunc_marker = "",
