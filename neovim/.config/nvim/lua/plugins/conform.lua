@@ -2,7 +2,7 @@
 return {
 	"stevearc/conform.nvim",
 	opts = {},
-	ft = {"go", "html", "javascript", "lua", "python", "terraform", "sh"},
+	ft = { "go", "html", "javascript", "lua", "python", "terraform", "sh" },
 	config = function()
 		-- Replaced null-ls (RIP) with this plugin
 		require("conform").setup({
