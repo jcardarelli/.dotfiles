@@ -234,3 +234,6 @@ require("boole").setup({
 
 -- Neogen
 vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", { noremap = true, silent = true })
+
+-- Treesitter-based split join plugin
+vim.keymap.set("n", "<Leader>sj", ":lua require('treesj').toggle()<CR>", { silent = true })
