@@ -38,11 +38,13 @@ cmp.setup({
 	},
 	formatting = {
 		format = lspkind.cmp_format({
-			mode = "symbol_text", -- show symbol and text annotations
-			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+			mode = "symbol_text", -- Show symbol and text annotations
+			maxwidth = 50, -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			ellipsis_char = "...", -- When popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 			-- The function below will be called before any actual modifications from lspkind
 			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+			-- This entry parameter is actually required. If it is omitted, the font color in
+			-- cmp results will not be visible (for some reason).
 			before = function(entry, vim_item)
 				return vim_item
 			end,
