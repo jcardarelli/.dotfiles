@@ -6,7 +6,6 @@ return {
 	build = "make install_jsregexp",
 	init = function()
 		-- Use existing VS Code-style snippets from rafamadriz/friendly-snippets plugin
-		local luasnip = require("luasnip")
 		require("luasnip.loaders.from_vscode").lazy_load()
 	end,
 	dependencies = {
