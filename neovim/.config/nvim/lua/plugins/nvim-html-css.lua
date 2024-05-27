@@ -22,6 +22,5 @@ return {
 		config = function()
 			require("html-css"):setup()
 		end,
-		ft = { "html", "css" },
 	},
 }
