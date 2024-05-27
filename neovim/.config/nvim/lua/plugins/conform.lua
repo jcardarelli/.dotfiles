@@ -2,11 +2,12 @@
 return {
 	"stevearc/conform.nvim",
 	opts = {},
-	ft = { "go", "html", "javascript", "lua", "python", "terraform", "sh" },
+	ft = { "css", "go", "html", "javascript", "lua", "python", "terraform", "sh" },
 	config = function()
 		-- Replaced null-ls (RIP) with this plugin
 		require("conform").setup({
 			formatters_by_ft = {
+				css = { "stylelint" },
 				go = { "gofumpt", "goimports", "golines" },
 				html = { "htmlbeautifier" },
 				javascript = { { "prettierd", "prettier" } }, -- Use a sub-list to run only the first available formatter
