@@ -17,8 +17,8 @@
   - Copy Mode: Optimized settings for efficient text selection and copying.
 
 ### Editor
-- **Doom Emacs**: Configs for the extensible Emacs distribution.
 - **Neovim**: Enhancements for the Neovim editor.
+- **Doom Emacs**: Configs for the vim-forward Emacs distribution (aka evil).
 
 ### Database
 - **SQLite**: Enhancements for interacting with SQLite.
