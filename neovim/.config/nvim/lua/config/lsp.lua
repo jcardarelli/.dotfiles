@@ -150,6 +150,7 @@ lspconfig.pyright.setup({
 lspconfig.rust_analyzer.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.html.setup({})
+lspconfig.cssls.setup({})
 
 lspconfig.terraformls.setup({
 	on_attach = on_attach,
