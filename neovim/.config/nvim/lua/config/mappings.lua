@@ -130,6 +130,7 @@ vim.cmd('nnoremap <silent> <Leader>ee :TermExec cmd="exa --long"<CR>')
 
 -- regular terminal stuff
 vim.cmd('nnoremap <silent> <Leader>l :TermExec cmd="clear"<CR>')
+vim.keymap.set("n", "<Leader>lq", ":TermExec cmd='q'<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>rl", ":w <bar> :TermExec cmd='!!' <CR>", { silent = true })
 -- vim.keymap.set("n", <Leader>gr :vsplit <Bar> terminal go run %<CR><C-w>h", { silent = true })
 vim.keymap.set("n", "<Leader>gR", ":GoRun<CR><C-w>h", { silent = true })
