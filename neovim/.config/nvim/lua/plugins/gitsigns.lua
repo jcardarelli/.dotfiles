@@ -8,29 +8,6 @@ return {
 		vim.cmd([[:highlight GitSignsDelete guifg=#f7768e]])
 
 		require("gitsigns").setup({
-			signs = {
-				add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-				change = {
-					hl = "GitSignsChange",
-					text = "│",
-					numhl = "GitSignsChangeNr",
-					linehl = "GitSignsChangeLn",
-				},
-				delete = { hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-				topdelete = {
-					hl = "GitSignsDelete",
-					text = "‾",
-					numhl = "GitSignsDeleteNr",
-					linehl = "GitSignsDeleteLn",
-				},
-				changedelete = {
-					hl = "GitSignsChange",
-					text = "~",
-					numhl = "GitSignsChangeNr",
-					linehl = "GitSignsChangeLn",
-				},
-				untracked = { hl = "GitSignsAdd", text = "┆", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-			},
 			signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 			numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
 			linehl = true, -- Toggle with `:Gitsigns toggle_linehl`
@@ -60,9 +37,10 @@ return {
 				row = 0,
 				col = 1,
 			},
-			yadm = {
-				enable = false,
-			},
+			-- gitsigns: Ignoring invalid configuration field 'yadm'
+			-- yadm = {
+			-- 	enable = false,
+			-- },
 			on_attach = function(bufnr)
 				local gs = package.loaded.gitsigns
 
