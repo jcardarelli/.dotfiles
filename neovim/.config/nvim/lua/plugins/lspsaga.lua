@@ -1,14 +1,17 @@
 return {
-	'nvimdev/lspsaga.nvim',
+	"nvimdev/lspsaga.nvim",
 	config = function()
-		require('lspsaga').setup({
+		require("lspsaga").setup({
 			border_style = "rounded",
+			symbol_in_winbar = {
+				enable = false,
+			},
 			diagnostic_header = { " ", " ", " ", "ﴞ " },
 			hover = {
 				max_width = 0.4, -- defines float window width
 				max_height = 0.5, -- defines float window height
-				open_link = 'gx', -- key for opening links
-				open_cmd = '!chrome', -- cmd for opening links
+				open_link = "gx", -- key for opening links
+				open_cmd = "!chrome", -- cmd for opening links
 			},
 			lightbulb = {
 				sign = false,
@@ -16,12 +19,12 @@ return {
 			},
 			ui = {
 				devicon = true,
-			}
+			},
 		})
 	end,
-	event = 'LspAttach',
+	event = "LspAttach",
 	dependencies = {
-		'nvim-treesitter/nvim-treesitter', -- optional
-		'nvim-tree/nvim-web-devicons' -- optional
-	}
+		"nvim-treesitter/nvim-treesitter", -- optional
+		"nvim-tree/nvim-web-devicons", -- optional
+	},
 }
