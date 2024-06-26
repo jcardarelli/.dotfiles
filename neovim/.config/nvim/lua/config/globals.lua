@@ -28,7 +28,12 @@ end
 
 -- Autocommand to call the function when entering a buffer or window
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "WinEnter", "VimResized" }, {
-	callback = short_buffer_settings_toggle,
+	callback = function()
+		local filetype = vim.bo.filetype
+		if filetype ~= "toggleterm" then
+			short_buffer_settings_toggle()
+		end
+	end,
 	group = vim.api.nvim_create_augroup("ToggleLineNumbersGroup", { clear = true }),
 })
 
