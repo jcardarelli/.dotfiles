@@ -79,13 +79,3 @@ vim.cmd.set("linebreak")
 --------------------------------------------------------------------------------
 vim.cmd.set("tabstop=4")
 vim.cmd.set("shiftwidth=4")
-
---------------------------------------------------------------------------------
--- Add highlight for trailing whitespace
---------------------------------------------------------------------------------
--- vim.opt.list = true
--- vim.opt.listchars:append("space:⋅")
--- vim.opt.listchars:append("eol:↴")
--- TODO: highlight trailing whitespace in red
--- vim.opt.listchars:append("trail:█")
--- vim.cmd 'set listchars=eol:↵,trail:█,tab:>-,nbsp:␣ '
