@@ -29,7 +29,7 @@ end
 -- Autocommand to call the function when entering a buffer or window
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "WinEnter", "VimResized" }, {
 	callback = function()
-		if vim.bo.filetype ~= "toggleterm" then
+		if vim.bo.filetype ~= "toggleterm" or "noice" or "NvimTree" or "Lazy" or "sagaoutline" then
 			short_buffer_settings_toggle()
 		end
 	end,
