@@ -40,8 +40,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "WinEnter", "VimResized
 vim.o.shell = "fish"
 
 -- Folding
--- vim.g.foldmethod = "expr"
--- vim.g.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
