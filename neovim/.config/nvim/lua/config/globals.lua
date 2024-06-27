@@ -69,7 +69,14 @@ vim.cmd.set("number")
 vim.cmd.set("splitright")
 vim.cmd.set("splitbelow")
 
-vim.cmd.set("wildignore=*/node_modules/*,*/target/*,*/tmp/*")
+vim.opt.wildignore = {
+	"*.o",
+	"*.a",
+	"__pycache__",
+	"*/node_modules/*",
+	"*/target/*",
+	"*/tmp/*",
+}
 vim.cmd.set("grepprg=rg\\ --vimgrep\\ --no-heading\\ --smart-case\\ --no-ignore-vcs")
 vim.cmd.set("grepformat=%f:%l:%c:%m")
 vim.cmd.set("dictionary=/usr/share/dict/words")
