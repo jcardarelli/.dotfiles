@@ -2,7 +2,7 @@
 return {
 	"stevearc/conform.nvim",
 	opts = {},
-	ft = { "css", "go", "html", "javascript", "lua", "python", "terraform", "sh" },
+	ft = { "css", "go", "html", "javascript", "lua", "python", "terraform", "sh", "yaml" },
 	config = function()
 		-- Replaced null-ls (RIP) with this plugin
 		require("conform").setup({
@@ -15,6 +15,7 @@ return {
 				python = { "isort", "black", "pydocstyle" },
 				terraform = { "terraform_fmt" },
 				sh = { "shfmt" },
+				yaml = { "yamlfmt" },
 			},
 
 			format_on_save = {
