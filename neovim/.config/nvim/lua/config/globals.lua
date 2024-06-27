@@ -79,9 +79,3 @@ vim.cmd.set("clipboard+=unnamedplus")
 
 -- only break lines at whole words (good for writing text)
 vim.cmd.set("linebreak")
-
---------------------------------------------------------------------------------
--- set the tab width to 4 spaces for all files that use tabs
---------------------------------------------------------------------------------
-vim.cmd.set("tabstop=4")
-vim.cmd.set("shiftwidth=4")
