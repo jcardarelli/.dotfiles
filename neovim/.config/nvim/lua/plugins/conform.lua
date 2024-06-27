@@ -14,7 +14,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black", "pydocstyle" },
 				terraform = { "terraform_fmt" },
-				sh = { "shfmt" },
+				sh = { "shellcheck", "shfmt" },
 				yaml = { "yamlfmt" },
 			},
 
