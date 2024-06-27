@@ -57,9 +57,6 @@ vim.opt.foldlevel = 99
 vim.opt.signcolumn = "yes"
 -- vim.cmd.set('cmdheight=0')
 
--- Incremental search and substitution
-vim.opt.inccommand = "split"
-
 -- default opening positions for splits
 vim.cmd.set("splitright")
 vim.cmd.set("splitbelow")
