@@ -1,5 +1,6 @@
 return {
 	"linux-cultist/venv-selector.nvim",
+	branch = "regexp", -- This is the regexp branch, use this for the new version
 	dependencies = {
 		"neovim/nvim-lspconfig",
 		"nvim-telescope/telescope.nvim",
