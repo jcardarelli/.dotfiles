@@ -78,3 +78,6 @@ vim.cmd.set("clipboard+=unnamedplus")
 
 -- only break lines at whole words (good for writing text)
 vim.cmd.set("linebreak")
+
+-- disable smartindent so that treesitter will not mess up file previews
+vim.opt.smartindent = false
