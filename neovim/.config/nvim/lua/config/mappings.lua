@@ -84,7 +84,7 @@ vim.keymap.set(
 	{ silent = true }
 )
 vim.keymap.set("n", "<Leader>tc", ':TermExec cmd="exit"<CR>', { silent = true })
-vim.keymap.set("n", "<C-\\>", ":ToggleTerm direction=vertical size=84<CR>", { silent = true })
+vim.keymap.set("n", "<C-\\>", ":ToggleTerm direction=vertical size=90<CR>", { silent = true })
 vim.keymap.set("n", "<S-\\><C-\\>", ":ToggleTerm direction=horizontal size=90<CR>", { silent = true })
 
 -- https://github.com/akinsho/toggleterm.nvim#terminal-window-mappings
@@ -113,6 +113,7 @@ vim.cmd('nnoremap <silent> <Leader>gdc :TermExec cmd="PAGER= git diff --cached"<
 -- TODO: Also run git status in the terminal after adding the file
 vim.keymap.set("n", "<Leader>ga", ":TermExec cmd='git add .; git status; echo; g10'<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>gc", ":Git commit -qm '", { silent = true })
+vim.keymap.set("n", "<Leader>gg", ":Git", { silent = true })
 -- Run git add and git commit --amend --no-edit. <Bar> or \| allow for running multiple commands as part of one mapping
 -- vim.keymap.set("n", "<Leader>gmd", ":Git add %<CR> <bar> :Git commit --amend --no-edit<CR>", { silent = true })
 vim.keymap.set(
