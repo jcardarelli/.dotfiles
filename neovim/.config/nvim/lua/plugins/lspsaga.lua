@@ -3,9 +3,6 @@ return {
 	config = function()
 		require("lspsaga").setup({
 			border_style = "rounded",
-			symbol_in_winbar = {
-				enable = false,
-			},
 			diagnostic_header = { " ", " ", " ", "ﴞ " },
 			hover = {
 				max_width = 0.4, -- defines float window width
@@ -16,6 +13,9 @@ return {
 			lightbulb = {
 				sign = false,
 				virtual_text = true,
+			},
+			symbol_in_winbar = {
+				enable = false,
 			},
 			ui = {
 				devicon = true,
