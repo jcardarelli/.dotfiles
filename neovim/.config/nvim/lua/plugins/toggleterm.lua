@@ -1,38 +1,32 @@
 return {
+	-- Toggleterm runs shell commands using vim mappings
 	"akinsho/toggleterm.nvim",
 	version = "*",
-	-- keys = {
-	-- 	{
-	-- 		"<C-\\>",
-	-- 		":ToggleTerm direction=vertical size=84<CR>",
-	-- 	},
-	-- },
 	cmd = "ToggleTerm",
 	config = function()
-		-- Toggleterm runs shell commands using vim mappings
 		local colors = require("tokyonight.colors").setup()
 		require("toggleterm").setup({
-			-- HACK: This fixes the issue with toggleterm not setting a dark background
-			--       for the terminal when shade_terminals is enabled
-			-- https://github.com/akinsho/toggleterm.nvim/issues/119#issuecomment-1507797135
+			-- automatically scroll to the bottom on terminal output
+			auto_scroll = true,
+
+			-- hide the number column in toggleterm buffers
+			hide_number = true,
+
+			-- highlights which map to a highlight group name and a table of it's values
 			highlights = {
 				Normal = {
 					guibg = colors.bg_dark,
 				},
 			},
-			shade_terminals = false,
-
-			-- the degree by which to darken to terminal color
-			-- default: 1 for dark backgrounds, 3 for light
-			shading_factor = 1,
-
-			auto_scroll = true,
 
 			-- if set to true (default) the previous terminal mode will be remembered
 			persist_mode = true,
 
-			-- -- hide the number column in toggleterm buffers
-			-- hide_number = true,
+			-- NOTE: this option takes priority over highlights specified so if you specify Normal highlights you should set this to false
+			shade_terminals = false,
+
+			-- the degree by which to darken to terminal color. default: 1 for dark backgrounds, 3 for light
+			shading_factor = 1,
 			start_in_insert = true,
 		})
 	end,
