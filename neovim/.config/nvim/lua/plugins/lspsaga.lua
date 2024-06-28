@@ -14,8 +14,8 @@ return {
 				open_cmd = "!chrome", -- cmd for opening links
 			},
 			lightbulb = {
-				sign = false,
-				virtual_text = true,
+				sign = true,
+				virtual_text = false,
 			},
 			symbol_in_winbar = {
 				enable = false,
