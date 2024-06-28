@@ -3,6 +3,9 @@ return {
 	config = function()
 		require("lspsaga").setup({
 			border_style = "rounded",
+			code_action = {
+				extend_gitsigns = true,
+			},
 			diagnostic_header = { " ", " ", " ", "ﴞ " },
 			hover = {
 				max_width = 0.4, -- defines float window width
