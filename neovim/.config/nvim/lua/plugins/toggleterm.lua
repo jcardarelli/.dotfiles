@@ -12,7 +12,8 @@ return {
 		-- Toggleterm runs shell commands using vim mappings
 		local colors = require("tokyonight.colors").setup()
 		require("toggleterm").setup({
-			-- HACK: fix issue with toggleterm not having dark background
+			-- HACK: This fixes the issue with toggleterm not setting a dark background
+			--       for the terminal when shade_terminals is enabled
 			-- https://github.com/akinsho/toggleterm.nvim/issues/119#issuecomment-1507797135
 			highlights = {
 				Normal = {
