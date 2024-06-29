@@ -12,6 +12,7 @@ return {
 			"css",
 			"gitconfig",
 			"javascript",
+			"typescript",
 			"lua",
 			html = {
 				mode = "foreground",
