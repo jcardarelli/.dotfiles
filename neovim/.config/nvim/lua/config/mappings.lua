@@ -191,10 +191,24 @@ vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]]
 
 -- Jump to TODO HACK WARN PERF NOTE TEST comments
 vim.keymap.set("n", "]t", function()
-	require("todo-comments").jump_next({ keywords = { "TODO", "HACK", "WARN", "PERF", "NOTE", "TEST" } })
+	require("todo-comments").jump_next({ keywords = {
+		"TODO",
+		"HACK",
+		"WARN",
+		"PERF",
+		"NOTE",
+		"TEST",
+	} })
 end, { desc = "Next error/warning todo comment" })
 vim.keymap.set("n", "[t", function()
-	require("todo-comments").jump_prev({ keywords = { "TODO", "HACK", "WARN", "PERF", "NOTE", "TEST" } })
+	require("todo-comments").jump_prev({ keywords = {
+		"TODO",
+		"HACK",
+		"WARN",
+		"PERF",
+		"NOTE",
+		"TEST",
+	} })
 end, { desc = "Previous error/warning todo comment" })
 
 -- Toggle LSP diagnostics
