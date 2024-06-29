@@ -1,4 +1,5 @@
 local defaults = {
+	noremap = true,
 	silent = true,
 }
 
@@ -231,10 +232,10 @@ require("boole").setup({
 })
 
 -- Neogen
-vim.api.nvim_set_keymap("n", "<Leader>nt", ":Neogen type<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>nF", ":Neogen file<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>nc", ":Neogen class<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>nf", ":Neogen func<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>nt", ":Neogen type<CR>", defaults)
+vim.api.nvim_set_keymap("n", "<Leader>nF", ":Neogen file<CR>", defaults)
+vim.api.nvim_set_keymap("n", "<Leader>nc", ":Neogen class<CR>", defaults)
+vim.api.nvim_set_keymap("n", "<Leader>nf", ":Neogen func<CR>", defaults)
 
 -- Treesitter-based split join plugin
 vim.keymap.set("n", "<Leader>sj", ":lua require('treesj').toggle()<CR>", defaults)
