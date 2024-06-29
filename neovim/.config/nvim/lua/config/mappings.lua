@@ -109,7 +109,7 @@ vim.keymap.set(
 	":TermExec cmd='git add %; git commit --amend --no-edit; echo; git status; echo; g10'<CR>",
 	{ silent = false }
 )
-vim.cmd('nnoremap <silent> <Leader>gst :TermExec cmd="git status"<CR>')
+vim.keymap.set("n", "<Leader>gst", ":TermExec cmd='git status'<CR>")
 vim.cmd('nnoremap <silent> <Leader>g10 :TermExec cmd="g10"<CR>')
 vim.cmd("nnoremap <silent> <Leader>gp :Git push<CR>")
 
