@@ -10,6 +10,7 @@ return {
 		-- Use `background` for everything else.
 		require("colorizer").setup({
 			"css",
+			"gitconfig",
 			"javascript",
 			"lua",
 			html = {
