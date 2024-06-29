@@ -59,7 +59,6 @@ vim.keymap.set("n", "<Leader>o", ":only<CR>", defaults)
 vim.keymap.set("n", "<Leader>h", ":hide<CR>", defaults)
 
 -- toggleterm mappings
--- Go plugin close floating terminal
 -- ungodly hack here to make the first execution of the terminal command auto-scroll
 -- to the bottom since I can't get toggleterm's `auto_scroll` setting working.
 vim.keymap.set(
