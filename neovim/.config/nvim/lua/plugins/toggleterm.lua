@@ -3,7 +3,7 @@ return {
 	"akinsho/toggleterm.nvim",
 	version = "*",
 	cmd = "ToggleTerm",
-	config = function()
+	init = function()
 		local colors = require("tokyonight.colors").setup()
 		require("toggleterm").setup({
 			-- automatically scroll to the bottom on terminal output
