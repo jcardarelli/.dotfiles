@@ -11,14 +11,6 @@ vim.keymap.set("n", "<Leader>ep", ":vsp $HOME/.config/nvim/lua/plugins/<CR>", de
 vim.keymap.set("n", "<Leader>ef", ":vsp $HOME/.config/fish/config.fish<CR>", defaults)
 vim.keymap.set("n", "<Leader>et", ":vsp $HOME/.config/tmux/tmux.conf<CR>", defaults)
 
--- TODO, etc.
-vim.cmd("ab Todo TODO:")
-vim.cmd("ab Warn WARN:")
-vim.cmd("ab Hack HACK:")
-vim.cmd("ab Perf PERF:")
-vim.cmd("ab Note NOTE:")
-vim.cmd("ab Test Test:")
-
 -- Treesitter
 vim.keymap.set("n", "<Leader>tsp", ":TSPlayground<CR>", defaults)
 
