@@ -172,23 +172,22 @@ vim.keymap.set("n", "<Leader>db", require("dap").toggle_breakpoint)
 
 -- Show nice result counts as inline text with *, #, n, N, etc. (e.g. 1/4)
 require("hlslens").setup()
-local kopts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap(
 	"n",
 	"n",
 	[[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
-	kopts
+	defaults
 )
 vim.api.nvim_set_keymap(
 	"n",
 	"N",
 	[[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
-	kopts
+	defaults
 )
-vim.api.nvim_set_keymap("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+vim.api.nvim_set_keymap("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]], defaults)
+vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], defaults)
+vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], defaults)
+vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], defaults)
 
 -- Jump to TODO HACK WARN PERF NOTE TEST comments
 vim.keymap.set("n", "]t", function()
