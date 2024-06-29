@@ -45,8 +45,9 @@ vim.keymap.set("n", "<Leader>vg", ":vimgrep <Space> %", { silent = true })
 -- load_extension, somewhere after setup function:
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-setup-and-configuration
 -- require("telescope").load_extension("fzf")
+
 -- Lazy
--- vim.keymap.set("n", "<Leader>L", ":Lazy<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>L", ":Lazy<CR>", { silent = true })
 
 -- NvimTree
 vim.keymap.set("n", "<Leader>t", ":NvimTreeToggle<CR><C-w>l", { silent = true })
