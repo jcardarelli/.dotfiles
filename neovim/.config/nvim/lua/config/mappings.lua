@@ -1,10 +1,14 @@
+local defaults = {
+	silent = true,
+}
+
 -- General mappings
-vim.keymap.set("n", "<Leader>ev", ":vsp $MYVIMRC<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>sv", ":source $MYVIMRC<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>ek", ":vsp $HOME/.config/kitty/kitty.conf<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>ep", ":vsp $HOME/.config/nvim/lua/plugins/<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>ef", ":vsp $HOME/.config/fish/config.fish<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>et", ":vsp $HOME/.config/tmux/tmux.conf<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>ev", ":vsp $MYVIMRC<CR>", defaults)
+vim.keymap.set("n", "<Leader>sv", ":source $MYVIMRC<CR>", defaults)
+vim.keymap.set("n", "<Leader>ek", ":vsp $HOME/.config/kitty/kitty.conf<CR>", defaults)
+vim.keymap.set("n", "<Leader>ep", ":vsp $HOME/.config/nvim/lua/plugins/<CR>", defaults)
+vim.keymap.set("n", "<Leader>ef", ":vsp $HOME/.config/fish/config.fish<CR>", defaults)
+vim.keymap.set("n", "<Leader>et", ":vsp $HOME/.config/tmux/tmux.conf<CR>", defaults)
 
 -- TODO, etc.
 vim.cmd("ab Todo TODO:")
@@ -15,31 +19,26 @@ vim.cmd("ab Note NOTE:")
 vim.cmd("ab Test Test:")
 
 -- Treesitter
-vim.keymap.set("n", "<Leader>tsp", ":TSPlayground<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tsp", ":TSPlayground<CR>", defaults)
 
 -- Lazy file operations
-vim.keymap.set("n", "<Leader>w", ":write<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>w", ":write<CR>", defaults)
 
 -- Turn off highlighted search with \\
-vim.keymap.set("n", "\\\\", "<cmd>noh<CR>", { silent = true })
+vim.keymap.set("n", "\\\\", "<cmd>noh<CR>", defaults)
 
 -- Telescope
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
 vim.keymap.set("n", "<Leader>fr", builtin.registers, {})
 vim.keymap.set("n", "<Leader>fk", builtin.keymaps, {})
-vim.keymap.set("n", "<Leader>fc", ":Easypick changed_files<CR>", { silent = true })
-vim.keymap.set(
-	"n",
-	"<Leader>fg",
-	":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-	{ silent = true }
-)
-vim.keymap.set("n", "<Leader>fb", builtin.buffers, { silent = true })
-vim.keymap.set("n", "<Leader>fh", builtin.help_tags, { silent = true })
+vim.keymap.set("n", "<Leader>fc", ":Easypick changed_files<CR>", defaults)
+vim.keymap.set("n", "<Leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", defaults)
+vim.keymap.set("n", "<Leader>fb", builtin.buffers, defaults)
+vim.keymap.set("n", "<Leader>fh", builtin.help_tags, defaults)
 
 -- Vimgrep
-vim.keymap.set("n", "<Leader>vg", ":vimgrep <Space> %", { silent = true })
+vim.keymap.set("n", "<Leader>vg", ":vimgrep <Space> %", defaults)
 
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
@@ -47,24 +46,24 @@ vim.keymap.set("n", "<Leader>vg", ":vimgrep <Space> %", { silent = true })
 -- require("telescope").load_extension("fzf")
 
 -- Lazy
-vim.keymap.set("n", "<Leader>L", ":Lazy<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>L", ":Lazy<CR>", defaults)
 
 -- NvimTree
-vim.keymap.set("n", "<Leader>t", ":NvimTreeToggle<CR><C-w>l", { silent = true })
+vim.keymap.set("n", "<Leader>t", ":NvimTreeToggle<CR><C-w>l", defaults)
 
 -- Trouble
-vim.keymap.set("n", "<Leader>T", ":TroubleToggle<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>T", ":TroubleToggle<CR>", defaults)
 
 -- Buffer mappings
-vim.keymap.set("n", "<Leader>bf", ":bfirst<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>bl", ":blast<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>bn", ":bnext<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>bd", ":bd<CR>:bnext<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>bp", ":bprevious<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>tn", ":tabn<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>tp", ":tabp<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>o", ":only<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>h", ":hide<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>bf", ":bfirst<CR>", defaults)
+vim.keymap.set("n", "<Leader>bl", ":blast<CR>", defaults)
+vim.keymap.set("n", "<Leader>bn", ":bnext<CR>", defaults)
+vim.keymap.set("n", "<Leader>bd", ":bd<CR>:bnext<CR>", defaults)
+vim.keymap.set("n", "<Leader>bp", ":bprevious<CR>", defaults)
+vim.keymap.set("n", "<Leader>tn", ":tabn<CR>", defaults)
+vim.keymap.set("n", "<Leader>tp", ":tabp<CR>", defaults)
+vim.keymap.set("n", "<Leader>o", ":only<CR>", defaults)
+vim.keymap.set("n", "<Leader>h", ":hide<CR>", defaults)
 
 -- toggleterm mappings
 -- Go plugin close floating terminal
@@ -74,17 +73,17 @@ vim.keymap.set(
 	"n",
 	"<Leader>gr",
 	':TermExec cmd="go run %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h',
-	{ silent = true }
+	defaults
 )
 vim.keymap.set(
 	"n",
 	"<Leader>gt",
 	':TermExec cmd="go test %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h',
-	{ silent = true }
+	defaults
 )
-vim.keymap.set("n", "<Leader>tc", ':TermExec cmd="exit"<CR>', { silent = true })
-vim.keymap.set("n", "<C-\\>", ":ToggleTerm direction=vertical size=90<CR>", { silent = true })
-vim.keymap.set("n", "<S-\\><C-\\>", ":ToggleTerm direction=horizontal size=90<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tc", ':TermExec cmd="exit"<CR>', defaults)
+vim.keymap.set("n", "<C-\\>", ":ToggleTerm direction=vertical size=90<CR>", defaults)
+vim.keymap.set("n", "<S-\\><C-\\>", ":ToggleTerm direction=horizontal size=90<CR>", defaults)
 
 -- https://github.com/akinsho/toggleterm.nvim#terminal-window-mappings
 function _G.set_terminal_keymaps()
@@ -108,11 +107,11 @@ vim.cmd('nnoremap <silent> <Leader>gd :TermExec cmd="PAGER= git diff"<CR>')
 -- local lsp_filename = vim.api.nvim_buf_get_name(0)
 vim.cmd('nnoremap <silent> <Leader>gdc :TermExec cmd="PAGER= git diff --cached"<CR>')
 -- TODO: Also run git status in the terminal after adding the file
-vim.keymap.set("n", "<Leader>ga", ":TermExec cmd='git add .; git status; echo; g10'<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>gc", ":Git commit -qm '", { silent = true })
-vim.keymap.set("n", "<Leader>gg", ":Git", { silent = true })
+vim.keymap.set("n", "<Leader>ga", ":TermExec cmd='git add .; git status; echo; g10'<CR>", defaults)
+vim.keymap.set("n", "<Leader>gc", ":Git commit -qm '", defaults)
+vim.keymap.set("n", "<Leader>gg", ":Git", defaults)
 -- Run git add and git commit --amend --no-edit. <Bar> or \| allow for running multiple commands as part of one mapping
--- vim.keymap.set("n", "<Leader>gmd", ":Git add %<CR> <bar> :Git commit --amend --no-edit<CR>", { silent = true })
+-- vim.keymap.set("n", "<Leader>gmd", ":Git add %<CR> <bar> :Git commit --amend --no-edit<CR>", defaults)
 vim.keymap.set(
 	"n",
 	"<Leader>gmd",
@@ -128,24 +127,24 @@ vim.cmd('nnoremap <silent> <Leader>ee :TermExec cmd="exa --long"<CR>')
 
 -- regular terminal stuff
 vim.cmd('nnoremap <silent> <Leader>l :TermExec cmd="clear"<CR>')
-vim.keymap.set("n", "<Leader>lq", ":TermExec cmd='q'<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>rl", ":w <bar> :TermExec cmd='!!' <CR>", { silent = true })
-vim.keymap.set("n", "<Leader>r2l", ":w <bar> :TermExec cmd='!2' <CR>", { silent = true })
-vim.keymap.set("n", "<Leader>gR", ":GoRun<CR><C-w>h", { silent = true })
-vim.keymap.set("n", "<Leader>tC", ":GoTermClose<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>lq", ":TermExec cmd='q'<CR>", defaults)
+vim.keymap.set("n", "<Leader>rl", ":w <bar> :TermExec cmd='!!' <CR>", defaults)
+vim.keymap.set("n", "<Leader>r2l", ":w <bar> :TermExec cmd='!2' <CR>", defaults)
+vim.keymap.set("n", "<Leader>gR", ":GoRun<CR><C-w>h", defaults)
+vim.keymap.set("n", "<Leader>tC", ":GoTermClose<CR>", defaults)
 
 -- mapping for inserting the current filename into the buffer
-vim.keymap.set("n", "<Leader>fn", ":put =expand('%')<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>fn", ":put =expand('%')<CR>", defaults)
 
 -- currently disabled
 -- ts-node-action mappings for compacting & expanding code with treesitter
 -- vim.keymap.set({ "n" }, "<Leader>k", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
 
 -- bring function to the top when browsing with [[ or ]]
-vim.keymap.set("n", "<Leader>[", "zt", { silent = true })
+vim.keymap.set("n", "<Leader>[", "zt", defaults)
 
 -- run the markdown previewer in a local browser window
-vim.keymap.set("n", "<Leader>mdp", ":MarkdownPreview<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>mdp", ":MarkdownPreview<CR>", defaults)
 
 -- emacs keybindings for command mode
 -- go to start of line
@@ -171,7 +170,7 @@ vim.cmd("cnoremap <M-f> <S-Right>")
 vim.cmd("cnoremap <M-Bs> <C-W>")
 
 -- quickfix tpope unimpaired additions
-vim.keymap.set("n", "\\q", "<cmd>cclose<CR>", { silent = true })
+vim.keymap.set("n", "\\q", "<cmd>cclose<CR>", defaults)
 
 -- DAP debugger
 vim.keymap.set("n", "<Leader>dc", require("dap").continue)
@@ -238,5 +237,5 @@ vim.api.nvim_set_keymap("n", "<Leader>nc", ":Neogen class<CR>", { noremap = true
 vim.api.nvim_set_keymap("n", "<Leader>nf", ":Neogen func<CR>", { noremap = true, silent = true })
 
 -- Treesitter-based split join plugin
-vim.keymap.set("n", "<Leader>sj", ":lua require('treesj').toggle()<CR>", { silent = true })
-vim.keymap.set("v", "<Leader>sj", ":lua require('treesj').toggle()<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>sj", ":lua require('treesj').toggle()<CR>", defaults)
+vim.keymap.set("v", "<Leader>sj", ":lua require('treesj').toggle()<CR>", defaults)
