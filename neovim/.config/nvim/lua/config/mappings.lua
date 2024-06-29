@@ -94,8 +94,6 @@ function _G.set_terminal_keymaps()
 	vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
 	vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
 	vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
-	-- this one is excluded so that Ctrl+l (clear) works as expected while in the terminal window
-	-- vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
 	vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
 end
 
