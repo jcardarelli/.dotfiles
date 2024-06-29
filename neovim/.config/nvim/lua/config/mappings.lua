@@ -102,7 +102,7 @@ vim.keymap.set("n", "<Leader>ga", ":TermExec cmd='git add .; git status; echo; g
 vim.keymap.set("n", "<Leader>gc", ":Git commit -qm '", defaults)
 vim.keymap.set("n", "<Leader>gg", ":Git", defaults)
 -- Run git add and git commit --amend --no-edit. <Bar> or \| allow for running multiple commands as part of one mapping
--- vim.keymap.set("n", "<Leader>gmd", ":Git add %<CR> <bar> :Git commit --amend --no-edit<CR>", defaults)
+vim.keymap.set("n", "<Leader>gmd", ":Git commit --amend --no-edit<CR>", defaults)
 vim.keymap.set(
 	"n",
 	"<Leader>gmd",
