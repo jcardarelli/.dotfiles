@@ -4,8 +4,6 @@ vim.keymap.set("n", "<Leader>sv", ":source $MYVIMRC<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>ek", ":vsp $HOME/.config/kitty/kitty.conf<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>ep", ":vsp $HOME/.config/nvim/lua/plugins/<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>ef", ":vsp $HOME/.config/fish/config.fish<CR>", { silent = true })
--- there's no way this will actually work as written?
--- vim.keymap.set("n", "<Leader>sf", ":source $HOME/.config/fish/config.fish<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>et", ":vsp $HOME/.config/tmux/tmux.conf<CR>", { silent = true })
 
 -- TODO, etc.
