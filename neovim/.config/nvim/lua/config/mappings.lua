@@ -111,7 +111,7 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "<Leader>gst", ":TermExec cmd='git status'<CR>")
 vim.cmd('nnoremap <silent> <Leader>g10 :TermExec cmd="g10"<CR>')
-vim.cmd("nnoremap <silent> <Leader>gp :Git push<CR>")
+vim.cmd("nnoremap <silent> <Leader>gp :TermExec cmd='git push'<CR>")
 
 -- Exa
 vim.cmd('nnoremap <silent> <Leader>ee :TermExec cmd="exa --long"<CR>')
