@@ -123,7 +123,7 @@ lspconfig.jedi_language_server.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
-lspconfig.pyright.setup({
+lspconfig.basedpyright.setup({
 	-- Use jedi and pyright for python together
 	-- https://www.reddit.com/r/neovim/comments/vpg72u/comment/ielb3h8/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 	on_attach = function(client)
