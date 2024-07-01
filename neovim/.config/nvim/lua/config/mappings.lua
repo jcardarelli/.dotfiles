@@ -38,8 +38,10 @@ vim.keymap.set("n", "<Leader>vg", ":vimgrep <Space> %", defaults)
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-setup-and-configuration
 -- require("telescope").load_extension("fzf")
 
--- Lazy
+-- Habitual update keymaps
 vim.keymap.set("n", "<Leader>L", ":Lazy<CR>", defaults)
+vim.keymap.set("n", "<Leader>M", ":Mason<CR>", defaults)
+vim.keymap.set("n", "<Leader>Ts", ":TSUpdate<CR>", defaults)
 
 -- NvimTree
 vim.keymap.set("n", "<Leader>t", ":NvimTreeToggle<CR><C-w>l", defaults)
