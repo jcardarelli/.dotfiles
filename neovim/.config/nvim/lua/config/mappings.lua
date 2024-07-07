@@ -47,7 +47,7 @@ vim.keymap.set("n", "<Leader>Ts", ":TSUpdate<CR>", defaults)
 vim.keymap.set("n", "<Leader>t", ":NvimTreeToggle<CR><C-w>l", defaults)
 
 -- Trouble
-vim.keymap.set("n", "<Leader>T", ":TroubleToggle<CR>", defaults)
+vim.keymap.set("n", "<Leader>T", ":Trouble diagnostics toggle<CR>", defaults)
 
 -- Buffer mappings
 vim.keymap.set("n", "<Leader>bf", ":bfirst<CR>", defaults)
