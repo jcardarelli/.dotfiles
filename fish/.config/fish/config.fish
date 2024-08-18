@@ -3,6 +3,8 @@
 ################################################################################
 set -x EDITOR "vim"
 
+set -x XDG_CONFIG_HOME "$HOME/.config"
+
 # Default hostname for gh cli
 set -x GH_HOST "github.com"
 
