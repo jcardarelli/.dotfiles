@@ -5,6 +5,7 @@
 -- https://github.com/nvim-tree/nvim-tree.lua#setup
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.opt.tabstop = 4
 
 -- Check which client we're using: terminal or neovide
 if vim.g.neovide then
@@ -30,11 +31,11 @@ end
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "WinEnter", "VimResized" }, {
 	callback = function()
 		if
-				vim.bo.filetype ~= "toggleterm"
-				and vim.bo.filetype ~= "noice"
-				and vim.bo.filetype ~= "NvimTree"
-				and vim.bo.filetype ~= "Lazy"
-				and vim.bo.filetype ~= "sagaoutline"
+			vim.bo.filetype ~= "toggleterm"
+			and vim.bo.filetype ~= "noice"
+			and vim.bo.filetype ~= "NvimTree"
+			and vim.bo.filetype ~= "Lazy"
+			and vim.bo.filetype ~= "sagaoutline"
 		then
 			short_buffer_settings_toggle()
 		end
@@ -55,7 +56,7 @@ vim.opt.foldlevel = 99
 -- always keep the diagnostics 'sign column' open so there's no jarring
 -- opening and closing with > 0 warnings/errors/etc
 vim.opt.signcolumn = "yes"
-vim.cmd.set('cmdheight=0')
+vim.cmd.set("cmdheight=0")
 
 -- default opening positions for splits
 vim.cmd.set("splitright")
