@@ -10,7 +10,7 @@ return {
 				css = { "stylelint" },
 				go = { "gofumpt", "goimports", "golines" },
 				html = { "htmlbeautifier" },
-				javascript = { { "prettierd", "prettier" } }, -- Use a sub-list to run only the first available formatter
+				javascript = { "prettierd", "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black", "pydocstyle" },
 				terraform = { "terraform_fmt" },
