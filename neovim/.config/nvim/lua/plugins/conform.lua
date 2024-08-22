@@ -2,9 +2,18 @@
 return {
 	"stevearc/conform.nvim",
 	opts = {},
-	ft = { "css", "go", "html", "javascript", "lua", "python", "terraform", "sh", "yaml" },
+	ft = {
+		"css",
+		"go",
+		"html",
+		"javascript",
+		"lua",
+		"python",
+		"terraform",
+		"sh",
+		"yaml",
+	},
 	config = function()
-		-- Replaced null-ls (RIP) with this plugin
 		require("conform").setup({
 			formatters_by_ft = {
 				css = { "stylelint" },
