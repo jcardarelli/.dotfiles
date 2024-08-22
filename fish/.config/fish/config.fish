@@ -1,8 +1,8 @@
 ############################################################################
 # User configuration
 ################################################################################
+set -x BUN_INSTALL "$HOME/.bun"
 set -x EDITOR nvim
-
 set -x XDG_CONFIG_HOME "$HOME/.config"
 
 # Default hostname for gh cli
@@ -188,6 +188,7 @@ fish_add_path "$HOME/.cargo/bin"
 fish_add_path "$HOME/.krew/bin"
 fish_add_path /opt/homebrew/opt/openjdk@17/bin
 fish_add_path /opt/homebrew/Cellar/mysql-client/8.2.0/bin
+fish_add_path "$BUN_INSTALL/bin"
 set -gx CPPFLAGS "-I/opt/homebrew/opt/openjdk@17/include"
 
 # function compare_sha256
@@ -221,7 +222,3 @@ export BAT_THEME="tokyonight_storm"
 
 # doom emacs client alias
 # alias emacs="emacsclient --create-frame --alternate-editor=emacs"
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
