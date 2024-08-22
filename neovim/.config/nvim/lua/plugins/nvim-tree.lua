@@ -21,7 +21,7 @@ return {
 				symlink_destination = false,
 			},
 			filters = {
-				dotfiles = true,
+				dotfiles = false,
 			},
 			sync_root_with_cwd = true,
 			respect_buf_cwd = true,
