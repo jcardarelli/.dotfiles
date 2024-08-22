@@ -1,7 +1,7 @@
 ############################################################################
 # User configuration
 ################################################################################
-set -x EDITOR "vim"
+set -x EDITOR vim
 
 set -x XDG_CONFIG_HOME "$HOME/.config"
 
@@ -12,11 +12,11 @@ set -x d (date +'%Y-%m-%d')
 set -x dt (date +'%Y-%m-%d-%H-%M')
 
 alias kcontext="kubectl config view --minify --output 'jsonpath={..context}'"
-abbr -a -g k "kubectl"
-abbr -a -g kctx "kubectx"
+abbr -a -g k kubectl
+abbr -a -g kctx kubectx
 abbr -a -g kgp "kubectl get pods"
 abbr -a -g klf "kubectl logs -f"
-abbr -a -g kns "kubens"
+abbr -a -g kns kubens
 
 # lsd and the search for god
 abbr -a -g ll "lsd -l --sort extension"
@@ -26,7 +26,7 @@ abbr -a -g llta "lsd -l --sort extension --tree --all"
 abbr -a -g llt2 "lsd -l --sort extension --tree --depth 2"
 abbr -a -g llt3 "lsd -l --sort extension --tree --depth 3"
 
-abbr gti "git"
+abbr gti git
 abbr g1 "git log --oneline --decorate --color -1"
 abbr g2 "git log --oneline --decorate --color -2"
 abbr g3 "git log --oneline --decorate --color -3"
@@ -45,20 +45,20 @@ abbr gpsup "git push --set-upstream origin (git rev-parse --abbrev-ref HEAD)"
 
 # Git function to show files changed in commit
 function gitf
-  set -l commit_hash "$1"
+    set -l commit_hash "$1"
 
-  if [ -z $commit_hash ]
-    echo "Enter the commit hash as the first argument."
-    # no longer true!
-    # echo "One way to do this is with \`gitl 10\`."
-  end
+    if [ -z $commit_hash ]
+        echo "Enter the commit hash as the first argument."
+        # no longer true!
+        # echo "One way to do this is with \`gitl 10\`."
+    end
 end
 
 # Git list branches by date, with colors
 function gitbd
-  git for-each-ref \
-    --sort=committerdate refs/heads/ \
-    --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+    git for-each-ref \
+        --sort=committerdate refs/heads/ \
+        --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 end
 
 ################################################################################
@@ -77,17 +77,17 @@ abbr tls "tmux ls"
 
 # kubectl-aliases
 if [ -f ~/.kubectl_aliases ]
-  source ~/.kubectl_aliases
+    source ~/.kubectl_aliases
 end
 
 # Create new git repo and sync with github
 function new_repo
-  set -l new_dir "$1"
+    set -l new_dir "$1"
 
-  mkdir "$new_dir"
-  cd "$new_dir"
-  git init .
-  gh repo create
+    mkdir "$new_dir"
+    cd "$new_dir"
+    git init .
+    gh repo create
 end
 
 # Exa
@@ -106,8 +106,8 @@ abbr -a -g ett "exa --icons --git -l -s type"
 ###############################################################################
 # Terraform and terragrunt abbreviations
 ###############################################################################
-abbr -a -g tf "terraform"
-abbr -a -g tg "terragrunt"
+abbr -a -g tf terraform
+abbr -a -g tg terragrunt
 
 ###############################################################################
 # FZF
@@ -118,26 +118,27 @@ export FZF_DEFAULT_OPTS='
   --border=none
   --height=40%
   --no-mouse'
-  # --preview-window=:hidden'
+# --preview-window=:hidden'
 abbr -a -g vimf "vim (fzf --height 40%)"
 
 function bind_bang
-  switch (commandline -t)[-1]
-    case "!"
-      commandline -t $history[1]; commandline -f repaint
-    case "*"
-      commandline -i !
-  end
+    switch (commandline -t)[-1]
+        case "!"
+            commandline -t $history[1]
+            commandline -f repaint
+        case "*"
+            commandline -i !
+    end
 end
 
 function bind_dollar
-  switch (commandline -t)[-1]
-    case "!"
-      commandline -t ""
-      commandline -f history-token-search-backward
-    case "*"
-      commandline -i '$'
-  end
+    switch (commandline -t)[-1]
+        case "!"
+            commandline -t ""
+            commandline -f history-token-search-backward
+        case "*"
+            commandline -i '$'
+    end
 end
 
 function fish_user_key_bindings
@@ -146,34 +147,34 @@ function fish_user_key_bindings
 end
 
 function new_pr_msg_only
-  set -l filename "$HOME/github-messages/"(date +'%Y-%m-%d-%H-%M')"-"(git rev-parse --abbrev-ref HEAD)".md"
-  vim "$filename"
+    set -l filename "$HOME/github-messages/"(date +'%Y-%m-%d-%H-%M')"-"(git rev-parse --abbrev-ref HEAD)".md"
+    vim "$filename"
 end
 
 function new_pr_msg
-  set -l filename $argv[1]
-  #set -l branch $argv[2]
+    set -l filename $argv[1]
+    #set -l branch $argv[2]
 
-  if [ -z $filename ]
-    set filename "$HOME/github-messages/"(date +'%Y-%m-%d-%H-%M')"-"(git rev-parse --abbrev-ref HEAD)".md"
-    vim $filename
-  end
+    if [ -z $filename ]
+        set filename "$HOME/github-messages/"(date +'%Y-%m-%d-%H-%M')"-"(git rev-parse --abbrev-ref HEAD)".md"
+        vim $filename
+    end
 
-  # Use hub to open the PR
-  # TODO: Change this to use gh instead
-  hub pull-request --push --file $filename --browse --draft
+    # Use hub to open the PR
+    # TODO: Change this to use gh instead
+    hub pull-request --push --file $filename --browse --draft
 end
 
 function gh_new_repo
-  set -l repo_name $argv[1]
-  set -l repo_desc $argv[2]
+    set -l repo_name $argv[1]
+    set -l repo_desc $argv[2]
 
-  mkdir -p $repo_name
-  gh repo create $repo_name \
-    --description $repo_desc \
-    --private \
-    --confirm
-  cd $repo_name
+    mkdir -p $repo_name
+    gh repo create $repo_name \
+        --description $repo_desc \
+        --private \
+        --confirm
+    cd $repo_name
 end
 
 # Add the bin directory containing psql to the $PATH
@@ -182,7 +183,7 @@ end
 fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/bin"
 fish_add_path "$HOME/.config/emacs/bin"
-fish_add_path "/opt/homebrew/bin"
+fish_add_path /opt/homebrew/bin
 fish_add_path "$HOME/.cargo/bin"
 fish_add_path "$HOME/.krew/bin"
 fish_add_path /opt/homebrew/opt/openjdk@17/bin
