@@ -1,3 +1,14 @@
+-- Show macro recording message when using cmdheight=0
+-- https://www.reddit.com/r/neovim/comments/xy0tu1/cmdheight0_recording_macros_message/
+local function show_macro_recording()
+	local recording_register = vim.fn.reg_recording()
+	if recording_register == "" then
+		return ""
+	else
+		return "Recording @" .. recording_register
+	end
+end
+
 return {
 	"nvim-lualine/lualine.nvim",
 	init = function()
@@ -23,6 +34,14 @@ return {
 					"dapui_scopes",
 					"dapui_stacks",
 					"dapui_watches",
+				},
+			},
+			sections = {
+				lualine_b = {
+					{
+						"macro-recording",
+						fmt = show_macro_recording,
+					},
 				},
 			},
 		})
