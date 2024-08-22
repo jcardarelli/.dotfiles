@@ -19,7 +19,7 @@ return {
 				css = { "prettier" },
 				go = { "gofumpt", "goimports", "golines" },
 				html = { "htmlbeautifier" },
-				javascript = { "prettierd", "prettier" },
+				javascript = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black", "pydocstyle" },
 				terraform = { "terraform_fmt" },
