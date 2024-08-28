@@ -18,7 +18,7 @@ return {
 			formatters_by_ft = {
 				css = { "prettier" },
 				go = { "gofumpt", "goimports", "golines" },
-				html = { "htmlbeautifier" },
+				html = { "prettier" },
 				javascript = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black", "pydocstyle" },
