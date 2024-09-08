@@ -147,7 +147,7 @@ lspconfig.basedpyright.setup({
 	},
 })
 lspconfig.rust_analyzer.setup({})
-lspconfig.tsserver.setup({})
+lspconfig.ts_ls.setup({})
 lspconfig.html.setup({})
 lspconfig.cssls.setup({})
 
