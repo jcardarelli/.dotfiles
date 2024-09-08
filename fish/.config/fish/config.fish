@@ -39,6 +39,7 @@ abbr g9 "git log --oneline --decorate --color -9"
 abbr g10 "git log --oneline --decorate --color -10"
 abbr gdc "git diff --cached"
 abbr gpsup "git push --set-upstream origin (git rev-parse --abbrev-ref HEAD)"
+abbr gcob "git checkout -b"
 
 # Add git files that have been modified
 # alias gac="git add (git ls-files -m)"
