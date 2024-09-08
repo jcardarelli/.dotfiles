@@ -224,6 +224,7 @@ lspconfig.lua_ls.setup({
 			},
 			diagnostics = {
 				globals = {
+					"border",
 					"os",
 					"vim",
 				},
