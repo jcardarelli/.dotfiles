@@ -227,7 +227,10 @@ lspconfig.lua_ls.setup({
 				path = runtime_path,
 			},
 			diagnostics = {
-				globals = { "vim" },
+				globals = {
+					"os",
+					"vim",
+				},
 			},
 			workspace = {
 				-- Make the server aware of Neovim runtime files,
