@@ -9,14 +9,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 --------------------------------------------------------------------------------
 -- LSP configuration
 --------------------------------------------------------------------------------
--- Override borders globally
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-	opts = opts or {}
-	opts.border = opts.border or border
-	return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
-
 -- Mappings for navigating LSP diagnostic messages
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", ">e", vim.diagnostic.open_float, opts)
