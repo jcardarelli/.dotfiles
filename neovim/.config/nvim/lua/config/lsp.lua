@@ -102,7 +102,10 @@ if not configs.fishls then
 		},
 	}
 end
-lspconfig.fishls.setup({})
+lspconfig.fishls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 -- vim.lsp.set_log_level("info")
