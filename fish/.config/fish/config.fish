@@ -76,11 +76,6 @@ abbr tls "tmux ls"
 # Dumb aliases
 # abbr grev="grep -v"
 
-# kubectl-aliases
-if [ -f ~/.kubectl_aliases ]
-    source ~/.kubectl_aliases
-end
-
 # Create new git repo and sync with github
 function new_repo
     set -l new_dir "$1"
