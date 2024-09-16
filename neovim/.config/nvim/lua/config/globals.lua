@@ -7,6 +7,9 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.tabstop = 4
 
+-- Automatically reload a buffer on git checkout
+vim.opt.autoread = true
+
 -- Check which client we're using: terminal or neovide
 if vim.g.neovide then
 	vim.o.guifont = "JetBrains Mono NL"
