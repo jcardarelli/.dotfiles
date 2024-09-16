@@ -30,7 +30,7 @@ local function short_buffer_settings_toggle()
 	end
 end
 
--- Autocommand to call the function when entering a buffer or window
+-- Autocommand to call short_buffer_settings_toggle() when entering a buffer or window
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "WinEnter", "VimResized" }, {
 	callback = function()
 		if
@@ -53,15 +53,15 @@ vim.o.shell = "fish"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
--- set folds to be open on startup
+-- Set folds to be open on startup
 vim.opt.foldlevel = 99
 
--- always keep the diagnostics 'sign column' open so there's no jarring
+-- Always keep the diagnostics 'sign column' open so there's no jarring
 -- opening and closing with > 0 warnings/errors/etc
 vim.opt.signcolumn = "yes"
 vim.cmd.set("cmdheight=0")
 
--- default opening positions for splits
+-- Default opening positions for splits
 vim.cmd.set("splitright")
 vim.cmd.set("splitbelow")
 
@@ -77,11 +77,11 @@ vim.cmd.set("grepprg=rg\\ --vimgrep\\ --no-heading\\ --smart-case\\ --no-ignore-
 vim.cmd.set("grepformat=%f:%l:%c:%m")
 vim.cmd.set("dictionary=/usr/share/dict/words")
 
--- copy all yanked text to the system clipboard by default
+-- Copy all yanked text to the system clipboard by default
 vim.cmd.set("clipboard+=unnamedplus")
 
--- only break lines at whole words (good for writing text)
+-- Only break lines at whole words (good for writing text)
 vim.cmd.set("linebreak")
 
--- disable smartindent so that treesitter will not mess up file previews
+-- Disable smartindent so that treesitter will not mess up file previews
 vim.opt.smartindent = false
