@@ -30,22 +30,6 @@ local function short_buffer_settings_toggle()
 	end
 end
 
--- Autocommand to call short_buffer_settings_toggle() when entering a buffer or window
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "WinEnter", "VimResized" }, {
-	callback = function()
-		if
-			vim.bo.filetype ~= "toggleterm"
-			and vim.bo.filetype ~= "noice"
-			and vim.bo.filetype ~= "NvimTree"
-			and vim.bo.filetype ~= "Lazy"
-			and vim.bo.filetype ~= "sagaoutline"
-		then
-			short_buffer_settings_toggle()
-		end
-	end,
-	group = vim.api.nvim_create_augroup("ToggleLineNumbersGroup", { clear = true }),
-})
-
 -- Use toggleterm with fish shell
 vim.o.shell = "fish"
 

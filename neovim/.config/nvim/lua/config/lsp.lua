@@ -138,7 +138,6 @@ lspconfig.gopls.setup({
 	},
 })
 
-vim.cmd("autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy")
 lspconfig.groovyls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
