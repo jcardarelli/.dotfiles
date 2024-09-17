@@ -105,7 +105,10 @@ lspconfig.fishls.setup({
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 -- vim.lsp.set_log_level("info")
-lspconfig.bashls.setup({})
+lspconfig.bashls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 lspconfig.jedi_language_server.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -133,10 +136,22 @@ lspconfig.basedpyright.setup({
 		},
 	},
 })
-lspconfig.rust_analyzer.setup({})
-lspconfig.ts_ls.setup({})
-lspconfig.html.setup({})
-lspconfig.cssls.setup({})
+lspconfig.rust_analyzer.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+lspconfig.ts_ls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+lspconfig.html.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+lspconfig.cssls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 
 lspconfig.terraformls.setup({
 	on_attach = on_attach,
@@ -164,7 +179,10 @@ lspconfig.gopls.setup({
 	},
 })
 
-lspconfig.ansiblels.setup({})
+lspconfig.ansiblels.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 lspconfig.yamlls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
