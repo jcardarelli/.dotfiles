@@ -90,15 +90,16 @@ function _G.set_terminal_keymaps()
 	vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
 end
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+vim.api.nvim_create_autocmd("TermOpen", {
+	pattern = "term://*",
+	callback = set_terminal_keymaps,
+})
 
 -- Git
 -- mappings for using git in the built-in terminal
--- local diff_cmd = "PAGER= git diff " .. vim.api.nvim_buf_get_name(0) .. "<CR>"
--- vim.keymap.set("n", "<Leader>gd", builtin.help_tags, {})
-vim.cmd('nnoremap <silent> <Leader>gd :TermExec cmd="PAGER= git diff"<CR>')
--- local lsp_filename = vim.api.nvim_buf_get_name(0)
-vim.cmd('nnoremap <silent> <Leader>gdc :TermExec cmd="PAGER= git diff --cached"<CR>')
+vim.keymap.set("n", "<Leader>gd", ':TermExec cmd="PAGER= git diff"<CR>', { silent = true })
+vim.keymap.set("n", "<Leader>gdc", ':TermExec cmd="PAGER= git diff --cached"<CR>', { silent = true })
+
 -- TODO: Also run git status in the terminal after adding the file
 vim.keymap.set("n", "<Leader>ga", ":TermExec cmd='git add .; git status; echo; g10'<CR>", defaults)
 vim.keymap.set("n", "<Leader>gc", ":Git commit -qm '", defaults)
@@ -112,14 +113,15 @@ vim.keymap.set(
 	{ silent = false }
 )
 vim.keymap.set("n", "<Leader>gst", ":TermExec cmd='git status'<CR>")
-vim.cmd('nnoremap <silent> <Leader>g10 :TermExec cmd="g10"<CR>')
-vim.cmd("nnoremap <silent> <Leader>gp :TermExec cmd='git push'<CR>")
+
+vim.keymap.set("n", "<Leader>g10", ':TermExec cmd="g10"<CR>', { silent = true })
+vim.keymap.set("n", "<Leader>gp", ":TermExec cmd='git push'<CR>", { silent = true })
 
 -- Exa
-vim.cmd('nnoremap <silent> <Leader>ee :TermExec cmd="exa --long"<CR>')
+vim.keymap.set("n", "<Leader>ee", ':TermExec cmd="exa --long"<CR>', { silent = true })
 
 -- regular terminal stuff
-vim.cmd('nnoremap <silent> <Leader>l :TermExec cmd="clear"<CR>')
+vim.keymap.set("n", "<Leader>l", ':TermExec cmd="clear"<CR>', { silent = true })
 vim.keymap.set("n", "<Leader>lq", ":TermExec cmd='q'<CR>", defaults)
 vim.keymap.set("n", "<Leader>rl", ":w <bar> :TermExec cmd='!!' <CR>", defaults)
 vim.keymap.set("n", "<Leader>r2l", ":w <bar> :TermExec cmd='!2' <CR>", defaults)
@@ -140,27 +142,16 @@ vim.keymap.set("n", "<Leader>[", "zt", defaults)
 vim.keymap.set("n", "<Leader>mdp", ":MarkdownPreview<CR>", defaults)
 
 -- emacs keybindings for command mode
--- go to start of line
-vim.cmd("cnoremap <C-A> <Home>")
--- go to end of line
-vim.cmd("cnoremap <C-E> <End>")
--- go back one character
-vim.cmd("cnoremap <C-B> <Left>")
--- delete character under cursor
-vim.cmd("cnoremap <C-D> <Del>")
--- go forward one character
--- vim.cmd 'cnoremap <C-F> <Right>'
--- recall newer command-line
-vim.cmd("cnoremap <C-N> <Down>")
--- recall previous (older) command-line
--- Does this break telescope?
--- vim.cmd("cnoremap <C-P> <Up>")
--- go back one word
-vim.cmd("cnoremap <M-b> <S-Left>")
--- go forward one word
-vim.cmd("cnoremap <M-f> <S-Right>")
--- delete one word
-vim.cmd("cnoremap <M-Bs> <C-W>")
+vim.keymap.set("c", "<C-A>", "<Home>") -- go to start of line
+vim.keymap.set("c", "<C-E>", "<End>") -- go to end of line
+vim.keymap.set("c", "<C-B>", "<Left>") -- go back one character
+vim.keymap.set("c", "<C-D>", "<Del>") -- delete character under cursor
+vim.keymap.set("c", "<C-F>", "<Right>") -- go forward one character - this breaks <C-F> for editing commands
+vim.keymap.set("c", "<C-N>", "<Down>") -- recall newer command
+-- vim.keymap.set("c", "<C-P>", "<Up>")   -- recall previous command - does this break telescope?
+vim.keymap.set("c", "<M-b>", "<S-Left>") -- go back one word
+vim.keymap.set("c", "<M-f>", "<S-Right>") -- go forward one word
+vim.keymap.set("c", "<M-Bs>", "<C-W>") -- delete one word
 
 -- quickfix tpope unimpaired additions
 vim.keymap.set("n", "\\q", "<cmd>cclose<CR>", defaults)
