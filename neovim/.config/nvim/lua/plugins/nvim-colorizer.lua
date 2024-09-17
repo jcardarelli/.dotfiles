@@ -1,6 +1,12 @@
 return {
 	"norcalli/nvim-colorizer.lua",
-	ft = { "lua", "html", "css", "javascript" },
+	ft = {
+		"css",
+		"html",
+		"javascript",
+		"lua",
+		"sass",
+	},
 	config = function()
 		--------------------------------------------------------------------------------
 		-- Highlight RGB and hex colors
@@ -12,8 +18,9 @@ return {
 			"css",
 			"gitconfig",
 			"javascript",
-			"typescript",
 			"lua",
+			"sass",
+			"typescript",
 			html = {
 				mode = "foreground",
 			},
