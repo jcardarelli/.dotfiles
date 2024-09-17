@@ -12,7 +12,7 @@ vim.keymap.set("n", "<Leader>ef", ":vsp $HOME/.config/fish/config.fish<CR>", def
 vim.keymap.set("n", "<Leader>et", ":vsp $HOME/.config/tmux/tmux.conf<CR>", defaults)
 
 -- Treesitter
-vim.keymap.set("n", "<Leader>tsp", ":TSPlayground<CR>", defaults)
+vim.keymap.set("n", "<Leader>it", ":InspectTree<CR>", defaults)
 
 -- Lazy file operations
 vim.keymap.set("n", "<Leader>w", ":write<CR>", defaults)
