@@ -89,6 +89,21 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
 
+lspconfig.ansiblels.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig.bashls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig.cssls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
 if not configs.fishls then
 	configs.fishls = {
 		default_config = {
@@ -101,62 +116,6 @@ end
 lspconfig.fishls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-})
-
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
--- vim.lsp.set_log_level("info")
-lspconfig.bashls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-lspconfig.jedi_language_server.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-lspconfig.basedpyright.setup({
-	-- Use jedi and pyright for python together
-	-- https://www.reddit.com/r/neovim/comments/vpg72u/comment/ielb3h8/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-	on_attach = function(client)
-		client.server_capabilities.completionProvider = false
-		client.server_capabilities.hoverProvider = false
-		client.server_capabilities.definitionProvider = false
-		client.server_capabilities.rename = false
-		client.server_capabilities.signature_help = false
-	end,
-	capabilities = capabilities,
-	settings = {
-		pyright = { autoImportCompletion = true },
-		python = {
-			analysis = {
-				autoSearchPaths = true,
-				diagnosticMode = "openFilesOnly",
-				useLibraryCodeForTypes = true,
-				typeCheckingMode = "off",
-			},
-		},
-	},
-})
-lspconfig.rust_analyzer.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-lspconfig.ts_ls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-lspconfig.html.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-lspconfig.cssls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.terraformls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = { debounce_text_changes = 150 },
 })
 
 lspconfig.gopls.setup({
@@ -175,21 +134,6 @@ lspconfig.gopls.setup({
 		},
 		init_options = {
 			usePlaceholders = true,
-		},
-	},
-})
-
-lspconfig.ansiblels.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-lspconfig.yamlls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		yaml = {
-			-- Disable the "Wrong ordering of key "your_key" in mapping" warning message
-			keyOrdering = false,
 		},
 	},
 })
@@ -215,6 +159,11 @@ lspconfig.groovyls.setup({
 			},
 		},
 	},
+})
+
+lspconfig.html.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
 
 -- Lua LSP config that alows vim as a global variable
@@ -256,6 +205,62 @@ lspconfig.lua_ls.setup({
 			telemetry = {
 				enable = false,
 			},
+		},
+	},
+})
+
+-- python
+lspconfig.jedi_language_server.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+lspconfig.basedpyright.setup({
+	-- Use jedi and pyright for python together
+	-- https://www.reddit.com/r/neovim/comments/vpg72u/comment/ielb3h8/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+	on_attach = function(client)
+		client.server_capabilities.completionProvider = false
+		client.server_capabilities.hoverProvider = false
+		client.server_capabilities.definitionProvider = false
+		client.server_capabilities.rename = false
+		client.server_capabilities.signature_help = false
+	end,
+	capabilities = capabilities,
+	settings = {
+		pyright = { autoImportCompletion = true },
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				diagnosticMode = "openFilesOnly",
+				useLibraryCodeForTypes = true,
+				typeCheckingMode = "off",
+			},
+		},
+	},
+})
+
+lspconfig.rust_analyzer.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig.ts_ls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig.terraformls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	flags = { debounce_text_changes = 150 },
+})
+
+lspconfig.yamlls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+		yaml = {
+			-- Disable the "Wrong ordering of key "your_key" in mapping" warning message
+			keyOrdering = false,
 		},
 	},
 })
