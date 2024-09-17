@@ -23,6 +23,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black", "pydocstyle" },
 				terraform = { "terraform_fmt" },
+				sass = { "prettier" },
 				sh = { "shellcheck", "shfmt" },
 				yaml = { "yamlfmt" },
 			},
