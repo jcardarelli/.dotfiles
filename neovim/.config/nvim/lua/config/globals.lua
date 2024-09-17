@@ -16,20 +16,6 @@ if vim.g.neovide then
 	vim.g.neovide_cursor_trail_size = 0
 end
 
--- Toggle settings based on buffer line count
-local function short_buffer_settings_toggle()
-	local total_lines = vim.api.nvim_buf_line_count(0)
-	local window_height = vim.api.nvim_win_get_height(0)
-
-	if total_lines <= window_height then
-		vim.wo.number = false
-		vim.wo.cursorline = false
-	else
-		vim.wo.number = true
-		vim.wo.cursorline = true
-	end
-end
-
 -- Use toggleterm with fish shell
 vim.o.shell = "fish"
 
