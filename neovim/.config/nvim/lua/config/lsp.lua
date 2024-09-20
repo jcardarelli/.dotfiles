@@ -180,6 +180,11 @@ lspconfig.lua_ls.setup({
 				path = runtime_path,
 			},
 			diagnostics = {
+				-- Ignore noisy warnings that are apparently harmless:
+				-- https://github.com/nvim-lua/kickstart.nvim/issues/543#issuecomment-1859319206
+				disable = {
+					"missing-fields",
+				},
 				globals = {
 					"border",
 					"os",
