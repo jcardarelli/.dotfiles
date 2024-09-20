@@ -24,7 +24,7 @@ return {
 				python = { "isort", "black", "pydocstyle" },
 				terraform = { "terraform_fmt" },
 				sass = { "prettier" },
-				sh = { "shellcheck", "shfmt" },
+				sh = { "shellharden", "shfmt" },
 				yaml = { "yamlfmt" },
 			},
 
