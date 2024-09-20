@@ -2,6 +2,7 @@
 require("config.globals")
 require("config.abbreviations")
 require("config.lazy")
+require("config.autocmds")
 require("config.mappings")
 
 -- Display
