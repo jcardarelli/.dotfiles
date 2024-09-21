@@ -100,7 +100,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
 vim.keymap.set("n", "<Leader>gd", ':TermExec cmd="PAGER= git diff"<CR>', { silent = true })
 vim.keymap.set("n", "<Leader>gdc", ':TermExec cmd="PAGER= git diff --cached"<CR>', { silent = true })
 
--- TODO: Also run git status in the terminal after adding the file
 vim.keymap.set("n", "<Leader>ga", ":TermExec cmd='git add .; git status; echo; g10'<CR>", defaults)
 vim.keymap.set("n", "<Leader>gc", ":Git commit -qm '", defaults)
 vim.keymap.set("n", "<Leader>gg", ":Git", defaults)
