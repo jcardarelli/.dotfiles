@@ -41,3 +41,9 @@ vim.api.nvim_create_autocmd({
 	end,
 	group = vim.api.nvim_create_augroup("ToggleLineNumbersGroup", { clear = true }),
 })
+
+-- Allow nvr git commit windows to be closed with just :wq or :x
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "gitcommit", "gitrebase", "gitconfig" },
+	command = "set bufhidden=delete",
+})
