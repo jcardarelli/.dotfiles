@@ -35,7 +35,6 @@ vim.api.nvim_create_autocmd({
 			and vim.bo.filetype ~= "noice"
 			and vim.bo.filetype ~= "NvimTree"
 			and vim.bo.filetype ~= "sagaoutline"
-			and vim.bo.filetype ~= "toggleterm"
 		then
 			short_buffer_settings_toggle()
 		end
