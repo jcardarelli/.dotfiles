@@ -25,6 +25,9 @@ end
 -- Use fish shell with terminal
 vim.o.shell = "fish"
 
+-- Buffers
+vim.opt.switchbuf = "useopen"
+
 -- Folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
