@@ -2,7 +2,7 @@
 --- Environment variables
 --------------------------------------------------------------------------------
 -- https://github.com/mhinz/neovim-remote?tab=readme-ov-file#typical-use-cases
-vim.env.GIT_EDITOR = "nvr -cc split --remote-wait"
+vim.env.GIT_EDITOR = "nvr -cc vsplit --remote-wait"
 
 --------------------------------------------------------------------------------
 -- Globals
