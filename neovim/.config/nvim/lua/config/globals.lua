@@ -1,4 +1,10 @@
 --------------------------------------------------------------------------------
+--- Environment variables
+--------------------------------------------------------------------------------
+-- https://github.com/mhinz/neovim-remote?tab=readme-ov-file#typical-use-cases
+vim.env.GIT_EDITOR = "nvr -cc split --remote-wait"
+
+--------------------------------------------------------------------------------
 -- Globals
 --------------------------------------------------------------------------------
 -- Disable netrw at the very start of your init.lua (strongly advised)
