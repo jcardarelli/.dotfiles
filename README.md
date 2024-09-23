@@ -21,7 +21,7 @@
   * Package manager:
     * Lazy.nvim with lazy load based on filetype
   * Global settings:
-    * Toggle`vim.wo.number` and `vim.wo.cursorline` off for short buffers
+    * Toggle `vim.wo.number` and `vim.wo.cursorline` off for short buffers
 - **Doom Emacs**: Configs for the vim-forward Emacs distribution (aka evil)
 
 ### Database
