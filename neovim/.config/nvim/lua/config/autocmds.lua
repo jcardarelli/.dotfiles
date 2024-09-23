@@ -31,6 +31,7 @@ vim.api.nvim_create_autocmd({
 	callback = function()
 		if
 			vim.bo.filetype ~= "Lazy"
+			and vim.bo.filetype ~= "neoterm"
 			and vim.bo.filetype ~= "noice"
 			and vim.bo.filetype ~= "NvimTree"
 			and vim.bo.filetype ~= "sagaoutline"

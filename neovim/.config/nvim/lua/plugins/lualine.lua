@@ -20,6 +20,7 @@ return {
 					"Lazy",
 					"NvimTree",
 					"sagaoutline",
+					"neoterm",
 					"toggleterm",
 				},
 

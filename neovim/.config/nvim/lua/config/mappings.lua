@@ -60,25 +60,13 @@ vim.keymap.set("n", "<Leader>tp", ":tabp<CR>", defaults)
 vim.keymap.set("n", "<Leader>o", ":only<CR>", defaults)
 vim.keymap.set("n", "<Leader>h", ":hide<CR>", defaults)
 
--- toggleterm mappings
--- ungodly hack here to make the first execution of the terminal command auto-scroll
--- to the bottom since I can't get toggleterm's `auto_scroll` setting working.
-vim.keymap.set(
-	"n",
-	"<Leader>gr",
-	':TermExec cmd="go run %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h',
-	defaults
-)
-vim.keymap.set(
-	"n",
-	"<Leader>gt",
-	':TermExec cmd="go test %" direction=vertical size=84<CR><C-w>l<C-\\><C-n>G<C-w>h',
-	defaults
-)
-vim.keymap.set("n", "<Leader>tc", ':TermExec cmd="exit"<CR>', defaults)
-vim.keymap.set("n", "<C-\\>", ":ToggleTerm direction=vertical size=90<CR>", defaults)
-vim.keymap.set("n", "<S-\\><C-\\>", ":ToggleTerm direction=horizontal size=90<CR>", defaults)
+vim.keymap.set("n", "<Leader>tc", ":Tclose<CR>", defaults)
+vim.keymap.set("n", "<C-\\>", function()
+	vim.cmd.vsplit()
+	vim.cmd.Ttoggle()
+end, defaults)
 
+-- Terminal window mappings
 -- https://github.com/akinsho/toggleterm.nvim#terminal-window-mappings
 function _G.set_terminal_keymaps()
 	local opts = { buffer = 0 }
@@ -89,7 +77,6 @@ function _G.set_terminal_keymaps()
 	vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
 	vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
 end
--- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "term://*",
 	callback = set_terminal_keymaps,
@@ -97,33 +84,23 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 -- Git
 -- mappings for using git in the built-in terminal
-vim.keymap.set("n", "<Leader>gd", ':TermExec cmd="PAGER= git diff"<CR>', { silent = true })
-vim.keymap.set("n", "<Leader>gdc", ':TermExec cmd="PAGER= git diff --cached"<CR>', { silent = true })
+vim.keymap.set("n", "<Leader>gd", ":T git diff<CR>", defaults)
+vim.keymap.set("n", "<Leader>gdc", ":T git diff --cached<CR>", defaults)
 
-vim.keymap.set("n", "<Leader>ga", ":TermExec cmd='git add .; git status; echo; g10'<CR>", defaults)
-vim.keymap.set("n", "<Leader>gc", ":Git commit -qm '", defaults)
-vim.keymap.set("n", "<Leader>gg", ":Git", defaults)
+vim.keymap.set("n", "<Leader>ga", ":T git add %<CR>", defaults)
+vim.keymap.set("n", "<Leader>gc", ":T git commit -v<CR>", defaults)
+vim.keymap.set("n", "<Leader>gg", ":Git<CR>", defaults)
 -- Run git add and git commit --amend --no-edit. <Bar> or \| allow for running multiple commands as part of one mapping
-vim.keymap.set("n", "<Leader>gmd", ":Git commit --amend --no-edit<CR>", defaults)
-vim.keymap.set(
-	"n",
-	"<Leader>gmd",
-	":TermExec cmd='git add %; git commit --amend --no-edit; echo; git status; echo; g10'<CR>",
-	{ silent = false }
-)
-vim.keymap.set("n", "<Leader>gst", ":TermExec cmd='git status'<CR>")
+vim.keymap.set("n", "<Leader>gmd", ":T git commit --amend --no-edit<CR>", defaults)
+vim.keymap.set("n", "<Leader>gst", ":T git status<CR>", defaults)
 
-vim.keymap.set("n", "<Leader>g10", ':TermExec cmd="g10"<CR>', { silent = true })
-vim.keymap.set("n", "<Leader>gp", ":TermExec cmd='git push'<CR>", { silent = true })
-
--- Exa
-vim.keymap.set("n", "<Leader>ee", ':TermExec cmd="exa --long"<CR>', { silent = true })
+vim.keymap.set("n", "<Leader>g10", ":T g10<CR>", defaults)
+vim.keymap.set("n", "<Leader>gp", ":T git push<CR>", defaults)
 
 -- regular terminal stuff
-vim.keymap.set("n", "<Leader>l", ':TermExec cmd="clear"<CR>', { silent = true })
-vim.keymap.set("n", "<Leader>lq", ":TermExec cmd='q'<CR>", defaults)
-vim.keymap.set("n", "<Leader>rl", ":w <bar> :TermExec cmd='!!' <CR>", defaults)
-vim.keymap.set("n", "<Leader>r2l", ":w <bar> :TermExec cmd='!2' <CR>", defaults)
+vim.keymap.set("n", "<Leader>l", ":Tclear<CR>", defaults)
+vim.keymap.set("n", "<Leader>q", ":T q<CR>", defaults)
+vim.keymap.set("n", "<Leader>rl", ":w <bar> :T !!<CR>", defaults)
 vim.keymap.set("n", "<Leader>gR", ":GoRun<CR><C-w>h", defaults)
 vim.keymap.set("n", "<Leader>tC", ":GoTermClose<CR>", defaults)
 
