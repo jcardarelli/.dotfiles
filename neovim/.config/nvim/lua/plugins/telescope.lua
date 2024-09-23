@@ -72,6 +72,13 @@ return {
 				selection_caret = " ❯ ",
 				entry_prefix = "   ",
 			},
+			pickers = {
+				find_files = {
+					-- Remove ./ from fd results
+					-- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#remove--from-fd-results
+					find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+				},
+			},
 			extensions = {
 				live_grep_args = {
 					auto_quoting = true, -- enable/disable auto-quoting
