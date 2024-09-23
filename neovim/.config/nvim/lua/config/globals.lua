@@ -16,7 +16,7 @@ if vim.g.neovide then
 	vim.g.neovide_cursor_trail_size = 0
 end
 
--- Use toggleterm with fish shell
+-- Use fish shell with terminal
 vim.o.shell = "fish"
 
 -- Folding
