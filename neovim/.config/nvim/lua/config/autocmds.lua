@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd({
 			vim.bo.filetype ~= "lazy"
 			and vim.bo.filetype ~= "neoterm"
 			and vim.bo.filetype ~= "noice"
-			and vim.bo.filetype ~= "NvimTree"
+			and vim.bo.filetype ~= "CHADTree"
 			and vim.bo.filetype ~= "sagaoutline"
 		then
 			short_buffer_settings_toggle()

@@ -21,7 +21,8 @@ return {
 					"NvimTree",
 					"sagaoutline",
 					"neoterm",
-					"toggleterm",
+					"CHADTree",
+					"sagaoutline",
 				},
 
 				-- If current filetype is in this list it'll always be drawn as inactive
