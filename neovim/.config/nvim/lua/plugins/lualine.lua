@@ -17,11 +17,9 @@ return {
 				theme = "tokyonight-day",
 				component_separators = "",
 				disabled_filetypes = {
-					"Lazy",
-					"NvimTree",
-					"sagaoutline",
-					"neoterm",
 					"CHADTree",
+					"lazy",
+					"neoterm",
 					"sagaoutline",
 				},
 
