@@ -1,4 +1,4 @@
-local function custom_filter(buf, buf_nums)
+local function custom_filter(buf)
 	if vim.bo[buf].filetype ~= "neoterm" then
 		return true
 	end
