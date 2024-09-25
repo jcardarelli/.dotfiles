@@ -22,9 +22,9 @@ vim.keymap.set("n", "\\\\", "<cmd>noh<CR>", defaults)
 
 -- Telescope
 local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<Leader>fr", builtin.registers, {})
-vim.keymap.set("n", "<Leader>fk", builtin.keymaps, {})
+vim.keymap.set("n", "<Leader>ff", builtin.find_files, defaults)
+vim.keymap.set("n", "<Leader>fr", builtin.registers, defaults)
+vim.keymap.set("n", "<Leader>fk", builtin.keymaps, defaults)
 vim.keymap.set("n", "<Leader>fc", ":Easypick changed_files<CR>", defaults)
 vim.keymap.set("n", "<Leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", defaults)
 vim.keymap.set("n", "<Leader>fb", builtin.buffers, defaults)
@@ -44,9 +44,9 @@ vim.keymap.set("n", "<Leader>M", ":Mason<CR>", defaults)
 vim.keymap.set("n", "<Leader>Ts", ":TSUpdate<CR>", defaults)
 
 -- File browser
-vim.keymap.set("n", "<Leader><Tab>", ":CHADopen<CR><C-w>l")
-vim.keymap.set("n", "<Leader>ee", ":T lsd -lAh<CR>")
-vim.keymap.set("n", "<Leader>pwd", ":T pwd<CR>")
+vim.keymap.set("n", "<Leader><Tab>", ":CHADopen<CR><C-w>l", defaults)
+vim.keymap.set("n", "<Leader>ee", ":T lsd -lAh<CR>", defaults)
+vim.keymap.set("n", "<Leader>pwd", ":T pwd<CR>", defaults)
 
 -- Trouble
 vim.keymap.set("n", "<Leader>T", ":Trouble diagnostics toggle<CR>", defaults)
@@ -120,26 +120,26 @@ vim.keymap.set("n", "<Leader>[", "zt", defaults)
 vim.keymap.set("n", "<Leader>mdp", ":MarkdownPreview<CR>", defaults)
 
 -- emacs keybindings for command mode
-vim.keymap.set("c", "<C-A>", "<Home>") -- go to start of line
-vim.keymap.set("c", "<C-E>", "<End>") -- go to end of line
-vim.keymap.set("c", "<C-B>", "<Left>") -- go back one character
-vim.keymap.set("c", "<C-D>", "<Del>") -- delete character under cursor
-vim.keymap.set("c", "<C-F>", "<Right>") -- go forward one character - this breaks <C-F> for editing commands
-vim.keymap.set("c", "<C-N>", "<Down>") -- recall newer command
--- vim.keymap.set("c", "<C-P>", "<Up>")   -- recall previous command - does this break telescope?
-vim.keymap.set("c", "<M-b>", "<S-Left>") -- go back one word
-vim.keymap.set("c", "<M-f>", "<S-Right>") -- go forward one word
-vim.keymap.set("c", "<M-Bs>", "<C-W>") -- delete one word
+vim.keymap.set("c", "<C-A>", "<Home>", defaults) -- go to start of line
+vim.keymap.set("c", "<C-E>", "<End>", defaults) -- go to end of line
+vim.keymap.set("c", "<C-B>", "<Left>", defaults) -- go back one character
+vim.keymap.set("c", "<C-D>", "<Del>", defaults) -- delete character under cursor
+vim.keymap.set("c", "<C-F>", "<Right>", defaults) -- go forward one character - this breaks <C-F> for editing commands
+vim.keymap.set("c", "<C-N>", "<Down>", defaults) -- recall newer command
+-- vim.keymap.set("c", "<C-P>", "<Up>", defaults)   -- recall previous command - does this break telescope?
+vim.keymap.set("c", "<M-b>", "<S-Left>", defaults) -- go back one word
+vim.keymap.set("c", "<M-f>", "<S-Right>", defaults) -- go forward one word
+vim.keymap.set("c", "<M-Bs>", "<C-W>", defaults) -- delete one word
 
 -- quickfix tpope unimpaired additions
 vim.keymap.set("n", "\\q", "<cmd>cclose<CR>", defaults)
 
 -- DAP debugger
-vim.keymap.set("n", "<Leader>dc", require("dap").continue)
-vim.keymap.set("n", "<Leader>do", require("dap").step_over)
-vim.keymap.set("n", "<Leader>di", require("dap").step_into)
-vim.keymap.set("n", "<Leader>dou", require("dap").step_out)
-vim.keymap.set("n", "<Leader>db", require("dap").toggle_breakpoint)
+vim.keymap.set("n", "<Leader>dc", require("dap").continue, defaults)
+vim.keymap.set("n", "<Leader>do", require("dap").step_over, defaults)
+vim.keymap.set("n", "<Leader>di", require("dap").step_into, defaults)
+vim.keymap.set("n", "<Leader>dou", require("dap").step_out, defaults)
+vim.keymap.set("n", "<Leader>db", require("dap").toggle_breakpoint, defaults)
 
 -- Show nice result counts as inline text with *, #, n, N, etc. (e.g. 1/4)
 require("hlslens").setup()
