@@ -10,9 +10,9 @@ return {
 			max_lines = 10000,
 			handle = {
 				-- for dark mode
-				color = colors.blue0,
+				-- color = colors.blue0,
 				-- for light mode
-				-- color = colors.fg,
+				color = colors.fg,
 				hide_if_all_visible = true,
 			},
 			handlers = {

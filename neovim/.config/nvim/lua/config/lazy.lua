@@ -22,7 +22,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 require("lazy").setup({
-	install = { colorscheme = { "tokyonight" } },
+	install = { colorscheme = { "tokyonight-day" } },
 	defaults = { lazy = true },
 	spec = {
 		{ import = "plugins" },

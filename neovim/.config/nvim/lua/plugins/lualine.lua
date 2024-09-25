@@ -14,7 +14,7 @@ return {
 	init = function()
 		require("lualine").setup({
 			options = {
-				theme = "tokyonight",
+				theme = "tokyonight-day",
 				component_separators = "",
 				disabled_filetypes = {
 					"Lazy",

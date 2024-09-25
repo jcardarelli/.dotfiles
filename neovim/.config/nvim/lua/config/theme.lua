@@ -1,3 +1,3 @@
 vim.opt.termguicolors = true
-vim.opt.background = "dark"
-vim.cmd([[colorscheme tokyonight-storm]])
+vim.opt.background = "light"
+vim.cmd([[colorscheme tokyonight-day]])

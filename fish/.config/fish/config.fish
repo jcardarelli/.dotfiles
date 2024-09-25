@@ -214,7 +214,7 @@ export PRE_COMMIT_COLOR=always
 abbr -a -g weather "curl wttr.in"
 
 # bat config
-export BAT_THEME="tokyonight_storm"
+export BAT_THEME="tokyonight_day"
 
 # doom emacs client alias
 # alias emacs="emacsclient --create-frame --alternate-editor=emacs"
