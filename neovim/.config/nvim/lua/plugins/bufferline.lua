@@ -1,3 +1,8 @@
+local function custom_filter(buf, buf_nums)
+	if vim.bo[buf].filetype ~= "neoterm" then
+		return true
+	end
+end
 return {
 	"akinsho/bufferline.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -20,6 +25,7 @@ return {
 					delay = 200,
 					reveal = { "close" },
 				},
+				custom_filter = custom_filter,
 				always_show_bufferline = true,
 				separator_style = "thin",
 				numbers = "none",
