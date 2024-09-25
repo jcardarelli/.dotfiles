@@ -15,6 +15,11 @@ return {
 						text_align = "left",
 					},
 				},
+				hover = {
+					enabled = true,
+					delay = 200,
+					reveal = { "close" },
+				},
 				always_show_bufferline = true,
 				separator_style = "thin",
 				numbers = "buffer_id",

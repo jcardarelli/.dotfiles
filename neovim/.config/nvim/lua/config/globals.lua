@@ -13,6 +13,9 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.tabstop = 4
 
+-- Support mouse movement events
+vim.opt.mousemoveevent = true
+
 -- Automatically reload a buffer on git checkout
 vim.opt.autoread = true
 
