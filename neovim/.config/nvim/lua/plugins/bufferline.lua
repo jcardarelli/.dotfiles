@@ -22,7 +22,7 @@ return {
 				},
 				always_show_bufferline = true,
 				separator_style = "thin",
-				numbers = "buffer_id",
+				numbers = "none",
 				diagnostics = "nvim_lsp",
 				--- count is an integer representing total count of errors
 				--- level is a string "error" | "warning"
