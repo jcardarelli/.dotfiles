@@ -43,8 +43,10 @@ vim.keymap.set("n", "<Leader>L", ":Lazy<CR>", defaults)
 vim.keymap.set("n", "<Leader>M", ":Mason<CR>", defaults)
 vim.keymap.set("n", "<Leader>Ts", ":TSUpdate<CR>", defaults)
 
--- NvimTree
-vim.keymap.set("n", "<Leader>t", ":NvimTreeToggle<CR><C-w>l", defaults)
+-- File browser
+vim.keymap.set("n", "<Leader><Tab>", ":CHADopen<CR><C-w>l")
+vim.keymap.set("n", "<Leader>ee", ":T lsd -lAh<CR>")
+vim.keymap.set("n", "<Leader>pwd", ":T pwd<CR>")
 
 -- Trouble
 vim.keymap.set("n", "<Leader>T", ":Trouble diagnostics toggle<CR>", defaults)
