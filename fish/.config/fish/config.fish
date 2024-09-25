@@ -19,12 +19,10 @@ abbr -a -g klf "kubectl logs -f"
 abbr -a -g kns kubens
 
 # lsd and the search for god
-abbr -a -g ll "lsd --almost-all --icon=always --blocks=permission,user,group,size,name --permission=octal --group-directories-first"
-abbr -a -g lla "lsd -l --sort extension --all"
-abbr -a -g llt "lsd -l --sort extension --tree"
-abbr -a -g llta "lsd -l --sort extension --tree --all"
-abbr -a -g llt2 "lsd -l --sort extension --tree --depth 2"
-abbr -a -g llt3 "lsd -l --sort extension --tree --depth 3"
+abbr -a -g ll "lsd -lAh"
+abbr -a -g llt "lsd -lAh --tree"
+abbr -a -g llt2 "lsd -lAh --tree --depth 2"
+abbr -a -g llt3 "lsd -lAh --tree --depth 3"
 
 abbr gti git
 abbr g1 "git log --oneline --decorate --color -1"
