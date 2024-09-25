@@ -22,13 +22,6 @@ return {
 		config = function()
 			require("fidget").setup({})
 		end,
-		opts = {
-			integration = {
-				["nvim-tree"] = {
-					enable = true,
-				},
-			},
-		},
 	},
 	lazy = false,
 }
