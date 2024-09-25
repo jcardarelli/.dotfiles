@@ -3,5 +3,8 @@ return {
 	main = "ibl",
 	---@module "ibl"
 	---@type ibl.config
+	init = function()
+		require("ibl").setup()
+	end,
 	opts = {},
 }
