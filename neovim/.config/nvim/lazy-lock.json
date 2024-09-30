@@ -61,6 +61,7 @@
   "quicker.nvim": { "branch": "master", "commit": "183041a46d6c908eefb1c23ea02cce9c8f41256e" },
   "render-markdown.nvim": { "branch": "main", "commit": "cfb8bdddaf52785b80d0805ddb3bfca923256fd4" },
   "rest.nvim": { "branch": "main", "commit": "e9f923784fbc1c6b69ec1f3d520f5b49d1ea6318" },
+  "sibling-swap.nvim": { "branch": "main", "commit": "269770df52114ed6f22321310538b4daf8973384" },
   "telescope-live-grep-args.nvim": { "branch": "master", "commit": "649b662a8f476fd2c0289570764459e95ebaa3f3" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },
