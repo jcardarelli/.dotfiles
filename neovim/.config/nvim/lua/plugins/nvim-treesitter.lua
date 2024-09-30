@@ -73,7 +73,7 @@ return {
 			indent = {
 				enable = true,
 			},
-			-- Enable endwise plugin for closing if statements
+			-- Enable endwise plugin for closing if statements, loops, etc.
 			-- requires https://github.com/RRethy/nvim-treesitter-endwise
 			endwise = {
 				enable = true,
