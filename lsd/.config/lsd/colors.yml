@@ -10,9 +10,9 @@ permission:
   acl: dark_cyan
   context: cyan
 date:
-  hour-old: 39
-  day-old: 40
-  older: 36
+  hour-old: 38
+  day-old: 34
+  older: 30
 size:
   none: 245
   small: 20
