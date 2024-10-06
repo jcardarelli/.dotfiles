@@ -46,7 +46,7 @@ abbr gcob "git checkout -b"
 function gitf
     set -l commit_hash "$1"
 
-    if [ -z $commit_hash ]
+    if [ -z "$commit_hash" ]
         echo "Enter the commit hash as the first argument."
         # no longer true!
         # echo "One way to do this is with \`gitl 10\`."
