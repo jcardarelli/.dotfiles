@@ -117,20 +117,20 @@ abbr -a -g vimf "vim (fzf --height 40%)"
 
 function bind_bang
     switch (commandline -t)[-1]
-        case "!"
+        case '!'
             commandline -t $history[1]
             commandline -f repaint
-        case "*"
+        case '*'
             commandline -i !
     end
 end
 
 function bind_dollar
     switch (commandline -t)[-1]
-        case "!"
-            commandline -t ""
+        case '!'
+            commandline -t ''
             commandline -f history-token-search-backward
-        case "*"
+        case '*'
             commandline -i '$'
     end
 end
