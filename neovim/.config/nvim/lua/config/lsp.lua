@@ -213,33 +213,19 @@ lspconfig.lua_ls.setup({
 	},
 })
 
--- python
-lspconfig.jedi_language_server.setup({
+-- All optional providers installed: pip install "python-lsp-server[all]"
+-- * Rope for Completions and renaming
+-- * Pyflakes linter to detect various errors
+-- * McCabe linter for complexity checking
+-- * pycodestyle linter for style checking
+-- * pydocstyle linter for docstring style checking (disabled by default)
+-- * autopep8 for code formatting
+-- * YAPF for code formatting (preferred over autopep8)
+-- * flake8 for error checking (disabled by default)
+-- * pylint for code linting (disabled by default)
+lspconfig.pylsp.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-})
-lspconfig.basedpyright.setup({
-	-- Use jedi and pyright for python together
-	-- https://www.reddit.com/r/neovim/comments/vpg72u/comment/ielb3h8/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-	on_attach = function(client)
-		client.server_capabilities.completionProvider = false
-		client.server_capabilities.hoverProvider = false
-		client.server_capabilities.definitionProvider = false
-		client.server_capabilities.rename = false
-		client.server_capabilities.signature_help = false
-	end,
-	capabilities = capabilities,
-	settings = {
-		pyright = { autoImportCompletion = true },
-		python = {
-			analysis = {
-				autoSearchPaths = true,
-				diagnosticMode = "openFilesOnly",
-				useLibraryCodeForTypes = true,
-				typeCheckingMode = "off",
-			},
-		},
-	},
 })
 
 lspconfig.rust_analyzer.setup({
