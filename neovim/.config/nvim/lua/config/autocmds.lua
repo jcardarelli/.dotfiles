@@ -1,14 +1,3 @@
--- Set filetype to groovy if filename is Jenkinsfile
-vim.api.nvim_create_autocmd({
-	"BufRead",
-	"BufNewFile",
-}, {
-	pattern = "Jenkinsfile",
-	callback = function()
-		vim.bo.filetype = "groovy"
-	end,
-})
-
 -- Toggle settings based on buffer line count
 local function short_buffer_settings_toggle()
 	local total_lines = vim.api.nvim_buf_line_count(0)
@@ -46,4 +35,15 @@ vim.api.nvim_create_autocmd({
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "gitcommit", "gitrebase", "gitconfig" },
 	command = "set bufhidden=delete",
+})
+
+-- Set filetype to groovy if filename is Jenkinsfile
+vim.api.nvim_create_autocmd({
+	"BufRead",
+	"BufNewFile",
+}, {
+	pattern = "Jenkinsfile",
+	callback = function()
+		vim.bo.filetype = "groovy"
+	end,
 })
