@@ -54,9 +54,19 @@ vim.keymap.set("n", "<Leader>T", ":Trouble diagnostics toggle<CR>", defaults)
 -- Buffer mappings
 vim.keymap.set("n", "<Leader>bf", ":bfirst<CR>", defaults)
 vim.keymap.set("n", "<Leader>bl", ":blast<CR>", defaults)
-vim.keymap.set("n", "<Leader>bn", ":bnext<CR>", defaults)
 vim.keymap.set("n", "<Leader>bd", ":bd<CR>:bnext<CR>", defaults)
-vim.keymap.set("n", "<Leader>bp", ":bprevious<CR>", defaults)
+vim.keymap.set("n", "<Leader>bp", function()
+	vim.cmd.bprevious()
+	if vim.bo.buftype == "terminal" then
+		vim.cmd.bprevious()
+	end
+end, defaults)
+vim.keymap.set("n", "<Leader>bn", function()
+	vim.cmd.bnext()
+	if vim.bo.buftype == "terminal" then
+		vim.cmd.bnext()
+	end
+end, defaults)
 vim.keymap.set("n", "<Leader>tn", ":tabn<CR>", defaults)
 vim.keymap.set("n", "<Leader>tp", ":tabp<CR>", defaults)
 vim.keymap.set("n", "<Leader>o", ":only<CR>", defaults)
