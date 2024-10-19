@@ -7,7 +7,8 @@ return {
 		"nvim-telescope/telescope.nvim", -- Optional: For using slash commands
 		{ "stevearc/dressing.nvim", opts = {} }, -- Optional: Improves `vim.ui.select`
 	},
-	lazy = false,
+	cmd = "CodeCompanion",
+	lazy = true,
 	config = function()
 		require("codecompanion").setup({
 			adapters = {
