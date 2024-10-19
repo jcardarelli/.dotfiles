@@ -47,3 +47,30 @@ vim.api.nvim_create_autocmd({
 		vim.bo.filetype = "groovy"
 	end,
 })
+
+-- Automatically navigate to the first unstaged git change, if present
+vim.api.nvim_create_autocmd("User", {
+	pattern = "GitSignsUpdate",
+	callback = function()
+		-- Only run once per buffer
+		if vim.b.git_change_handled then
+			return
+		end
+
+		-- Do not run for new changes to a file
+		local status_dict = vim.b.gitsigns_status_dict
+		if not status_dict or (status_dict.added == 0 and status_dict.changed == 0 and status_dict.removed == 0) then
+			return
+		end
+
+		-- If the file has previous changes, navigate to the hunk and bring to the
+		-- top of the window
+		vim.api.nvim_buf_call(vim.api.nvim_get_current_buf(), function()
+			require("gitsigns").next_hunk()
+			vim.defer_fn(function()
+				vim.api.nvim_command("normal! zt")
+				vim.b.git_change_handled = true
+			end, 100)
+		end)
+	end,
+})
