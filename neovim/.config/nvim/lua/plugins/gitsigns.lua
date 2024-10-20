@@ -37,7 +37,7 @@ return {
 			-- 	enable = false,
 			-- },
 			on_attach = function(bufnr)
-				local gs = package.loaded.gitsigns
+				local gs = require("gitsigns")
 
 				local function map(mode, l, r, gs_opts)
 					gs_opts = gs_opts or {}
