@@ -67,3 +67,6 @@ vim.cmd.set("linebreak")
 
 -- Disable smartindent so that treesitter will not mess up file previews
 vim.opt.smartindent = false
+
+-- When "on" the commands listed below move the cursor to the first non-blank of the line.  When off the cursor is kept in the same column (if possible).  This applies to the commands: CTRL-D, CTRL-U, CTRL-B, CTRL-F, "G", "H", "M", "L", gg, and to the commands "d", "<<" and ">>" with a linewise operator, with "%" with a count and to buffer changing commands (CTRL-^, :bnext, :bNext, etc.).
+vim.cmd.set("startofline")
