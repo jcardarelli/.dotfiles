@@ -50,6 +50,17 @@ return {
 					vim.keymap.set(mode, l, r, gs_opts)
 				end
 
+				-- Don't attach to specific buffers whose name matches a pattern
+				if
+					vim.api.nvim_buf_get_name(bufnr):match("lazy")
+					or vim.api.nvim_buf_get_name(bufnr):match("neoterm")
+					or vim.api.nvim_buf_get_name(bufnr):match("noice")
+					or vim.api.nvim_buf_get_name(bufnr):match("CHADtree")
+					or vim.api.nvim_buf_get_name(bufnr):match("sagaoutline")
+				then
+					return false
+				end
+
 				-- Navigation
 				map("n", "]c", function()
 					if vim.wo.diff then
