@@ -80,7 +80,16 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
+		{
+			name = "nvim_lsp",
+			entry_filter = function(entry)
+				local kind = require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
+				if kind == "Text" then
+					return false
+				end
+				-- return true
+			end,
+		},
 		{ name = "nvim_lua" },
 		{ name = "cmdline" },
 		{ name = "luasnip" },
