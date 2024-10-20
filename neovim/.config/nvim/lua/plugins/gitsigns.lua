@@ -2,11 +2,6 @@ return {
 	"lewis6991/gitsigns.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		-- for tokyonight
-		vim.cmd([[:highlight GitSignsAdd guifg=#9ece6a]])
-		vim.cmd([[:highlight GitSignsChange guifg=#7aa2f7]])
-		vim.cmd([[:highlight GitSignsDelete guifg=#f7768e]])
-
 		require("gitsigns").setup({
 			signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 			numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
