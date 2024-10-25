@@ -1,7 +1,6 @@
 -- Vim settings, package manager, and mappings
-require("config.globals")
-require("config.abbreviations")
 require("config.lazy")
+require("config.abbreviations")
 require("config.autocmds")
 require("config.mappings")
 
