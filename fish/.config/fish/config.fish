@@ -85,17 +85,17 @@ function new_repo
 end
 
 # Exa
-abbr -a -g e "exa --icons --git --classify --sort type"
-abbr -a -g ee "exa --icons --git --classify -l --sort type"
-abbr -a -g ela "exa --icons --git --classify --long --all --sort type"
-abbr -a -g et "exa --icons --git --classify --tree --sort type"
-abbr -a -g eta "exa --icons --git --classify --tree --all --sort type --level"
-abbr -a -g etl "exa --icons --git --classify --tree --ignore-glob '*pycache*' --level"
-abbr -a -g etl1 "exa --icons --git --classify --tree --ignore-glob '*pycache*' --level 1"
-abbr -a -g etl2 "exa --icons --git --classify --tree --ignore-glob '*pycache*' --level 2"
-abbr -a -g etl3 "exa --icons --git --classify --tree --ignore-glob '*pycache*' --level 3"
-abbr -a -g etal "exa --icons --git --classify --tree -all --level type"
-abbr -a -g ett "exa --icons --git -l -s type"
+abbr -a -g e "eza --icons --git --classify --sort type"
+abbr -a -g ee "eza --icons --git --classify -l --sort type"
+abbr -a -g ela "eza --icons --git --classify --long --all --sort type"
+abbr -a -g et "eza --icons --git --classify --tree --sort type"
+abbr -a -g eta "eza --icons --git --classify --tree --all --sort type --level"
+abbr -a -g etl "eza --icons --git --classify --tree --ignore-glob '*pycache*' --level"
+abbr -a -g etl1 "eza --icons --git --classify --tree --ignore-glob '*pycache*' --level 1"
+abbr -a -g etl2 "eza --icons --git --classify --tree --ignore-glob '*pycache*' --level 2"
+abbr -a -g etl3 "eza --icons --git --classify --tree --ignore-glob '*pycache*' --level 3"
+abbr -a -g etal "eza --icons --git --classify --tree -all --level type"
+abbr -a -g ett "eza --icons --git -l -s type"
 
 ###############################################################################
 # Terraform and terragrunt abbreviations
