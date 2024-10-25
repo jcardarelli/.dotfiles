@@ -6,6 +6,7 @@ local formatters_by_ft = {
 		"golines",
 	},
 	html = { "prettier" },
+	java = { "google-java-format" },
 	javascript = { "prettier" },
 	lua = { "stylua" },
 	python = {
