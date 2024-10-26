@@ -22,13 +22,21 @@ vim.g.maplocalleader = "\\"
 require("config.globals")
 
 require("lazy").setup({
-	install = { colorscheme = { "tokyonight-day" } },
-	defaults = { lazy = true },
+	install = {
+		colorscheme = {
+			"tokyonight-day",
+		},
+	},
+	defaults = {
+		lazy = true,
+	},
 	spec = {
 		{ import = "plugins" },
 	},
 	ui = {
 		border = "rounded",
 	},
-	checker = { enabled = true },
+	checker = {
+		enabled = true,
+	},
 })
