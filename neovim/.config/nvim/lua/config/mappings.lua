@@ -95,17 +95,13 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- Git
--- mappings for using git in the built-in terminal
 vim.keymap.set("n", "<Leader>gd", ":T git diff<CR>", defaults)
 vim.keymap.set("n", "<Leader>gdc", ":T git diff --cached<CR>", defaults)
-
 vim.keymap.set("n", "<Leader>ga", ":T git add %<CR>", defaults)
 vim.keymap.set("n", "<Leader>gc", ":T git commit -v<CR>", defaults)
 vim.keymap.set("n", "<Leader>gg", ":Git<CR>", defaults)
--- Run git add and git commit --amend --no-edit. <Bar> or \| allow for running multiple commands as part of one mapping
 vim.keymap.set("n", "<Leader>gmd", ":T git commit --amend --no-edit<CR>", defaults)
 vim.keymap.set("n", "<Leader>gst", ":T git status<CR>", defaults)
-
 vim.keymap.set("n", "<Leader>g10", ":T g10<CR>", defaults)
 vim.keymap.set("n", "<Leader>gp", ":T git push<CR>", defaults)
 
