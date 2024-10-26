@@ -87,7 +87,7 @@ cmp.setup({
 				if kind == "Text" then
 					return false
 				end
-				-- return true
+				return true
 			end,
 		},
 		{ name = "nvim_lua" },
