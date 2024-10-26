@@ -68,8 +68,7 @@ cmp.setup({
 		{
 			name = "nvim_lsp",
 			entry_filter = function(entry)
-				local kind = require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
-				if kind == "Text" then
+				if require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] == "Text" then
 					return false
 				end
 				return true
@@ -98,5 +97,4 @@ cmp.setup({
 --------------------------------------------------------------------------------
 -- https://github.com/windwp/nvim-autopairs#you-need-to-add-mapping-cr-on-nvim-cmp-setupcheck-readmemd-on-nvim-cmp-repo
 -- If you want insert `(` after select function or method item
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
