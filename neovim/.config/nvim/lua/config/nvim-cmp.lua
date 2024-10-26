@@ -7,7 +7,6 @@ end
 -- Setup nvim-cmp
 --------------------------------------------------------------------------------
 local cmp = require("cmp")
-local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 cmp.setup({
 	enabled = function()
