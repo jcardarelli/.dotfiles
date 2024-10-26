@@ -6,7 +6,6 @@ require("config.mappings")
 
 -- Display
 require("config.theme")
-require("config.icons")
 
 -- LSP and LSP-adjacent
 require("config.lsp")
