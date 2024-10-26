@@ -15,6 +15,9 @@ return {
 				progress = {
 					enabled = false,
 				},
+				signature = {
+					enabled = false,
+				},
 			},
 			messages = {
 				-- NOTE: If you enable messages, then the cmdline is enabled automatically.
