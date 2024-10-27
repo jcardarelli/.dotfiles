@@ -8,10 +8,10 @@ return {
 			},
 			diagnostic_header = { " ", " ", " ", "ﴞ " },
 			hover = {
-				max_width = 0.4, -- defines float window width
-				max_height = 0.5, -- defines float window height
+				max_width = 0.2, -- defines float window width
+				max_height = 0.7, -- defines float window height
 				open_link = "gx", -- key for opening links
-				open_cmd = "!chrome", -- cmd for opening links
+				open_cmd = "!firefox", -- cmd for opening links
 			},
 			lightbulb = {
 				sign = true,
