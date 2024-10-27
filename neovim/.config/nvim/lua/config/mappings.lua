@@ -41,7 +41,7 @@ vim.keymap.set("n", "<Leader>vg", ":vimgrep <Space> %", defaults)
 -- Habitual update keymaps
 vim.keymap.set("n", "<Leader>L", ":Lazy<CR>", defaults)
 vim.keymap.set("n", "<Leader>M", ":Mason<CR>", defaults)
-vim.keymap.set("n", "<Leader>Ts", ":TSUpdate<CR>", defaults)
+vim.keymap.set("n", "<Leader>TS", ":TSUpdate<CR>", defaults)
 
 -- File browser
 vim.keymap.set("n", "<Leader><Tab>", ":CHADopen<CR><C-w>l", defaults)
