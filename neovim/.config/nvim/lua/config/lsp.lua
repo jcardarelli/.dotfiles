@@ -22,7 +22,7 @@ local on_attach = function(client, bufnr)
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "gD", "<Cmd>Lspsaga goto_type_definition<CR>", bufopts)
-	vim.keymap.set("n", "gd", "<Cmd>Lspsaga goto_definition<CR>", bufopts)
+	vim.keymap.set("n", "gd", "<Cmd>noautocmd Lspsaga goto_definition<CR>", bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
 	vim.keymap.set("n", "<Leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
