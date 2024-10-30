@@ -115,10 +115,6 @@ vim.keymap.set("n", "<Leader>tC", ":GoTermClose<CR>", defaults)
 -- mapping for inserting the current filename into the buffer
 vim.keymap.set("n", "<Leader>fn", ":put =expand('%')<CR>", defaults)
 
--- currently disabled
--- ts-node-action mappings for compacting & expanding code with treesitter
--- vim.keymap.set({ "n" }, "<Leader>k", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
-
 -- bring function to the top when browsing with [[ or ]]
 vim.keymap.set("n", "<Leader>[", "zt", defaults)
 
@@ -211,6 +207,6 @@ vim.api.nvim_set_keymap("n", "<Leader>nF", ":Neogen file<CR>", defaults)
 vim.api.nvim_set_keymap("n", "<Leader>nc", ":Neogen class<CR>", defaults)
 vim.api.nvim_set_keymap("n", "<Leader>nf", ":Neogen func<CR>", defaults)
 
--- Treesitter-based split join plugin
-vim.keymap.set("n", "<Leader>sj", ":lua require('treesj').toggle()<CR>", defaults)
-vim.keymap.set("v", "<Leader>sj", ":lua require('treesj').toggle()<CR>", defaults)
+-- Compact & expand code with treesitter
+vim.keymap.set({ "n" }, "<Leader>k", require("ts-node-action").node_action, { desc = "Treesitter Node Action" })
+vim.keymap.set({ "v" }, "<Leader>k", require("ts-node-action").node_action, { desc = "Treesitter Node Action" })
