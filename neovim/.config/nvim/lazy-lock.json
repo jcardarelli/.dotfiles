@@ -83,6 +83,7 @@
   "ts-node-action": { "branch": "master", "commit": "6d3b60754fd87963d70eadaa2f77873b447eac26" },
   "venv-selector.nvim": { "branch": "regexp", "commit": "e82594274bf7b54387f9a2abe65f74909ac66e97" },
   "vim-fugitive": { "branch": "master", "commit": "d4877e54cef67f5af4f950935b1ade19ed6b7370" },
+  "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
   "vim-unimpaired": { "branch": "master", "commit": "6d44a6dc2ec34607c41ec78acf81657248580bf1" },
   "vimtex": { "branch": "master", "commit": "0785fd98af20f308ce6856f75a70a4ece9abab29" }
 }

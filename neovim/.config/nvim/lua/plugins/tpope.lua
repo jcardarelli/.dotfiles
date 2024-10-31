@@ -8,6 +8,10 @@ return {
 		end,
 	},
 	{
+		"tpope/vim-repeat",
+		lazy = false,
+	},
+	{
 		"tpope/vim-unimpaired",
 		lazy = false,
 	},
