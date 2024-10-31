@@ -95,11 +95,11 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- Git
+vim.keymap.set("n", "<Leader>gg", ":Git<CR>", defaults)
 vim.keymap.set("n", "<Leader>gd", ":T git diff<CR>", defaults)
 vim.keymap.set("n", "<Leader>gdc", ":T git diff --cached<CR>", defaults)
 vim.keymap.set("n", "<Leader>ga", ":T git add %<CR>", defaults)
 vim.keymap.set("n", "<Leader>gc", ":T git commit -v<CR>", defaults)
-vim.keymap.set("n", "<Leader>gg", ":Git<CR>", defaults)
 vim.keymap.set("n", "<Leader>gmd", ":T git commit --amend --no-edit<CR>", defaults)
 vim.keymap.set("n", "<Leader>gst", ":T git status<CR>", defaults)
 vim.keymap.set("n", "<Leader>g10", ":T g10<CR>", defaults)
