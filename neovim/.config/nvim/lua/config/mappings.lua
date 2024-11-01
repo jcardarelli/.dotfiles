@@ -162,7 +162,7 @@ vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], 
 vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], defaults)
 vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], defaults)
 
--- Jump to TODO HACK WARN PERF NOTE TEST comments
+-- Jump to any comment with a keyword
 local keywords_list = {
 	"TODO",
 	"HACK",
