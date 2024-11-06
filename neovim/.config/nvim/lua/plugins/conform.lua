@@ -10,9 +10,9 @@ local formatters_by_ft = {
 	javascript = { "prettier" },
 	lua = { "stylua" },
 	python = {
+		"autopep8",
 		"black",
 		"isort",
-		"pydocstyle",
 	},
 	terraform = { "terraform_fmt" },
 	sass = { "prettier" },
