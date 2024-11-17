@@ -9,11 +9,6 @@ local formatters_by_ft = {
 	java = { "google-java-format" },
 	javascript = { "prettier" },
 	lua = { "stylua" },
-	python = {
-		"autopep8",
-		"black",
-		"isort",
-	},
 	terraform = { "terraform_fmt" },
 	sass = { "prettier" },
 	sh = {
