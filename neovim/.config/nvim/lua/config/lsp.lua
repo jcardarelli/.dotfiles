@@ -104,6 +104,11 @@ lspconfig.cssls.setup({
 	capabilities = capabilities,
 })
 
+lspconfig.dockerls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
 if not configs.fishls then
 	configs.fishls = {
 		default_config = {
