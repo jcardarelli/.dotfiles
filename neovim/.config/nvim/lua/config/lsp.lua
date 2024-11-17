@@ -241,6 +241,30 @@ lspconfig.lua_ls.setup({
 lspconfig.pylsp.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+	settings = {
+		pylsp = {
+			plugins = {
+				-- formatter options
+				black = { enabled = true },
+				autopep8 = { enabled = true },
+				yapf = { enabled = false },
+				-- linter options
+				pylint = { enabled = true },
+				pyflakes = { enabled = false },
+				pycodestyle = {
+					enabled = true,
+					ignore = { "W391" },
+					maxLineLength = 100,
+				},
+				-- type checker
+				pylsp_mypy = { enabled = true },
+				-- auto-completion options
+				jedi_completion = { fuzzy = true },
+				-- import sorting
+				pyls_isort = { enabled = true },
+			},
+		},
+	},
 })
 
 lspconfig.rust_analyzer.setup({
