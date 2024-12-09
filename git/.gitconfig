@@ -1,7 +1,7 @@
 [credential]
 	helper = cache
 [user]
-	name = jcardarelli
+	name = John Cardarelli
 	email = jcardarelli@users.noreply.github.com
 [core]
 	pager = delta
