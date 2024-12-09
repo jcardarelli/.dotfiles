@@ -41,6 +41,11 @@ vim.opt.foldlevel = 99
 -- Always keep the diagnostics 'sign column' open so there's no jarring
 -- opening and closing with > 0 warnings/errors/etc
 vim.opt.signcolumn = "yes"
+
+-- Disable OG vim's cmd bar that usually lives below the lualine. I'm using
+-- folke/noice.nvim instead. There's some custom code in this config that
+-- shows when recording a new macro, which is really the only missing
+-- functionality when this setting is enabled.
 vim.cmd.set("cmdheight=0")
 
 -- Default opening positions for splits
