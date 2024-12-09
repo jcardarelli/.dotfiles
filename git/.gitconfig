@@ -3,6 +3,8 @@
 [user]
 	name = John Cardarelli
 	email = jcardarelli@users.noreply.github.com
+	signingkey = ~/.ssh/id_ed25519.pub
+
 [core]
 	pager = delta
 	excludesfile = ~/.personal-gitignore
@@ -27,3 +29,5 @@
 	rebase = false
 [init]
 	defaultBranch = main
+[commit]
+    ssh-sign = true
