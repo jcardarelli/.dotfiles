@@ -114,6 +114,7 @@ export FZF_DEFAULT_OPTS='
   --no-mouse'
 # --preview-window=:hidden'
 abbr -a -g vimf "vim (fzf --height 40%)"
+fzf --fish | source
 
 function bind_bang
     switch (commandline -t)[-1]
