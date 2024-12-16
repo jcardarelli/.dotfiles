@@ -44,7 +44,7 @@ vim.keymap.set("n", "<Leader>M", ":Mason<CR>", defaults)
 vim.keymap.set("n", "<Leader>TS", ":TSUpdate<CR>", defaults)
 
 -- File browser
-vim.keymap.set("n", "<Leader><Tab>", ":CHADopen<CR><C-w>l", defaults)
+vim.keymap.set("n", "<Leader><Tab>", ":NvimTreeToggle<CR><C-w>l", defaults)
 vim.keymap.set("n", "<Leader>ee", ":T ee<CR>", defaults)
 vim.keymap.set("n", "<Leader>pwd", ":T pwd<CR>", defaults)
 

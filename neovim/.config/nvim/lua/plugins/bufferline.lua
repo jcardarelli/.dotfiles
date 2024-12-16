@@ -13,7 +13,7 @@ return {
 			options = {
 				offsets = {
 					{
-						filetype = "CHADTree",
+						filetype = "NvimTree",
 						highlight = "Directory",
 						separator = false,
 						text = "",

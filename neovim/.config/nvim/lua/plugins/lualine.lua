@@ -17,7 +17,7 @@ return {
 				theme = "tokyonight-day",
 				component_separators = "",
 				disabled_filetypes = {
-					"CHADTree",
+					"NvimTree",
 					"lazy",
 					"neoterm",
 					"sagaoutline",
