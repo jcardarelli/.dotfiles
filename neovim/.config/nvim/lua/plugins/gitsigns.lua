@@ -50,7 +50,7 @@ return {
 					vim.api.nvim_buf_get_name(bufnr):match("lazy")
 					or vim.api.nvim_buf_get_name(bufnr):match("neoterm")
 					or vim.api.nvim_buf_get_name(bufnr):match("noice")
-					or vim.api.nvim_buf_get_name(bufnr):match("CHADtree")
+					or vim.api.nvim_buf_get_name(bufnr):match("NvimTree")
 					or vim.api.nvim_buf_get_name(bufnr):match("sagaoutline")
 				then
 					return false
