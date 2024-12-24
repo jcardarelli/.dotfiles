@@ -10,6 +10,7 @@ local formatters_by_ft = {
 	javascript = { "prettier" },
 	lua = { "stylua" },
 	terraform = { "terraform_fmt" },
+	rust = { "rustfmt" },
 	sass = { "prettier" },
 	sh = {
 		"shellharden",
