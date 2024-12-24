@@ -86,6 +86,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 --------------------------------------------------------------------------------
 -- https://github.com/nvim-java/nvim-java?tab=readme-ov-file#custom-configuration-instructions
 require("java").setup()
+require("lspconfig").jdtls.setup({})
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
 
