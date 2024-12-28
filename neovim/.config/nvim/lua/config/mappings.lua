@@ -7,6 +7,7 @@ local defaults = {
 vim.keymap.set("n", "<Leader>ev", ":vsp $MYVIMRC<CR>", defaults)
 vim.keymap.set("n", "<Leader>sv", ":source $MYVIMRC<CR>", defaults)
 vim.keymap.set("n", "<Leader>ek", ":vsp $HOME/.config/kitty/kitty.conf<CR>", defaults)
+vim.keymap.set("n", "<Leader>eg", ":vsp $HOME/.config/ghostty/config<CR>", defaults)
 vim.keymap.set("n", "<Leader>ep", ":vsp $HOME/.config/nvim/lua/plugins/<CR>", defaults)
 vim.keymap.set("n", "<Leader>ef", ":vsp $HOME/.config/fish/config.fish<CR>", defaults)
 vim.keymap.set("n", "<Leader>et", ":vsp $HOME/.config/tmux/tmux.conf<CR>", defaults)
