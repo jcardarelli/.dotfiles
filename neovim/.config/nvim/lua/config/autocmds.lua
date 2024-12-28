@@ -74,3 +74,12 @@ vim.api.nvim_create_autocmd("User", {
 		end)
 	end,
 })
+
+-- Reformat nvim-cmp docs with treesitter
+-- https://www.reddit.com/r/neovim/comments/180fmw5/comment/ka8of5r/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "cmp_docs",
+	callback = function()
+		vim.treesitter.start(0, "markdown")
+	end,
+})
