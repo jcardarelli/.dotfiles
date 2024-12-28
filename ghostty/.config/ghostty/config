@@ -1,0 +1,15 @@
+theme = "/Users/jcard/github/tokyonight.nvim/extras/ghostty/tokyonight_day"
+
+font-family = "JetBrains Mono"
+font-thicken = true
+
+cursor-style = block_hollow
+cursor-style-blink = false
+
+# Disable shell integration for cursor since it defaults to a bar
+# https://ghostty.org/docs/config/reference#cursor-style
+shell-integration-features = no-cursor
+
+# Start ghostty maximized
+window-height = 100
+window-width = 300
