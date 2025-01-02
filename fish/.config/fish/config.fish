@@ -224,3 +224,6 @@ export BAT_THEME="tokyonight_day"
 
 # doom emacs client alias
 # alias emacs="emacsclient --create-frame --alternate-editor=emacs"
+
+# Local AWS testing with LocalStack
+export LOCALSTACK_AUTH_TOKEN="$(cat ~/.localstack)"
