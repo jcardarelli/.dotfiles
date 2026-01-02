@@ -9,12 +9,11 @@ return {
 		port = "11434", -- The port on which the Ollama service is listening.
 		quit_map = "q", -- set keymap for close the response window
 		retry_map = "<c-r>", -- set keymap to re-send the current prompt
-		init = function(options)
+		init = function(_options)
 			pcall(io.popen, "ollama serve > /dev/null 2>&1 &")
 		end,
 		-- Function to initialize Ollama
 		command = function(options)
-			local body = { model = options.model, stream = true }
 			return "curl --silent --no-buffer -X POST http://" .. options.host .. ":" .. options.port .. "/api/chat -d $body"
 		end,
 		-- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
