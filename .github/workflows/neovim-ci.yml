@@ -66,6 +66,11 @@ jobs:
           mkdir -p ~/.config
           ln -s $GITHUB_WORKSPACE/neovim/.config/nvim ~/.config/nvim
 
+      - name: Pre-install Lazy.nvim
+        run: |
+          # Clone lazy.nvim before nvim starts to avoid bootstrap hanging on getchar()
+          git clone --filter=blob:none --branch=stable https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/lazy/lazy.nvim
+
       - name: Test config loads without errors
         run: |
           timeout 30 nvim --headless -c 'lua print("startup ok")' -c 'qall' 2>&1 || exit 1
