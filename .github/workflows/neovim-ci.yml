@@ -50,9 +50,33 @@ jobs:
   test:
     name: Test Config
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y luarocks npm
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Install tree-sitter CLI
+        run: |
+          npm install -g tree-sitter-cli
+
+      - name: Install Go tools
+        run: |
+          go install golang.org/x/tools/gopls@latest
+          echo "$HOME/go/bin" >> $GITHUB_PATH
 
       - name: Install Neovim
         run: |
@@ -73,16 +97,16 @@ jobs:
 
       - name: Test config loads without errors
         run: |
-          timeout 30 nvim --headless -c 'lua print("startup ok")' -c 'qall' 2>&1 || exit 1
-        timeout-minutes: 1
+          timeout 60 nvim --headless -c 'lua print("startup ok")' -c 'qall' 2>&1 || exit 1
+        timeout-minutes: 2
 
       - name: Sync plugins
         run: |
           # Install plugins via Lazy.nvim
-          timeout 240 nvim --headless "+Lazy! sync" +qall 2>&1 || true
-        timeout-minutes: 5
+          timeout 480 nvim --headless "+Lazy! sync" +qall 2>&1 || true
+        timeout-minutes: 10
 
       - name: Verify config after plugin sync
         run: |
-          timeout 30 nvim --headless -c 'lua print("Config OK after plugin sync")' -c 'qall' 2>&1 || exit 1
-        timeout-minutes: 1
+          timeout 60 nvim --headless -c 'lua print("Config OK after plugin sync")' -c 'qall' 2>&1 || exit 1
+        timeout-minutes: 2
