@@ -19,10 +19,12 @@ jobs:
 
       - name: Install selene
         run: |
-          curl -fsSL https://github.com/Kampfkarren/selene/releases/latest/download/selene-linux.zip -o selene.zip
+          gh release download --repo Kampfkarren/selene --pattern 'selene-*-linux.zip' -O selene.zip
           unzip selene.zip
           chmod +x selene
           sudo mv selene /usr/local/bin/
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Run selene
         working-directory: neovim/.config/nvim
