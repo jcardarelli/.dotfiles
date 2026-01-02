@@ -19,7 +19,7 @@ jobs:
 
       - name: Install selene
         run: |
-          gh release download --repo Kampfkarren/selene --pattern 'selene-*-linux.zip' -O selene.zip
+          gh release download --repo Kampfkarren/selene --pattern 'selene-light-*-linux.zip' -O selene.zip
           unzip selene.zip
           chmod +x selene
           sudo mv selene /usr/local/bin/
