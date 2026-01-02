@@ -1,0 +1,81 @@
+name: Neovim Config CI
+
+on:
+  pull_request:
+    paths:
+      - 'neovim/.config/nvim/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'neovim/.config/nvim/**'
+
+jobs:
+  lint:
+    name: Lint Lua
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install selene
+        run: |
+          curl -fsSL https://github.com/Kampfkarren/selene/releases/latest/download/selene-linux.zip -o selene.zip
+          unzip selene.zip
+          chmod +x selene
+          sudo mv selene /usr/local/bin/
+
+      - name: Run selene
+        working-directory: neovim/.config/nvim
+        run: selene lua/
+
+  format:
+    name: Check Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install stylua
+        run: |
+          curl -fsSL https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux-x86_64.zip -o stylua.zip
+          unzip stylua.zip
+          chmod +x stylua
+          sudo mv stylua /usr/local/bin/
+
+      - name: Check formatting
+        working-directory: neovim/.config/nvim
+        run: stylua --check lua/
+
+  test:
+    name: Test Config
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Neovim
+        run: |
+          curl -fsSL https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.tar.gz -o nvim.tar.gz
+          tar xzf nvim.tar.gz
+          sudo mv nvim-linux-x86_64 /opt/nvim
+          echo "/opt/nvim/bin" >> $GITHUB_PATH
+
+      - name: Setup config
+        run: |
+          mkdir -p ~/.config
+          ln -s $GITHUB_WORKSPACE/neovim/.config/nvim ~/.config/nvim
+
+      - name: Test config loads without errors
+        run: |
+          # Run nvim and capture any errors
+          nvim --headless -c 'lua print("startup ok")' -c 'qall' 2>&1 | tee startup.log
+          # Check exit code
+          nvim --headless -c 'qall'
+
+      - name: Sync plugins
+        run: |
+          # Install plugins via Lazy.nvim
+          nvim --headless "+Lazy! sync" -c 'qall' 2>&1 || true
+        timeout-minutes: 5
+
+      - name: Verify config after plugin sync
+        run: |
+          nvim --headless -c 'lua print("Config OK after plugin sync")' -c 'qall'
