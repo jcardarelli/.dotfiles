@@ -7,7 +7,7 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 })
 
 --------------------------------------------------------------------------------
--- LSP configuration
+-- LSP configuration (Neovim 0.11+ API)
 --------------------------------------------------------------------------------
 -- Mappings for navigating LSP diagnostic messages
 local opts = { noremap = true, silent = true }
@@ -16,63 +16,71 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, opts)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set("n", "gD", "<Cmd>Lspsaga goto_type_definition<CR>", bufopts)
-	vim.keymap.set("n", "gd", "<Cmd>noautocmd Lspsaga goto_definition<CR>", bufopts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-	vim.keymap.set("n", "<Leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-	vim.keymap.set("n", "<Leader>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, bufopts)
-	vim.keymap.set("n", "<Leader>D", vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", bufopts)
-	vim.keymap.set("n", "gr", "<Cmd>Lspsaga finder<cr>", opts)
+-- Use LspAttach autocmd to map keys after the language server attaches
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+	callback = function(ev)
+		local bufnr = ev.buf
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		if not client then
+			return
+		end
 
-	-- Lspsaga overrides for the default LSP
-	vim.keymap.set("n", "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-	vim.keymap.set("n", "<C-p>", "<Cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-	vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<cr>", opts)
-	vim.keymap.set("i", "<C-k>", "<Cmd>Lspsaga signature_help<cr>", opts)
-	vim.keymap.set("n", "gp", "<Cmd>Lspsaga peek_definition<cr>", opts)
-	vim.keymap.set("n", "<Leader>ol", "<Cmd>Lspsaga outline<cr>", opts)
-	vim.keymap.set("n", "<Leader>ca", "<Cmd>Lspsaga code_action<cr>", opts)
+		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		local bufopts = { noremap = true, silent = true, buffer = bufnr }
+		vim.keymap.set("n", "gD", "<Cmd>Lspsaga goto_type_definition<CR>", bufopts)
+		vim.keymap.set("n", "gd", "<Cmd>noautocmd Lspsaga goto_definition<CR>", bufopts)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+		vim.keymap.set("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+		vim.keymap.set("n", "<Leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+		vim.keymap.set("n", "<Leader>wl", function()
+			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		end, bufopts)
+		vim.keymap.set("n", "<Leader>D", vim.lsp.buf.type_definition, bufopts)
+		vim.keymap.set("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", bufopts)
+		vim.keymap.set("n", "gr", "<Cmd>Lspsaga finder<cr>", bufopts)
 
-	-- Server capabilities spec:
-	-- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#serverCapabilities
-	if client.server_capabilities.documentHighlightProvider then
-		vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
-		vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_highlight" })
-		vim.api.nvim_create_autocmd("CursorHold", {
-			-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#borders
-			callback = function()
-				local callbackOpts = {
-					focusable = false,
-					close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-					border = "rounded",
-					source = "always",
-					prefix = " ",
-					scope = "cursor",
-				}
-				vim.diagnostic.open_float(nil, callbackOpts)
-			end,
-			-- callback = vim.lsp.buf.document_highlight,
-			buffer = bufnr,
-			group = "lsp_document_highlight",
-			desc = "Document Highlight",
-		})
-		vim.api.nvim_create_autocmd("CursorMoved", {
-			callback = vim.lsp.buf.clear_references,
-			buffer = bufnr,
-			group = "lsp_document_highlight",
-			desc = "Clear All the References",
-		})
-	end
-end
+		-- Lspsaga overrides for the default LSP
+		vim.keymap.set("n", "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<cr>", bufopts)
+		vim.keymap.set("n", "<C-p>", "<Cmd>Lspsaga diagnostic_jump_prev<cr>", bufopts)
+		vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<cr>", bufopts)
+		vim.keymap.set("i", "<C-k>", "<Cmd>Lspsaga signature_help<cr>", bufopts)
+		vim.keymap.set("n", "gp", "<Cmd>Lspsaga peek_definition<cr>", bufopts)
+		vim.keymap.set("n", "<Leader>ol", "<Cmd>Lspsaga outline<cr>", bufopts)
+		vim.keymap.set("n", "<Leader>ca", "<Cmd>Lspsaga code_action<cr>", bufopts)
+
+		-- Server capabilities spec:
+		-- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#serverCapabilities
+		if client.server_capabilities.documentHighlightProvider then
+			vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
+			vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_highlight" })
+			vim.api.nvim_create_autocmd("CursorHold", {
+				-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#borders
+				callback = function()
+					local callbackOpts = {
+						focusable = false,
+						close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+						border = "rounded",
+						source = "always",
+						prefix = " ",
+						scope = "cursor",
+					}
+					vim.diagnostic.open_float(nil, callbackOpts)
+				end,
+				-- callback = vim.lsp.buf.document_highlight,
+				buffer = bufnr,
+				group = "lsp_document_highlight",
+				desc = "Document Highlight",
+			})
+			vim.api.nvim_create_autocmd("CursorMoved", {
+				callback = vim.lsp.buf.clear_references,
+				buffer = bufnr,
+				group = "lsp_document_highlight",
+				desc = "Clear All the References",
+			})
+		end
+	end,
+})
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -82,51 +90,38 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 --------------------------------------------------------------------------------
--- nvim-lspconfig setup
+-- LSP server configurations (Neovim 0.11+ vim.lsp.config API)
 --------------------------------------------------------------------------------
 -- https://github.com/nvim-java/nvim-java?tab=readme-ov-file#custom-configuration-instructions
 require("java").setup()
-require("lspconfig").jdtls.setup({})
-local lspconfig = require("lspconfig")
-local configs = require("lspconfig.configs")
 
-lspconfig.ansiblels.setup({
-	on_attach = on_attach,
+-- Configure each LSP server using vim.lsp.config
+vim.lsp.config("ansiblels", {
 	capabilities = capabilities,
 })
 
-lspconfig.bashls.setup({
-	on_attach = on_attach,
+vim.lsp.config("bashls", {
 	capabilities = capabilities,
 })
 
-lspconfig.cssls.setup({
-	on_attach = on_attach,
+vim.lsp.config("cssls", {
 	capabilities = capabilities,
 })
 
-lspconfig.dockerls.setup({
-	on_attach = on_attach,
+vim.lsp.config("dockerls", {
 	capabilities = capabilities,
 })
 
-if not configs.fishls then
-	configs.fishls = {
-		default_config = {
-			cmd = { "fish-lsp", "start" },
-			root_dir = lspconfig.util.root_pattern(".git"),
-			filetypes = { "fish" },
-		},
-	}
-end
-lspconfig.fishls.setup({
-	on_attach = on_attach,
+-- Custom fish-lsp configuration
+vim.lsp.config("fish_lsp", {
+	cmd = { "fish-lsp", "start" },
+	filetypes = { "fish" },
+	root_markers = { ".git" },
 	capabilities = capabilities,
 })
 
-lspconfig.gopls.setup({
+vim.lsp.config("gopls", {
 	cmd = { "gopls" },
-	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
 		gopls = {
@@ -144,8 +139,7 @@ lspconfig.gopls.setup({
 	},
 })
 
-lspconfig.groovyls.setup({
-	on_attach = on_attach,
+vim.lsp.config("groovyls", {
 	capabilities = capabilities,
 	cmd = {
 		"java",
@@ -166,27 +160,23 @@ lspconfig.groovyls.setup({
 	},
 })
 
-lspconfig.html.setup({
-	on_attach = on_attach,
+vim.lsp.config("html", {
 	capabilities = capabilities,
 })
 
-lspconfig.jedi_language_server.setup({
-	on_attach = on_attach,
+vim.lsp.config("jedi_language_server", {
 	capabilities = capabilities,
 })
 
-lspconfig.jdtls.setup({
-	on_attach = on_attach,
+vim.lsp.config("jdtls", {
 	capabilities = capabilities,
 })
 
--- Lua LSP config that alows vim as a global variable
+-- Lua LSP config that allows vim as a global variable
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-lspconfig.lua_ls.setup({
-	on_attach = on_attach,
+vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
 			runtime = {
@@ -239,8 +229,7 @@ lspconfig.lua_ls.setup({
 -- * YAPF for code formatting (preferred over autopep8)
 -- * flake8 for error checking (disabled by default)
 -- * pylint for code linting (disabled by default)
-lspconfig.pylsp.setup({
-	on_attach = on_attach,
+vim.lsp.config("pylsp", {
 	capabilities = capabilities,
 	settings = {
 		pylsp = {
@@ -268,19 +257,16 @@ lspconfig.pylsp.setup({
 	},
 })
 
-lspconfig.ts_ls.setup({
-	on_attach = on_attach,
+vim.lsp.config("ts_ls", {
 	capabilities = capabilities,
 })
 
-lspconfig.terraformls.setup({
-	on_attach = on_attach,
+vim.lsp.config("terraformls", {
 	capabilities = capabilities,
 	flags = { debounce_text_changes = 150 },
 })
 
-lspconfig.yamlls.setup({
-	on_attach = on_attach,
+vim.lsp.config("yamlls", {
 	capabilities = capabilities,
 	settings = {
 		yaml = {
@@ -290,8 +276,27 @@ lspconfig.yamlls.setup({
 	},
 })
 
+-- Enable all configured LSP servers
+vim.lsp.enable({
+	"ansiblels",
+	"bashls",
+	"cssls",
+	"dockerls",
+	"fish_lsp",
+	"gopls",
+	"groovyls",
+	"html",
+	"jedi_language_server",
+	"jdtls",
+	"lua_ls",
+	"pylsp",
+	"ts_ls",
+	"terraformls",
+	"yamlls",
+})
+
 -- Enable signcolumn icons for nvim-lspconfig
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
