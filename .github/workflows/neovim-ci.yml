@@ -50,6 +50,7 @@ jobs:
   test:
     name: Test Config
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
@@ -67,17 +68,16 @@ jobs:
 
       - name: Test config loads without errors
         run: |
-          # Run nvim and capture any errors
-          nvim --headless -c 'lua print("startup ok")' -c 'qall' 2>&1 | tee startup.log
-          # Check exit code
-          nvim --headless -c 'qall'
+          timeout 30 nvim --headless -c 'lua print("startup ok")' -c 'qall' 2>&1 || exit 1
+        timeout-minutes: 1
 
       - name: Sync plugins
         run: |
           # Install plugins via Lazy.nvim
-          nvim --headless "+Lazy! sync" -c 'qall' 2>&1 || true
+          timeout 240 nvim --headless "+Lazy! sync" +qall 2>&1 || true
         timeout-minutes: 5
 
       - name: Verify config after plugin sync
         run: |
-          nvim --headless -c 'lua print("Config OK after plugin sync")' -c 'qall'
+          timeout 30 nvim --headless -c 'lua print("Config OK after plugin sync")' -c 'qall' 2>&1 || exit 1
+        timeout-minutes: 1
