@@ -26,6 +26,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
+      - name: Download vim standard library
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/Kampfkarren/selene/main/selene-lib/default_std/vim.yml -o neovim/.config/nvim/vim.yml
+
       - name: Run selene
         working-directory: neovim/.config/nvim
         run: selene lua/
