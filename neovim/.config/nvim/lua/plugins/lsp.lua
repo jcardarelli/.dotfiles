@@ -11,8 +11,12 @@ return {
 					border = "rounded",
 				},
 			})
-			require("mason-lspconfig").setup()
-			require("mason-lspconfig").setup_handlers({})
+			-- mason-lspconfig bridges Mason and vim.lsp.config
+			-- It ensures Mason-installed servers are available to vim.lsp.enable()
+			require("mason-lspconfig").setup({
+				-- Automatically install servers configured via vim.lsp.config
+				automatic_installation = true,
+			})
 		end,
 		build = ":MasonUpdate",
 	},
