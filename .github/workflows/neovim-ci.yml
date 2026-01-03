@@ -102,32 +102,70 @@ jobs:
 
       - name: Install plugins from lockfile
         run: |
+          echo "Installing plugins from lazy-lock.json..."
+          echo "================================================"
           # Use restore for reproducible installs from lazy-lock.json
+          # Show output in real-time with tee
           timeout 480 nvim --headless "+Lazy! restore" +qall 2>&1 | tee lazy-restore.log
+          echo "================================================"
+          echo "Plugin installation complete. See check step for validation."
         timeout-minutes: 10
 
       - name: Check for plugin errors
         run: |
-          # Use Lazy's API to check plugin status
+          # Use Lazy's API to check plugin status with live output
           nvim --headless -c 'lua local ok, err = pcall(function()
             local lazy = require("lazy")
             local plugins = lazy.plugins()
             local failed = {}
-            for _, plugin in ipairs(plugins) do
+            local installed = 0
+            local total = #plugins
+            
+            print("Checking " .. total .. " plugins...")
+            print(string.rep("-", 50))
+            
+            for i, plugin in ipairs(plugins) do
+              local status = plugin._.installed and "✓" or "✗"
+              local name = plugin.name or "unknown"
+              -- Show progress every 10 plugins or for failures
+              if i % 10 == 0 or not plugin._.installed then
+                print(string.format("[%3d/%3d] %s %s", i, total, status, name))
+                io.flush()
+              end
               if plugin._.installed == false then
-                table.insert(failed, plugin.name)
+                table.insert(failed, name)
+              else
+                installed = installed + 1
               end
             end
+            
+            print(string.rep("-", 50))
             if #failed > 0 then
-              print("FAILED PLUGINS: " .. table.concat(failed, ", "))
-              vim.cmd("cquit 1")
+              print("FAILED_PLUGINS:" .. table.concat(failed, ","))
+              print("INSTALLED:" .. installed)
+              print("TOTAL:" .. total)
             else
-              print("All " .. #plugins .. " plugins installed successfully")
+              print("SUCCESS:" .. total)
             end
-          end); if not ok then print("Error: " .. tostring(err)); vim.cmd("cquit 1") end' -c 'qall' 2>&1 | tee plugin-check.log
-          # Check exit code
-          if grep -q "FAILED PLUGINS:" plugin-check.log; then
-            echo "::error::Some plugins failed to install"
+          end); if not ok then print("ERROR:" .. tostring(err)) end' -c 'qall' 2>&1 | tee plugin-check.log
+          
+          # Parse and display results with GitHub Actions formatting
+          if grep -q "^SUCCESS:" plugin-check.log; then
+            COUNT=$(grep "^SUCCESS:" plugin-check.log | cut -d: -f2)
+            echo "::notice::✅ All $COUNT plugins installed successfully"
+            echo ""
+            echo "┌────────────────────────────────────────┐"
+            echo "│  ✅ Plugin Check Passed                │"
+            echo "│  $COUNT plugins verified               │"
+            echo "└────────────────────────────────────────┘"
+          elif grep -q "^FAILED_PLUGINS:" plugin-check.log; then
+            FAILED=$(grep "^FAILED_PLUGINS:" plugin-check.log | cut -d: -f2)
+            INSTALLED=$(grep "^INSTALLED:" plugin-check.log | cut -d: -f2)
+            TOTAL=$(grep "^TOTAL:" plugin-check.log | cut -d: -f2)
+            echo "::error::❌ $INSTALLED/$TOTAL plugins installed, failed: $FAILED"
+            exit 1
+          elif grep -q "^ERROR:" plugin-check.log; then
+            echo "::error::Plugin check encountered an error"
             cat plugin-check.log
             exit 1
           fi
