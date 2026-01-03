@@ -57,7 +57,7 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y luarocks npm
+          sudo apt-get install -y luarocks
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -68,13 +68,21 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: '1.22'
+          cache: true
 
-      - name: Install tree-sitter CLI
+      - name: Cache Neovim plugins
+        uses: actions/cache@v5
+        with:
+          path: ~/.local/share/nvim/lazy
+          key: nvim-plugins-${{ hashFiles('neovim/.config/nvim/lazy-lock.json') }}
+          restore-keys: |
+            nvim-plugins-
+
+      - name: Install tools
         run: |
+          # tree-sitter CLI
           npm install -g tree-sitter-cli
-
-      - name: Install Go tools
-        run: |
+          # Go LSP
           go install golang.org/x/tools/gopls@latest
           echo "$HOME/go/bin" >> $GITHUB_PATH
 
@@ -89,11 +97,10 @@ jobs:
         run: |
           mkdir -p ~/.config
           ln -s $GITHUB_WORKSPACE/neovim/.config/nvim ~/.config/nvim
-
-      - name: Pre-install Lazy.nvim
-        run: |
-          # Clone lazy.nvim before nvim starts to avoid bootstrap hanging on getchar()
-          git clone --filter=blob:none --branch=stable https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/lazy/lazy.nvim
+          # Pre-install Lazy.nvim if not cached
+          if [ ! -d ~/.local/share/nvim/lazy/lazy.nvim ]; then
+            git clone --filter=blob:none --branch=stable https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/lazy/lazy.nvim
+          fi
 
       - name: Test config loads without errors
         run: |
