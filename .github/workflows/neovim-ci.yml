@@ -134,8 +134,8 @@ jobs:
             for i, plugin in ipairs(plugins) do
               local status = plugin._.installed and "✓" or "✗"
               local name = plugin.name or "unknown"
-              -- Show progress every 10 plugins or for failures
-              if i % 10 == 0 or not plugin._.installed then
+              -- Show progress every 10 plugins, at the end, or for failures
+              if i % 10 == 0 or i == total or not plugin._.installed then
                 print(string.format("[%3d/%3d] %s %s", i, total, status, name))
                 io.flush()
               end
@@ -157,18 +157,19 @@ jobs:
           end); if not ok then print("ERROR:" .. tostring(err)) end' -c 'qall' 2>&1 | tee plugin-check.log
           
           # Parse and display results with GitHub Actions formatting
+          # Use tr to strip any trailing whitespace/newlines from extracted values
           if grep -q "^SUCCESS:" plugin-check.log; then
-            COUNT=$(grep "^SUCCESS:" plugin-check.log | cut -d: -f2)
+            COUNT=$(grep "^SUCCESS:" plugin-check.log | cut -d: -f2 | tr -d '[:space:]')
             echo "::notice::✅ All $COUNT plugins installed successfully"
             echo ""
             echo "┌────────────────────────────────────────┐"
             echo "│  ✅ Plugin Check Passed                │"
-            echo "│  $COUNT plugins verified               │"
+            printf "│  %-37s │\n" "$COUNT plugins verified"
             echo "└────────────────────────────────────────┘"
           elif grep -q "^FAILED_PLUGINS:" plugin-check.log; then
-            FAILED=$(grep "^FAILED_PLUGINS:" plugin-check.log | cut -d: -f2)
-            INSTALLED=$(grep "^INSTALLED:" plugin-check.log | cut -d: -f2)
-            TOTAL=$(grep "^TOTAL:" plugin-check.log | cut -d: -f2)
+            FAILED=$(grep "^FAILED_PLUGINS:" plugin-check.log | cut -d: -f2 | tr -d '[:space:]')
+            INSTALLED=$(grep "^INSTALLED:" plugin-check.log | cut -d: -f2 | tr -d '[:space:]')
+            TOTAL=$(grep "^TOTAL:" plugin-check.log | cut -d: -f2 | tr -d '[:space:]')
             echo "::error::❌ $INSTALLED/$TOTAL plugins installed, failed: $FAILED"
             exit 1
           elif grep -q "^ERROR:" plugin-check.log; then
