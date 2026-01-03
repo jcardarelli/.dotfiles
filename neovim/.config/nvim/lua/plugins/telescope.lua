@@ -59,11 +59,7 @@ return {
 								ts_filepath, -- Terminal image viewer command
 							}, { on_stdout = send_output, stdout_buffered = true })
 						else
-							require("telescope.previewers.utils").set_preview_message(
-								bufnr,
-								opts.winid,
-								"Binary cannot be previewed"
-							)
+							require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid, "Binary cannot be previewed")
 						end
 					end,
 				},

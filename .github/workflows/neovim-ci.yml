@@ -1,0 +1,185 @@
+name: Neovim Config CI
+
+on:
+  pull_request:
+    paths:
+      - 'neovim/.config/nvim/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'neovim/.config/nvim/**'
+
+jobs:
+  lint:
+    name: Lint Lua
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install selene
+        run: |
+          gh release download --repo Kampfkarren/selene --pattern 'selene-light-*-linux.zip' -O selene.zip
+          unzip selene.zip
+          chmod +x selene
+          sudo mv selene /usr/local/bin/
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Run selene
+        working-directory: neovim/.config/nvim
+        run: selene lua/
+
+  format:
+    name: Check Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install stylua
+        run: |
+          curl -fsSL https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux-x86_64.zip -o stylua.zip
+          unzip stylua.zip
+          chmod +x stylua
+          sudo mv stylua /usr/local/bin/
+
+      - name: Check formatting
+        working-directory: neovim/.config/nvim
+        run: stylua --check lua/
+
+  test:
+    name: Test Config
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y luarocks
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: 'stable'
+          cache: true
+
+      - name: Cache Neovim plugins
+        uses: actions/cache@v5
+        with:
+          path: ~/.local/share/nvim/lazy
+          key: nvim-plugins-${{ hashFiles('neovim/.config/nvim/lazy-lock.json') }}
+          restore-keys: |
+            nvim-plugins-
+
+      - name: Install tools
+        run: |
+          # tree-sitter CLI
+          npm install -g tree-sitter-cli
+          # Go LSP
+          go install golang.org/x/tools/gopls@latest
+          echo "$HOME/go/bin" >> $GITHUB_PATH
+
+      - name: Install Neovim
+        run: |
+          curl -fsSL https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.tar.gz -o nvim.tar.gz
+          tar xzf nvim.tar.gz
+          sudo mv nvim-linux-x86_64 /opt/nvim
+          echo "/opt/nvim/bin" >> $GITHUB_PATH
+
+      - name: Setup config
+        run: |
+          mkdir -p ~/.config
+          ln -s $GITHUB_WORKSPACE/neovim/.config/nvim ~/.config/nvim
+          # Pre-install Lazy.nvim if not cached
+          if [ ! -d ~/.local/share/nvim/lazy/lazy.nvim ]; then
+            git clone --filter=blob:none --branch=stable https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/lazy/lazy.nvim
+          fi
+
+      - name: Test config loads without errors
+        run: |
+          timeout 60 nvim --headless -c 'lua print("startup ok")' -c 'qall' 2>&1 || exit 1
+        timeout-minutes: 2
+
+      - name: Install plugins from lockfile
+        run: |
+          echo "Installing plugins from lazy-lock.json..."
+          echo "================================================"
+          # Use restore for reproducible installs from lazy-lock.json
+          # Show output in real-time with tee
+          timeout 480 nvim --headless "+Lazy! restore" +qall 2>&1 | tee lazy-restore.log
+          echo "================================================"
+          echo "Plugin installation complete. See check step for validation."
+        timeout-minutes: 10
+
+      - name: Check for plugin errors
+        run: |
+          # Use Lazy's API to check plugin status with live output
+          nvim --headless -c 'lua local ok, err = pcall(function()
+            local lazy = require("lazy")
+            local plugins = lazy.plugins()
+            local failed = {}
+            local installed = 0
+            local total = #plugins
+            
+            print("Checking " .. total .. " plugins...")
+            print(string.rep("-", 50))
+            
+            for i, plugin in ipairs(plugins) do
+              local status = plugin._.installed and "✓" or "✗"
+              local name = plugin.name or "unknown"
+              -- Show progress every 10 plugins, at the end, or for failures
+              if i % 10 == 0 or i == total or not plugin._.installed then
+                print(string.format("[%3d/%3d] %s %s", i, total, status, name))
+                io.flush()
+              end
+              if plugin._.installed == false then
+                table.insert(failed, name)
+              else
+                installed = installed + 1
+              end
+            end
+            
+            print(string.rep("-", 50))
+            if #failed > 0 then
+              print("FAILED_PLUGINS:" .. table.concat(failed, ","))
+              print("INSTALLED:" .. installed)
+              print("TOTAL:" .. total)
+            else
+              print("SUCCESS:" .. total)
+            end
+          end); if not ok then print("ERROR:" .. tostring(err)) end' -c 'qall' 2>&1 | tee plugin-check.log
+          
+          # Parse and display results with GitHub Actions formatting
+          # Use tr to strip any trailing whitespace/newlines from extracted values
+          if grep -q "^SUCCESS:" plugin-check.log; then
+            COUNT=$(grep "^SUCCESS:" plugin-check.log | cut -d: -f2 | tr -d '[:space:]')
+            echo "::notice::✅ All $COUNT plugins installed successfully"
+            echo ""
+            echo "┌────────────────────────────────────────┐"
+            echo "│  ✅ Plugin Check Passed                │"
+            printf "│  %-37s │\n" "$COUNT plugins verified"
+            echo "└────────────────────────────────────────┘"
+          elif grep -q "^FAILED_PLUGINS:" plugin-check.log; then
+            FAILED=$(grep "^FAILED_PLUGINS:" plugin-check.log | cut -d: -f2 | tr -d '[:space:]')
+            INSTALLED=$(grep "^INSTALLED:" plugin-check.log | cut -d: -f2 | tr -d '[:space:]')
+            TOTAL=$(grep "^TOTAL:" plugin-check.log | cut -d: -f2 | tr -d '[:space:]')
+            echo "::error::❌ $INSTALLED/$TOTAL plugins installed, failed: $FAILED"
+            exit 1
+          elif grep -q "^ERROR:" plugin-check.log; then
+            echo "::error::Plugin check encountered an error"
+            cat plugin-check.log
+            exit 1
+          fi
+        timeout-minutes: 2
+
+      - name: Verify config loads after plugin install
+        run: |
+          timeout 60 nvim --headless -c 'lua print("Config OK - all plugins loaded")' -c 'qall' 2>&1
+        timeout-minutes: 2
